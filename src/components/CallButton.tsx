@@ -37,14 +37,14 @@ export const CallButton: React.FC<CallButtonProps> = ({
   };
 
   const variantClasses = {
-    primary: "bg-orange-500 hover:bg-orange-600 text-white",
-    white: "bg-white hover:bg-gray-100 text-orange-600"
+    primary: "bg-orange-600 hover:bg-orange-700 text-white",
+    white: "bg-white hover:bg-gray-100 text-orange-700"
   };
 
   const StickyButton = () => (
     <a
       href={telLink}
-      className="fixed bottom-6 right-6 z-50 bg-orange-500 hover:bg-orange-600 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 font-bold animate-pulse hover:animate-none transition-all"
+      className="fixed bottom-6 right-6 z-50 bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 font-bold animate-pulse hover:animate-none transition-all"
       aria-label={`Call us now at ${PHONE_NUMBER}`}
     >
       <Phone size={24} aria-hidden="true" />

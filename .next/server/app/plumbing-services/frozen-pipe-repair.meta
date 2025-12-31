@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/[categorySlug]/layout,_N_T_/[categorySlug]/[serviceSlug]/layout,_N_T_/[categorySlug]/[serviceSlug]/page,_N_T_/plumbing-services/frozen-pipe-repair"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/$d$categorySlug/$d$serviceSlug/__PAGE__",
+    "/$d$categorySlug/$d$serviceSlug",
+    "/$d$categorySlug",
+    "/_index",
+    "/_head"
+  ]
+}

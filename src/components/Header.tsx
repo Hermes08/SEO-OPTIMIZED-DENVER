@@ -19,24 +19,24 @@ export const Header = () => {
     };
 
     return (
-        <header className="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800" role="banner">
+        <header className="sticky top-0 z-40 glass-panel border-b border-gray-100" role="banner">
             <div className="container mx-auto px-4 py-4">
                 <div className="flex justify-between items-center">
-                    <Link href="/" className="text-2xl font-bold text-white tracking-tight" aria-label={`${COMPANY_NAME} Home`}>
+                    <Link href="/" className="text-2xl font-bold text-gray-900 tracking-tight" aria-label={`${COMPANY_NAME} Home`}>
                         {COMPANY_NAME}<span className="text-orange-500">.</span>
                     </Link>
 
                     {/* Desktop Nav */}
                     <nav className="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
-                        <Link href="/" className="text-sm font-medium hover:text-orange-500 transition-colors">Home</Link>
-                        <Link href="/about" className="text-sm font-medium hover:text-orange-500 transition-colors">About</Link>
+                        <Link href="/" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Home</Link>
+                        <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">About</Link>
 
                         {/* Dynamic Categories */}
                         {CATEGORIES.map((cat) => (
                             <div key={cat.id} className="relative group">
                                 <Link
                                     href={`/${cat.slug}`}
-                                    className="text-sm font-medium hover:text-orange-500 transition-colors flex items-center gap-1"
+                                    className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors flex items-center gap-1"
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
@@ -44,12 +44,12 @@ export const Header = () => {
                                 </Link>
                                 {/* Simple Dropdown on hover */}
                                 <div className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200" role="menu">
-                                    <div className="bg-gray-800 border border-gray-700 rounded-lg shadow-xl py-2">
+                                    <div className="bg-white border border-gray-100 rounded-lg shadow-xl py-2">
                                         {cat.subServices.map(sub => (
                                             <Link
                                                 key={sub.id}
                                                 href={`/${cat.slug}/${sub.slug}`}
-                                                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                                                className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-orange-600"
                                                 role="menuitem"
                                             >
                                                 {sub.title}
@@ -58,7 +58,7 @@ export const Header = () => {
                                         <div className="border-t border-gray-700 mt-2 pt-2">
                                             <Link
                                                 href={`/${cat.slug}/blog`}
-                                                className="block px-4 py-2 text-sm text-orange-500 hover:bg-gray-700 font-bold"
+                                                className="block px-4 py-2 text-sm text-orange-600 hover:bg-gray-50 font-bold"
                                                 role="menuitem"
                                             >
                                                 {cat.title} Tips
@@ -69,9 +69,9 @@ export const Header = () => {
                             </div>
                         ))}
 
-                        <Link href="/areas-we-serve" className="text-sm font-medium hover:text-orange-500 transition-colors">Areas</Link>
-                        <Link href="/financing" className="text-sm font-medium hover:text-orange-500 transition-colors">Financing</Link>
-                        <Link href="/contact" className="text-sm font-medium hover:text-orange-500 transition-colors">Contact</Link>
+                        <Link href="/areas-we-serve" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Areas</Link>
+                        <Link href="/financing" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Financing</Link>
+                        <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Contact</Link>
 
                         <a
                             href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
@@ -85,7 +85,7 @@ export const Header = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden text-gray-300 hover:text-white"
+                        className="lg:hidden text-gray-900 hover:text-orange-600"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isMenuOpen}
@@ -97,7 +97,7 @@ export const Header = () => {
 
             {/* Mobile Nav */}
             {isMenuOpen && (
-                <div className="lg:hidden bg-gray-800 border-t border-gray-700 absolute w-full left-0 top-full shadow-xl max-h-[80vh] overflow-y-auto">
+                <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-full shadow-xl max-h-[80vh] overflow-y-auto">
                     <nav className="flex flex-col p-4 space-y-4" aria-label="Mobile Navigation">
                         <Link href="/" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link href="/about" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>About Us</Link>

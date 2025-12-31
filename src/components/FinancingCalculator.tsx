@@ -48,7 +48,7 @@ export const FinancingCalculator = () => {
                 </div>
                 <div className="bg-orange-500/20 p-6 rounded-lg text-center border border-orange-500/30" aria-live="polite">
                     <p className="text-orange-200 mb-2">Estimated Monthly Payment</p>
-                    <p className="text-4xl font-bold text-orange-500">${calculatePayment()}/mo</p>
+                    <p className="text-4xl font-bold text-orange-400">${calculatePayment()}/mo</p>
                 </div>
                 <p className="text-sm text-gray-500 text-center">*Estimate only. Actual rates may vary based on credit approval.</p>
             </div>

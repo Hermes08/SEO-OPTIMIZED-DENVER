@@ -1,5 +1,5 @@
 var R=require("../chunks/ssr/[turbopack]_runtime.js")("server/app/page.js")
-R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_636f3519._.js")
+R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_9032ad40._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__63069a50._.js")
 R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_f3ea4cc9._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__f5aa327f._.js")

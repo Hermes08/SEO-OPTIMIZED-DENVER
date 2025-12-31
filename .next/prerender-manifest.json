@@ -74,6 +74,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/electrical-services/commercial-ev-chargers": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/electrical-services/commercial-ev-chargers.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/electrical-services/electrical-panel-upgrade": {
       "experimentalBypassFor": [
         {
@@ -89,6 +113,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[categorySlug]/[serviceSlug]",
       "dataRoute": "/electrical-services/electrical-panel-upgrade.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/electrical-services/emergency-electrician": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/electrical-services/emergency-electrician.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -122,7 +170,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/electrical-services/whole-home-generators": {
+    "/general-contractor/basement-finishing": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -136,7 +184,55 @@
       ],
       "initialRevalidateSeconds": false,
       "srcRoute": "/[categorySlug]/[serviceSlug]",
-      "dataRoute": "/electrical-services/whole-home-generators.rsc",
+      "dataRoute": "/general-contractor/basement-finishing.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/general-contractor/bathroom-remodeling": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/general-contractor/bathroom-remodeling.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/general-contractor/kitchen-remodeling": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/general-contractor/kitchen-remodeling.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -218,30 +314,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/hvac-services/smart-thermostat-installation": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/[categorySlug]/[serviceSlug]",
-      "dataRoute": "/hvac-services/smart-thermostat-installation.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/plumbing-services/drain-cleaning-service": {
       "experimentalBypassFor": [
         {
@@ -257,6 +329,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[categorySlug]/[serviceSlug]",
       "dataRoute": "/plumbing-services/drain-cleaning-service.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/plumbing-services/frozen-pipe-repair": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/plumbing-services/frozen-pipe-repair.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -314,7 +410,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/plumbing-services/whole-home-repiping": {
+    "/roofing-services/hail-damage-repair": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -328,7 +424,55 @@
       ],
       "initialRevalidateSeconds": false,
       "srcRoute": "/[categorySlug]/[serviceSlug]",
-      "dataRoute": "/plumbing-services/whole-home-repiping.rsc",
+      "dataRoute": "/roofing-services/hail-damage-repair.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/roofing-services/roof-repair": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/roofing-services/roof-repair.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/roofing-services/roof-replacement": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]/[serviceSlug]",
+      "dataRoute": "/roofing-services/roof-replacement.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -410,6 +554,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/general-contractor": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]",
+      "dataRoute": "/general-contractor.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/hvac-services": {
       "experimentalBypassFor": [
         {
@@ -449,6 +617,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[categorySlug]",
       "dataRoute": "/plumbing-services.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/roofing-services": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[categorySlug]",
+      "dataRoute": "/roofing-services.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",

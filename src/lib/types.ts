@@ -8,6 +8,7 @@ export interface Service {
   description: string;
   icon?: any; // Lucide icon component
   image: string;
+  imageAlt?: string;
 }
 
 export interface SubService {
@@ -17,6 +18,7 @@ export interface SubService {
   description: string;
   content?: string; // HTML content for the detail page
   image: string;
+  imageAlt?: string;
   faqs?: { question: string; answer: string }[];
 }
 
@@ -27,6 +29,7 @@ export interface Category {
   description: string;
   shortDescription: string; // For cards
   heroImage: string;
+  heroImageAlt?: string;
   icon: any; // LucideIcon
   subServices: SubService[];
   faqs: { question: string; answer: string }[];
@@ -42,6 +45,7 @@ export interface Testimonial {
   date: string;
   project?: string;
   image?: string;
+  imageAlt?: string;
 }
 
 export interface BlogPost {
@@ -58,6 +62,7 @@ export interface BlogPost {
     role: string;
   };
   image: string;
+  imageAlt?: string;
 }
 
 export interface ServiceArea {
