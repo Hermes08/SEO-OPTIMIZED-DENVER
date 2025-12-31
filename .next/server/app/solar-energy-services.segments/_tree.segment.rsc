@@ -1,0 +1,13 @@
+:HL["/_next/static/chunks/c86067df1323da05.css","style"]
+:HL["https://picsum.photos/seed/solar-hero/1920/1080","image"]
+:HL["https://picsum.photos/seed/solar-install/800/600","image"]
+:HL["https://picsum.photos/seed/solar-repair/800/600","image"]
+:HL["https://picsum.photos/seed/map-service/1200/400?blur=4","image"]
+:HL["https://picsum.photos/seed/b1/800/400","image"]
+:HL["https://picsum.photos/seed/b2/800/400","image"]
+:HL["https://picsum.photos/seed/b3/800/400","image"]
+:HL["https://picsum.photos/seed/g1/60/60","image"]
+:HL["https://picsum.photos/seed/g2/60/60","image"]
+:HL["https://picsum.photos/seed/g3/60/60","image"]
+:HL["https://picsum.photos/seed/g4/60/60","image"]
+0:{"buildId":"TDJMYWqLM877fjccbeX__","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"categorySlug","paramType":"d","paramKey":"solar-energy-services","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

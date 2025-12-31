@@ -1,0 +1,13 @@
+{
+  "/[categorySlug]/[serviceSlug]/page": "/[categorySlug]/[serviceSlug]",
+  "/[categorySlug]/page": "/[categorySlug]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/areas-we-serve/page": "/areas-we-serve",
+  "/blog/[postSlug]/page": "/blog/[postSlug]",
+  "/blog/page": "/blog",
+  "/contact/page": "/contact",
+  "/financing/page": "/financing",
+  "/page": "/"
+}

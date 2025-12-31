@@ -1,0 +1,13 @@
+:HL["/_next/static/chunks/c86067df1323da05.css","style"]
+:HL["https://picsum.photos/seed/home-hero/1920/1080?grayscale","image"]
+:HL["https://picsum.photos/seed/electrical-hero/1920/1080","image"]
+:HL["https://picsum.photos/seed/plumbing-hero/1920/1080","image"]
+:HL["https://picsum.photos/seed/hvac-hero/1920/1080","image"]
+:HL["https://picsum.photos/seed/solar-hero/1920/1080","image"]
+:HL["https://picsum.photos/seed/tech-working/600/500","image"]
+:HL["https://picsum.photos/seed/map-placeholder/1200/400?blur=2","image"]
+:HL["https://picsum.photos/seed/g1/60/60","image"]
+:HL["https://picsum.photos/seed/g2/60/60","image"]
+:HL["https://picsum.photos/seed/g3/60/60","image"]
+:HL["https://picsum.photos/seed/g4/60/60","image"]
+0:{"buildId":"TDJMYWqLM877fjccbeX__","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
