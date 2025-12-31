@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Financing() {
     return (
-        <div className="min-h-screen bg-gray-900">
+        <div className="min-h-screen bg-gray-50">
             <SchemaMarkup type="FAQPage" data={{ faqs: FINANCING_FAQS }} />
 
             <div className="container mx-auto px-4 py-8">
@@ -23,16 +23,16 @@ export default function Financing() {
             </div>
 
             {/* Hero */}
-            <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800" aria-labelledby="finance-hero">
-                <div className="container mx-auto px-4 text-center">
-                    <h1 id="finance-hero" className="text-4xl md:text-5xl font-bold text-white mb-6">Flexible Financing Options</h1>
-                    <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Make your project affordable with our easy payment plans. Apply online and get approved in minutes.</p>
+            <section className="py-20 bg-white" aria-labelledby="finance-hero">
+                <div className="container mx-auto px-4 text-center max-w-4xl">
+                    <h1 id="finance-hero" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Flexible Financing Options</h1>
+                    <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">Make your project affordable with our easy payment plans. Apply online and get approved in minutes.</p>
                     <CallButton size="large" />
                 </div>
             </section>
 
             {/* Partners */}
-            <section className="py-12 bg-gray-800" aria-label="Financing Partners">
+            <section className="py-12 bg-gray-50 border-y border-gray-200" aria-label="Financing Partners">
                 <div className="container mx-auto px-4">
                     <p className="text-center text-gray-400 mb-8 uppercase tracking-widest text-sm font-bold">Trusted Financing Partners</p>
                     <div className="flex justify-center gap-12 flex-wrap items-center">
@@ -49,23 +49,25 @@ export default function Financing() {
             </section>
 
             {/* Financing Plans */}
-            <section className="py-16" aria-labelledby="plans-heading">
+            <section className="py-20" aria-labelledby="plans-heading">
                 <div className="container mx-auto px-4">
-                    <h2 id="plans-heading" className="text-3xl font-bold text-white mb-12 text-center">Choose Your Payment Plan</h2>
+                    <h2 id="plans-heading" className="text-3xl font-bold text-gray-900 mb-12 text-center">Choose Your Payment Plan</h2>
                     <div className="grid md:grid-cols-3 gap-8">
                         {FINANCING_PLANS.map(plan => (
-                            <div key={plan.id} className="bg-gray-800 p-8 rounded-xl border-2 border-transparent hover:border-orange-500 transition-all duration-300">
-                                <h3 className="text-2xl font-bold text-white mb-4">{plan.name}</h3>
-                                <div className="text-4xl font-bold text-orange-500 mb-6">{plan.apr}% APR</div>
-                                <ul className="space-y-3 mb-8">
+                            <div key={plan.id} className="bg-white p-8 rounded-2xl border-2 border-gray-100 hover:border-orange-500 transition-all duration-300 shadow-sm hover:shadow-xl relative group">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
+                                <div className="text-5xl font-bold text-orange-600 mb-6 tracking-tight">{plan.apr}% <span className="text-lg text-gray-400 font-normal">APR</span></div>
+                                <ul className="space-y-4 mb-8">
                                     {plan.features.map((feature, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-gray-300">
-                                            <CheckCircle size={18} className="text-green-500 shrink-0 mt-1" aria-hidden="true" />
+                                        <li key={i} className="flex items-start gap-3 text-gray-600">
+                                            <CheckCircle size={20} className="text-green-500 shrink-0 mt-0.5" aria-hidden="true" />
                                             <span>{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <CallButton sticky={false} />
+                                <div className="pt-6 border-t border-gray-100">
+                                    <CallButton sticky={false} size="default" />
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -73,35 +75,39 @@ export default function Financing() {
             </section>
 
             {/* Calculator Section */}
-            <section className="py-16 bg-gray-800" aria-labelledby="calc-heading">
-                <div className="container mx-auto px-4 max-w-2xl">
-                    <h2 id="calc-heading" className="text-3xl font-bold text-white mb-8 text-center">Estimate Your Monthly Payment</h2>
+            <section className="py-20 bg-gray-50" aria-labelledby="calc-heading">
+                <div className="container mx-auto px-4 max-w-2xl bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+                    <h2 id="calc-heading" className="text-3xl font-bold text-gray-900 mb-8 text-center">Estimate Your Monthly Payment</h2>
                     {/* Client Component */}
                     <FinancingCalculator />
                 </div>
             </section>
 
             {/* Eligibility */}
-            <section className="py-16" aria-labelledby="eligibility-heading">
-                <div className="container mx-auto px-4 max-w-4xl">
-                    <h2 id="eligibility-heading" className="text-3xl font-bold text-white mb-12 text-center">Am I Eligible?</h2>
+            <section className="py-20" aria-labelledby="eligibility-heading">
+                <div className="container mx-auto px-4 max-w-5xl">
+                    <h2 id="eligibility-heading" className="text-3xl font-bold text-gray-900 mb-12 text-center">Am I Eligible?</h2>
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-gray-800 p-8 rounded-xl">
-                            <h3 className="text-xl font-bold text-white mb-6">Requirements</h3>
+                        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm">1</span> Requirements
+                            </h3>
                             <ul className="space-y-4">
                                 {FINANCING_ELIGIBILITY.requirements.map((req, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-gray-300">
+                                    <li key={i} className="flex items-center gap-3 text-gray-600">
                                         <span className="w-2 h-2 bg-orange-500 rounded-full" aria-hidden="true"></span>
                                         {req}
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="bg-gray-800 p-8 rounded-xl">
-                            <h3 className="text-xl font-bold text-white mb-6">Good News</h3>
+                        <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm">2</span> Good News
+                            </h3>
                             <ul className="space-y-4">
                                 {FINANCING_ELIGIBILITY.goodNews.map((news, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-gray-300">
+                                    <li key={i} className="flex items-center gap-3 text-gray-600">
                                         <CheckCircle size={20} className="text-green-500" aria-hidden="true" />
                                         {news}
                                     </li>
@@ -113,17 +119,17 @@ export default function Financing() {
             </section>
 
             {/* FAQs */}
-            <section className="py-16 bg-gray-800" aria-labelledby="fin-faq-heading">
+            <section className="py-20 bg-gray-50" aria-labelledby="fin-faq-heading">
                 <div className="container mx-auto px-4 max-w-4xl">
-                    <h2 id="fin-faq-heading" className="text-3xl font-bold text-white mb-12">Financing FAQs</h2>
+                    <h2 id="fin-faq-heading" className="text-3xl font-bold text-gray-900 mb-12 text-center">Financing FAQs</h2>
                     <div className="space-y-4">
                         {FINANCING_FAQS.map((faq, index) => (
-                            <details key={index} className="bg-gray-900 rounded-lg p-6 group">
-                                <summary className="text-lg font-bold text-white cursor-pointer list-none flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 rounded">
+                            <details key={index} className="bg-white rounded-xl p-6 group border border-gray-200 shadow-sm open:ring-2 open:ring-orange-100 transition-all">
+                                <summary className="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center focus:outline-none rounded">
                                     {faq.question}
                                     <span className="text-orange-500 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
                                 </summary>
-                                <p className="text-gray-400 mt-4">{faq.answer}</p>
+                                <p className="text-gray-600 mt-4 leading-relaxed">{faq.answer}</p>
                             </details>
                         ))}
                     </div>
@@ -131,15 +137,21 @@ export default function Financing() {
             </section>
 
             {/* Testimonials */}
-            <section className="py-16" aria-labelledby="fin-reviews-heading">
+            <section className="py-20 bg-white" aria-labelledby="fin-reviews-heading">
                 <div className="container mx-auto px-4">
-                    <h2 id="fin-reviews-heading" className="text-3xl font-bold text-white mb-12 text-center">Success Stories</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {TESTIMONIALS.map(t => (
-                            <div key={t.id} className="bg-gray-800 p-6 rounded-lg">
-                                <p className="text-gray-300 mb-4 italic">"{t.text}"</p>
-                                <p className="text-white font-bold">{t.name}</p>
-                                <p className="text-sm text-gray-400">Financed: {t.project}</p>
+                    <h2 id="fin-reviews-heading" className="text-3xl font-bold text-gray-900 mb-12 text-center">Success Stories</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {TESTIMONIALS.slice(0, 3).map(t => (
+                            <div key={t.id} className="bg-gray-50 p-8 rounded-2xl border border-gray-100 relative">
+                                <div className="text-orange-300 absolute top-4 left-4 text-6xl font-serif opacity-50">"</div>
+                                <p className="text-gray-600 mb-6 italic relative z-10 pt-4 leading-relaxed">{t.text}</p>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-600">{t.name[0]}</div>
+                                    <div>
+                                        <p className="text-gray-900 font-bold">{t.name}</p>
+                                        <p className="text-xs text-gray-500">Financed: {t.project}</p>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -147,10 +159,10 @@ export default function Financing() {
             </section>
 
             {/* Final CTA */}
-            <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-500" aria-labelledby="fin-cta-heading">
+            <section className="py-24 bg-gradient-to-r from-orange-600 to-orange-500" aria-labelledby="fin-cta-heading">
                 <div className="container mx-auto px-4 text-center">
-                    <h2 id="fin-cta-heading" className="text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-                    <p className="text-xl text-white/90 mb-8">Call us to discuss financing options and get started today.</p>
+                    <h2 id="fin-cta-heading" className="text-4xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
+                    <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Call us to discuss financing options and get started today.</p>
                     <CallButton size="large" variant="white" sticky={false} />
                 </div>
             </section>

@@ -1,17 +1,24 @@
 
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { COMPANY_NAME, PHONE_NUMBER } from "@/lib/constants";
 import { MapPin, Clock } from "lucide-react";
 import "./globals.css";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : new URL('https://www.seo-optimized-denver.com');
+
 export const metadata: Metadata = {
+    metadataBase: baseUrl,
     title: {
         template: `%s | ${COMPANY_NAME}`,
         default: `${COMPANY_NAME} | Professional Home Services`,
     },
     description: `Top-rated services in Denver, Aurora, and Lakewood. Call ${PHONE_NUMBER} for 24/7 emergency service.`,
+    alternates: {
+        canonical: './',
+    },
 };
 
 export default function RootLayout({
@@ -61,6 +68,7 @@ export default function RootLayout({
                 </main>
 
                 <Footer />
+                <GoogleAnalytics gaId="G-XXXXXXXXXX" />
             </body>
         </html>
     );

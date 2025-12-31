@@ -27,7 +27,7 @@ export const Header = () => {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+                    <nav className="hidden lg:flex items-center gap-5" aria-label="Main Navigation">
                         <Link href="/" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Home</Link>
                         <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">About</Link>
 

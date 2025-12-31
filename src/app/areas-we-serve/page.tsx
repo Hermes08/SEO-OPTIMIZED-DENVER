@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CallButton } from '@/components/CallButton';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
-import { SERVICE_AREAS, REGION, TESTIMONIALS } from '@/lib/constants';
+import { SERVICE_AREAS, REGION, TESTIMONIALS, CITY, STATE } from '@/lib/constants';
 import { MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -31,13 +31,23 @@ export default function AreasWeServe() {
                         Services Throughout {REGION}
                     </h1>
 
-                    {/* Large Map Placeholder */}
-                    <div className="w-full h-[500px] bg-gray-800 rounded-xl overflow-hidden relative flex items-center justify-center border border-gray-700 mb-16">
-                        <img src="https://picsum.photos/seed/map-area/1600/900?blur=2" alt="" role="presentation" className="absolute inset-0 w-full h-full object-cover opacity-40" />
-                        <div className="relative z-10 bg-gray-900/90 p-8 rounded-xl backdrop-blur text-center max-w-md">
-                            <MapPin size={64} className="text-orange-500 mx-auto mb-4" aria-hidden="true" />
-                            <h3 className="text-2xl font-bold text-white mb-2">Interactive Service Map</h3>
-                            <p className="text-gray-400">We cover a 50-mile radius around our headquarters.</p>
+                    {/* Google Map Embed */}
+                    <div className="w-full h-[500px] bg-gray-800 rounded-xl overflow-hidden relative border border-gray-700 mb-16 shadow-2xl">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            loading="lazy"
+                            allowFullScreen
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Service Area Map"
+                            src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY_HERE&q=${CITY},+${STATE}`}
+                        >
+                        </iframe>
+                        {/* Fallback visual if API key is missing/generic */}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg z-10 max-w-xs hidden md:block">
+                            <p className="font-bold text-gray-900 text-sm">Serving the entire Front Range</p>
+                            <p className="text-gray-600 text-xs">From Boulder to Castle Rock</p>
                         </div>
                     </div>
                 </div>

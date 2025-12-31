@@ -50,7 +50,7 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: '2023-10-15',
     project: 'Heating Repair',
-    image: 'https://picsum.photos/seed/t1/100/100',
+    image: 'https://i.pravatar.cc/150?u=sarah',
     imageAlt: 'Sarah Johnson testimonial photo'
   },
   {
@@ -61,7 +61,7 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: '2023-11-02',
     project: 'New Installation',
-    image: 'https://picsum.photos/seed/t2/100/100',
+    image: 'https://i.pravatar.cc/150?u=michael',
     imageAlt: 'Michael Chen testimonial photo'
   },
   {
@@ -72,16 +72,17 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: '2023-12-24',
     project: 'Emergency Service',
-    image: 'https://picsum.photos/seed/t3/100/100',
+    image: 'https://i.pravatar.cc/150?u=jessica',
     imageAlt: 'Jessica Williams testimonial photo'
   }
 ];
 
-// --- CONTENT GENERATOR (NO LOREM IPSUM) ---
+// --- MASSIVE CONTENT GENERATOR (SEO OPTIMIZED ~2000 words) ---
+
 const buildSection = (title: string, content: string) => `
-  <section class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-900 mb-6">${title}</h2>
-    <div class="text-gray-600 leading-relaxed text-lg space-y-4">
+  <section class="mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">${title}</h2>
+    <div class="text-gray-600 leading-relaxed text-lg space-y-6">
       ${content}
     </div>
   </section>
@@ -91,49 +92,164 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
   const kw = KEYWORDS[category] || KEYWORDS.general;
   const cityState = `${CITY}, ${STATE}`;
 
-  // Dynamic Intro
+  // 1. Executive Summary & Local Context
   const intro = `
     <p>
-      When you need a reliable <strong>${serviceName}</strong> in <strong>${cityState}</strong>, you need a team that understands the unique challenges of our local environment. 
-      From the historic homes in Capitol Hill to the modern developments in Highlands Ranch, our licensed professionals provide top-tier service backed by years of experience.
+      For homeowners in <strong>${cityState}</strong>, maintaining a safe and functional property is a year-round commitment. 
+      Whether you own a historic Victorian in <strong>Capitol Hill</strong> or a modern build in <strong>Stapleton</strong>, your home requires specialized care to withstand Colorado's unique climate.
+      We are the premier provider of <strong>${serviceName}</strong>, offering a level of expertise and dedication that separates us from the competition.
     </p>
     <p>
-      We specialize in providing <strong>${kw[0]}</strong> and <strong>${kw[1]}</strong> solutions that stand the test of time. 
-      Whether it's a midnight emergency or a planned upgrade, we are the <strong>${kw[7] || 'local experts'}</strong> you can trust.
+      Our team excels in <strong>${kw[0]}</strong> and <strong>${kw[1]}</strong> solutions. We understand that in the <strong>${REGION}</strong>, ignoring a small issue can lead to catastrophic damage—especially with our freeze-thaw cycles and expansive clay soils.
+      Trust us to be your partner in home maintenance, delivering the <strong>${kw[7] || 'licensed services'}</strong> you deserve.
     </p>
   `;
 
-  // Problem/Solution Section
-  const problemSolution = `
-     <p>
-      In Colorado's fluctuating climate, systems can fail when you need them most. 
-      <strong>${kw[6] || 'Unexpected breakdowns'}</strong> can cause significant damage if not addressed immediately. 
-      Our team is equipped to handle everything from <strong>${kw[2]}</strong> to complex system overhauls.
+  // 2. Comprehensive Service Deep Dive
+  const deepDive = `
+    <p>
+      <strong>${serviceName}</strong> is not just about a quick fix; it's about ensuring the longevity and efficiency of your home's critical systems.
+      Our approach involves a comprehensive assessment of your current setup, identifying not just the symptoms but the root cause of any failure.
     </p>
-    <ul class="list-disc pl-6 space-y-2 mt-4">
-      <li><strong>Emergency Response:</strong> We offer 24/7 support for critical issues like <strong>${kw[3]}</strong>.</li>
-      <li><strong>Local Expertise:</strong> Familiarity with Denver building codes and Xcel Energy requirements.</li>
-      <li><strong>Transparent Pricing:</strong> No hidden fees, just honest quotes for your <strong>${kw[4]}</strong> needs.</li>
+    <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Advanced Diagnostics</h3>
+    <p>
+      We utilize state-of-the-art diagnostic tools—from thermal imaging cameras to endoscopic scopes—to see what others miss. 
+      This is particularly vital for <strong>${kw[2]}</strong>, where hidden defects can cause thousands of dollars in damage if left undetected.
+      Our technicians are trained to spot the early warning signs of <strong>${kw[6] || 'system failure'}</strong>, saving you money and stress in the long run.
+    </p>
+    <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Customized Solutions</h3>
+    <p>
+      Every home in <strong>${CITY}</strong> is different. We don't believe in cookie-cutter solutions. 
+      Whether you need a simple repair or a full system replacement involving <strong>${kw[5] || 'complex installations'}</strong>, we tailor our plan to your specific needs and budget.
+    </p>
+  `;
+
+  // 3. Local Challenges (Denver Specifics)
+  const localChallenges = `
+    <p>
+      Operating in the <strong>Denver Metro Area</strong> presents unique challenges that national chains often overlook.
+      Our technicians are locals who understand:
+    </p>
+    <ul class="list-disc pl-6 space-y-4 mt-6">
+      <li>
+        <strong>Altitude Complications:</strong> At 5,280 feet, gas appliances and HVAC systems require specific calibration for proper combustion and efficiency. 
+        Improper setup can lead to dangerous carbon monoxide buildup or wasted energy.
+      </li>
+      <li>
+        <strong>The Freeze-Thaw Cycle:</strong> Colorado winters are notorious for rapid temperature drops. This puts immense stress on pipes, roofing materials, and concrete.
+        We specialize in <strong>${kw[4] || 'winterization'}</strong> techniques that protect your home from bursting pipes and ice dams.
+      </li>
+      <li>
+        <strong>Historic Home Wiring/Plumbing:</strong> Many of Denver's beautiful old homes still have knob-and-tube wiring or galvanized pipes. 
+        We are experts in bringing these vintage properties up to modern code safely, often handling delicate <strong>${kw[3]}</strong> projects.
+      </li>
     </ul>
   `;
 
-  // Why Choose Us
-  const whyUs = `
+  // 4. Our Step-by-Step Process
+  const process = `
     <p>
-      Choosing the right contractor for <strong>${serviceName}</strong> is crucial for the safety and value of your property. 
-      We pride ourselves on being a top-rated provider of <strong>${kw[5]}</strong> in the Metro area. 
-      Our technicians are fully vetted, insured, and trained on the latest industry standards.
+      Transparency is the cornerstone of our business. When you hire us for <strong>${serviceName}</strong>, our process is clear:
+    </p>
+    <div class="space-y-6 mt-6">
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">1</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Schedule & Dispatch</strong>
+           <p>Call or book online. You'll receive a confirmation and a tracking link when your technician is en route.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">2</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Thorough Evaluation</strong>
+           <p>We inspect the issue, explain the problem in plain English, and provide multiple options for repair or replacement.</p>
+        </div>
+      </div>
+       <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">3</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Upfront Pricing</strong>
+           <p>The price we quote is the price you pay. No bait-and-switch tactics. We value your trust.</p>
+        </div>
+      </div>
+       <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">4</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Expert Execution</strong>
+           <p>Our work is backed by our obsession with quality. We use premium materials and follow all manufacturer best practices.</p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // 5. DIY vs Professional Risks
+  const diyRisks = `
+    <p>
+      In an era of endless online tutorials, it's tempting to tackle <strong>${serviceName}</strong> yourself. 
+      However, the risks often outweigh the potential savings.
     </p>
     <p>
-      Don't settle for less when it comes to your home. Contact us today for professional <strong>${serviceName}</strong> that treats your home with the respect it deserves.
+      <strong>Safety First:</strong> Dealing with electrical currents, gas lines, or pressurized sewage is dangerous. 
+      Each year, thousands of homeowners visit the ER due to DIY accidents. 
+      Don't become a statistic while trying to fix your <strong>${kw[0]}</strong>.
+    </p>
+    <p>
+      <strong>Permits & Resale Value:</strong> Unpermitted work is a red flag for future buyers and can stall the sale of your home. 
+      We handle all necessary permitting with the <strong>City and County of Denver</strong> to ensure your updates add real, transferable value to your property.
+    </p>
+  `;
+
+  // 6. Cost & Investment Analysis
+  const investment = `
+    <p>
+      We understand that investing in <strong>${serviceName}</strong> is a significant decision. 
+      Our pricing reflects the quality of licensed labor, insurance coverage, and warranty protection we provide.
+    </p>
+    <p>
+      While you might find a "handyman" willing to do it cheaper, the cost of fixing poor workmanship often exceeds the original price.
+      We offer competitive rates for <strong>${kw[7] || 'top-rated service'}</strong> and offer flexible financing plans to help you manage your budget without compromising on safety or quality.
+    </p>
+  `;
+
+  // 7. Service Neighborhoods
+  const neighborhoods = `
+    <p>
+      We are truly a local company. Our trucks are a common sight in neighborhoods across the Metro area:
+    </p>
+    <ul class="grid md:grid-cols-2 gap-4 mt-6">
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>LoDo & RiNo:</strong> Serving urban lofts and businesses.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Cherry Creek:</strong> Premium service for luxury properties.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Highlands Ranch:</strong> Modern system specialists.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Lakewood & Golden:</strong> Foothills property experts.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Aurora:</strong> Comprehensive residential coverage.</li>
+    </ul>
+    <p class="mt-4">
+      No matter where you are in the <strong>${REGION}</strong>, reliable help is just a phone call away.
+    </p>
+  `;
+
+  // 8. Conclusion
+  const conclusion = `
+    <p>
+      Your home is your sanctuary. Ensure it remains comfortable, safe, and efficient with professional <strong>${serviceName}</strong>. 
+      With our ironclad satisfaction guarantee and hundreds of 5-star reviews from neighbors in <strong>${CITY}</strong>, you can choose us with confidence.
+    </p>
+    <p class="text-xl font-bold text-gray-900 mt-6">
+      Don't wait for a small problem to become a disaster. Contact us today for the best <strong>${serviceName}</strong> in Denver.
     </p>
   `;
 
   return `
-    <div class="generated-content">
-      ${buildSection(`Professional ${serviceName} in ${CITY}`, intro)}
-      ${buildSection(`Why We Are the Best Choice for ${serviceName}`, whyUs)}
-      ${buildSection(`Comprehensive ${serviceName} Solutions`, problemSolution)}
+    <div class="generated-content space-y-12">
+      ${buildSection(`Premier ${serviceName} in ${CITY}, ${STATE}`, intro)}
+      ${buildSection(`The Science of ${serviceName}: Going Deeper`, deepDive)}
+      ${buildSection(`Why ${CITY} Homes Are Different`, localChallenges)}
+      ${buildSection(`Our 4-Step Professional Process`, process)}
+      ${buildSection(`The Hidden Dangers of DIY ${serviceName}`, diyRisks)}
+      ${buildSection(`Investing in Your Home's Value`, investment)}
+      ${buildSection(`Proudly Serving Your Neighborhood`, neighborhoods)}
+      ${buildSection(`Ready to Get Started?`, conclusion)}
     </div>
   `;
 };
@@ -147,10 +263,10 @@ export const GOOGLE_BUSINESS_URL = "https://search.google.com/local/writereview?
 export const GOOGLE_RATING = 4.9;
 export const GOOGLE_REVIEW_COUNT = 450;
 export const GOOGLE_REVIEWS = [
-  { id: 'g1', author: 'Robert Fox', avatar: 'https://picsum.photos/seed/g1/60/60', rating: 5, text: 'Technician was incredibly professional and fixed our issue within an hour. The pricing was exactly as quoted. Highly recommend for residential electrical services in Denver!', date: '2 weeks ago' },
-  { id: 'g2', author: 'Kristin Watson', avatar: 'https://picsum.photos/seed/g2/60/60', rating: 5, text: 'I have used many service companies in Denver but these guys are the best plumbers. Fixed my frozen pipes fast. Clean, courteous, and very knowledgeable.', date: '1 month ago' },
-  { id: 'g3', author: 'Cody Fisher', avatar: 'https://picsum.photos/seed/g3/60/60', rating: 4, text: 'Great experience with our AC repair. Scheduling was easy and they showed up on time. Good communication throughout the process.', date: '2 months ago' },
-  { id: 'g4', author: 'Esther Howard', avatar: 'https://picsum.photos/seed/g4/60/60', rating: 5, text: 'Saved us during a holiday emergency! I cannot thank the team enough for coming out so late to fix our furnace during the snowstorm.', date: '3 months ago' }
+  { id: 'g1', author: 'Robert Fox', avatar: 'https://i.pravatar.cc/150?u=robert', rating: 5, text: 'Technician was incredibly professional and fixed our issue within an hour. The pricing was exactly as quoted. Highly recommend for residential electrical services in Denver!', date: '2 weeks ago' },
+  { id: 'g2', author: 'Kristin Watson', avatar: 'https://i.pravatar.cc/150?u=kristin', rating: 5, text: 'I have used many service companies in Denver but these guys are the best plumbers. Fixed my frozen pipes fast. Clean, courteous, and very knowledgeable.', date: '1 month ago' },
+  { id: 'g3', author: 'Cody Fisher', avatar: 'https://i.pravatar.cc/150?u=cody', rating: 4, text: 'Great experience with our AC repair. Scheduling was easy and they showed up on time. Good communication throughout the process.', date: '2 months ago' },
+  { id: 'g4', author: 'Esther Howard', avatar: 'https://i.pravatar.cc/150?u=esther', rating: 5, text: 'Saved us during a holiday emergency! I cannot thank the team enough for coming out so late to fix our furnace during the snowstorm.', date: '3 months ago' }
 ];
 
 // Helper for FAQs
@@ -169,7 +285,7 @@ export const CATEGORIES: Category[] = [
     slug: 'electrical-services',
     shortDescription: 'Expert electricians providing EV charger installation, panel upgrades, and emergency repairs in Denver, Aurora, & Lakewood.',
     description: 'Premier electrical services in Denver. From EV charger installations (Tesla & Level 2) to panel upgrades and 24/7 emergency repairs, our licensed electricians ensure safety and compliance across the Metro area.',
-    heroImage: 'https://picsum.photos/seed/electrical-hero/1920/1080',
+    heroImage: '/images/electrical-hero.png',
     heroImageAlt: 'Licensed electrician performing a panel upgrade in a Denver home',
     icon: Zap,
     benefits: [
@@ -188,7 +304,7 @@ export const CATEGORIES: Category[] = [
         slug: 'ev-charger-installation',
         description: 'Professional Tesla and EV charger installation. Taking advantage of Xcel Energy credits in Denver.',
         content: GENERATE_CONTENT('EV Charger Installation', 'electrical'),
-        image: 'https://picsum.photos/seed/ev-charger/800/600',
+        image: '/images/electrical-action.png',
         imageAlt: 'Tesla wall connector installed in a garage'
       },
       {
@@ -197,7 +313,7 @@ export const CATEGORIES: Category[] = [
         slug: 'electrical-panel-upgrade',
         description: '200 Amp service upgrades and panel replacements. Replace dangerous Federal Pacific panels.',
         content: GENERATE_CONTENT('Electrical Panel Upgrade', 'electrical'),
-        image: 'https://picsum.photos/seed/electrical-panel/800/600',
+        image: '/images/electrical-hero.png',
         imageAlt: 'New 200 amp electrical panel with labeled breakers'
       },
       {
@@ -206,7 +322,7 @@ export const CATEGORIES: Category[] = [
         slug: 'emergency-electrician',
         description: '24/7 Emergency electrical repairs in Denver. Restoring power safely and quickly.',
         content: GENERATE_CONTENT('Emergency Electrician Services', 'electrical'),
-        image: 'https://picsum.photos/seed/emergency-elec/800/600',
+        image: '/images/electrical-action.png',
         imageAlt: 'Electrician working at night on a fuse box'
       },
       {
@@ -215,7 +331,7 @@ export const CATEGORIES: Category[] = [
         slug: 'commercial-ev-chargers',
         description: 'Commercial grade EV charging stations for Denver businesses and parking lots.',
         content: GENERATE_CONTENT('Commercial EV Charger Installation', 'electrical'),
-        image: 'https://picsum.photos/seed/comm-ev/800/600',
+        image: '/images/electrical-hero.png',
         imageAlt: 'Row of commercial EV charging stations'
       },
       {
@@ -224,7 +340,7 @@ export const CATEGORIES: Category[] = [
         slug: 'battery-storage-systems',
         description: 'Home battery backup solutions like Powerwall. Energy security for Denver homes.',
         content: GENERATE_CONTENT('Battery Storage Systems', 'electrical'),
-        image: 'https://picsum.photos/seed/battery-storage/800/600',
+        image: '/images/electrical-action.png',
         imageAlt: 'Home battery backup system'
       }
     ]
@@ -235,7 +351,7 @@ export const CATEGORIES: Category[] = [
     slug: 'plumbing-services',
     shortDescription: 'Top-rated plumbers in Denver. Drain cleaning, water heaters, and frozen pipe repair.',
     description: 'Trusted Denver plumbers for over 20 years. We handle drain cleaning, tankless water heaters, leak detection, and frozen pipe emergencies.',
-    heroImage: 'https://picsum.photos/seed/plumbing-hero/1920/1080',
+    heroImage: '/images/plumbing-hero.png',
     heroImageAlt: 'Plumber inspecting a sink pipe',
     icon: Droplet,
     benefits: [
@@ -254,7 +370,7 @@ export const CATEGORIES: Category[] = [
         slug: 'drain-cleaning-service',
         description: 'Unclog drains fast. Hydro-jetting and sewer cleaning in Denver & Aurora.',
         content: GENERATE_CONTENT('Drain Cleaning Services', 'plumbing'),
-        image: 'https://picsum.photos/seed/drain-cleaning/800/600',
+        image: '/images/plumbing-action.png',
         imageAlt: 'Professional drain cleaning equipment'
       },
       {
@@ -263,7 +379,7 @@ export const CATEGORIES: Category[] = [
         slug: 'water-heater-repair-install',
         description: 'Tankless and standard water heater installation. High efficiency models.',
         content: GENERATE_CONTENT('Water Heater Installation', 'plumbing'),
-        image: 'https://picsum.photos/seed/water-heater/800/600',
+        image: '/images/plumbing-hero.png',
         imageAlt: 'Technician installing tankless water heater'
       },
       {
@@ -272,7 +388,7 @@ export const CATEGORIES: Category[] = [
         slug: 'leak-detection-repair',
         description: 'Accurate leak detection for slab leaks and pipe bursts.',
         content: GENERATE_CONTENT('Leak Detection Services', 'plumbing'),
-        image: 'https://picsum.photos/seed/leak-detection/800/600',
+        image: '/images/plumbing-action.png',
         imageAlt: 'Infrared leak detection camera'
       },
       {
@@ -281,7 +397,7 @@ export const CATEGORIES: Category[] = [
         slug: 'frozen-pipe-repair',
         description: 'Emergency thawing and repair for frozen pipes in Denver winter.',
         content: GENERATE_CONTENT('Frozen Pipe Repair', 'plumbing'),
-        image: 'https://picsum.photos/seed/frozen-pipe/800/600',
+        image: '/images/plumbing-hero.png',
         imageAlt: 'Frozen pipe repair'
       }
     ]
@@ -292,7 +408,7 @@ export const CATEGORIES: Category[] = [
     slug: 'hvac-services',
     shortDescription: 'Heating & Air Conditioning repair in Denver. Furnace repair, AC installation.',
     description: 'Keep your home comfortable year-round. Specialists in AC repair, furnace installation, and indoor air quality.',
-    heroImage: 'https://picsum.photos/seed/hvac-hero/1920/1080',
+    heroImage: '/images/hvac-hero.png',
     heroImageAlt: 'HVAC technician working on AC unit',
     icon: Thermometer,
     benefits: [
@@ -311,7 +427,7 @@ export const CATEGORIES: Category[] = [
         slug: 'air-conditioning-repair',
         description: '24/7 AC repair in Denver. Fixes for all major brands.',
         content: GENERATE_CONTENT('Air Conditioning Repair', 'hvac'),
-        image: 'https://picsum.photos/seed/ac-repair/800/600',
+        image: '/images/hvac-action.png',
         imageAlt: 'Technician checking refrigerant'
       },
       {
@@ -320,7 +436,7 @@ export const CATEGORIES: Category[] = [
         slug: 'furnace-heating-installation',
         description: 'Energy-saving furnace installation and replacement.',
         content: GENERATE_CONTENT('Furnace Heating Installation', 'hvac'),
-        image: 'https://picsum.photos/seed/furnace/800/600',
+        image: '/images/hvac-hero.png',
         imageAlt: 'New high-efficiency furnace'
       },
       {
@@ -329,7 +445,7 @@ export const CATEGORIES: Category[] = [
         slug: 'indoor-air-quality',
         description: 'Whole-home humidifiers and duct cleaning for Denver climate.',
         content: GENERATE_CONTENT('Indoor Air Quality Services', 'hvac'),
-        image: 'https://picsum.photos/seed/air-quality/800/600',
+        image: '/images/hvac-action.png',
         imageAlt: 'Air duct cleaning service'
       }
     ]
@@ -340,7 +456,7 @@ export const CATEGORIES: Category[] = [
     slug: 'solar-energy-services',
     shortDescription: 'Denver Solar Panel Installation. Tax Credits & Xcel Rewards.',
     description: 'Leading solar company in Denver. Maximize savings with custom solar panel installations.',
-    heroImage: 'https://picsum.photos/seed/solar-hero/1920/1080',
+    heroImage: '/images/solar-hero.png',
     heroImageAlt: 'Solar panels on roof',
     icon: Sun,
     benefits: [
@@ -359,7 +475,7 @@ export const CATEGORIES: Category[] = [
         slug: 'solar-panel-installation',
         description: 'Residential solar installation for Denver homes.',
         content: GENERATE_CONTENT('Solar Panel Installation', 'solar'),
-        image: 'https://picsum.photos/seed/solar-install/800/600',
+        image: '/images/solar-hero.png',
         imageAlt: 'Solar panel installation'
       },
       {
@@ -368,7 +484,7 @@ export const CATEGORIES: Category[] = [
         slug: 'solar-repair-maintenance',
         description: 'Maintenance and repair for existing solar arrays.',
         content: GENERATE_CONTENT('Solar Repair and Maintenance', 'solar'),
-        image: 'https://picsum.photos/seed/solar-repair/800/600',
+        image: '/images/solar-action.png',
         imageAlt: 'Cleaning solar panels'
       }
     ]
@@ -379,7 +495,7 @@ export const CATEGORIES: Category[] = [
     slug: 'roofing-services',
     shortDescription: 'Expert Roof Repair & Replacement. Hail Damage Specialists.',
     description: 'Protect your home with professional roofing services. Specialized in hail damage repair.',
-    heroImage: 'https://picsum.photos/seed/roofing-hero/1920/1080',
+    heroImage: '/images/roofing-hero.png',
     heroImageAlt: 'Roofer inspecting shingles',
     icon: Shield,
     benefits: [
@@ -398,7 +514,7 @@ export const CATEGORIES: Category[] = [
         slug: 'roof-repair',
         description: 'Emergency roof repair for leaks and storm damage.',
         content: GENERATE_CONTENT('Roof Repair', 'roofing'),
-        image: 'https://picsum.photos/seed/roof-repair/800/600',
+        image: '/images/roofing-action.png',
         imageAlt: 'Roof repair patch'
       },
       {
@@ -407,7 +523,7 @@ export const CATEGORIES: Category[] = [
         slug: 'roof-replacement',
         description: 'Complete roof replacement with impact-resistant shingles.',
         content: GENERATE_CONTENT('Roof Replacement', 'roofing'),
-        image: 'https://picsum.photos/seed/roof-replace/800/600',
+        image: '/images/roofing-hero.png',
         imageAlt: 'New roof installation'
       },
       {
@@ -416,7 +532,7 @@ export const CATEGORIES: Category[] = [
         slug: 'hail-damage-repair',
         description: 'Specialized repair for Colorado hail storms.',
         content: GENERATE_CONTENT('Hail Damage Repair', 'roofing'),
-        image: 'https://picsum.photos/seed/hail-damage/800/600',
+        image: '/images/roofing-action.png',
         imageAlt: 'Hail damage on shingles'
       }
     ]
@@ -427,7 +543,7 @@ export const CATEGORIES: Category[] = [
     slug: 'general-contractor',
     shortDescription: 'Home Remodeling in Denver. Kitchens, Bathrooms, & Basements.',
     description: 'Transform your home with our general contracting. Kitchen remodels to basement finishing.',
-    heroImage: 'https://picsum.photos/seed/contractor-hero/1920/1080',
+    heroImage: '/images/general-hero.png',
     heroImageAlt: 'Modern kitchen remodel',
     icon: Hammer,
     benefits: [
@@ -446,7 +562,7 @@ export const CATEGORIES: Category[] = [
         slug: 'kitchen-remodeling',
         description: 'Modern kitchen renovations. Cabinets, countertops.',
         content: GENERATE_CONTENT('Kitchen Remodeling', 'general'),
-        image: 'https://picsum.photos/seed/kitchen/800/600',
+        image: '/images/general-hero.png',
         imageAlt: 'White kitchen renovation'
       },
       {
@@ -455,7 +571,7 @@ export const CATEGORIES: Category[] = [
         slug: 'bathroom-remodeling',
         description: 'Luxury bathroom updates. Showers, tubs.',
         content: GENERATE_CONTENT('Bathroom Remodeling', 'general'),
-        image: 'https://picsum.photos/seed/bathroom/800/600',
+        image: '/images/general-action.png',
         imageAlt: 'Luxury bathroom remodel'
       },
       {
@@ -464,7 +580,7 @@ export const CATEGORIES: Category[] = [
         slug: 'basement-finishing',
         description: 'Turn your basement into a gym or office.',
         content: GENERATE_CONTENT('Basement Finishing', 'general'),
-        image: 'https://picsum.photos/seed/basement/800/600',
+        image: '/images/general-hero.png',
         imageAlt: 'Finished basement'
       }
     ]
@@ -481,8 +597,8 @@ export const BLOG_POSTS: BlogPost[] = [
     content: GENERATE_CONTENT('Electrical Panel Safety', 'electrical'),
     category: 'Electrical Services',
     publishDate: '2023-10-01',
-    author: { name: 'David Smith', role: 'Master Electrician', photo: 'https://picsum.photos/seed/a1/100/100' },
-    image: 'https://picsum.photos/seed/b1/800/400',
+    author: { name: 'David Smith', role: 'Master Electrician', photo: 'https://i.pravatar.cc/150?u=david' },
+    image: '/images/electrical-action.png',
     imageAlt: 'Old electrical panel'
   },
   {
@@ -493,8 +609,8 @@ export const BLOG_POSTS: BlogPost[] = [
     content: GENERATE_CONTENT('Tankless Water Heaters', 'plumbing'),
     category: 'Plumbing Services',
     publishDate: '2023-10-15',
-    author: { name: 'John Doe', role: 'Plumbing Lead', photo: 'https://picsum.photos/seed/a2/100/100' },
-    image: 'https://picsum.photos/seed/b2/800/400',
+    author: { name: 'John Doe', role: 'Plumbing Lead', photo: 'https://i.pravatar.cc/150?u=john' },
+    image: '/images/plumbing-action.png',
     imageAlt: 'Tankless water heater'
   },
   {
@@ -505,8 +621,8 @@ export const BLOG_POSTS: BlogPost[] = [
     content: GENERATE_CONTENT('AC Maintenance', 'hvac'),
     category: 'HVAC Services',
     publishDate: '2023-11-10',
-    author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: 'https://picsum.photos/seed/a3/100/100' },
-    image: 'https://picsum.photos/seed/b3/800/400',
+    author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: 'https://i.pravatar.cc/150?u=sarahj' },
+    image: '/images/hvac-action.png',
     imageAlt: 'AC unit cleaning'
   }
 ];
@@ -560,8 +676,8 @@ export const VALUES = [
 ];
 
 export const TEAM_MEMBERS = [
-  { id: 1, name: 'John Smith', role: 'Founder & CEO', image: 'https://picsum.photos/seed/team1/300/300' },
-  { id: 2, name: 'Jane Doe', role: 'Operations Manager', image: 'https://picsum.photos/seed/team2/300/300' },
-  { id: 3, name: 'Mike Johnson', role: 'Lead Technician', image: 'https://picsum.photos/seed/team3/300/300' },
-  { id: 4, name: 'Sarah Wilson', role: 'Service Coordinator', image: 'https://picsum.photos/seed/team4/300/300' }
+  { id: 1, name: 'John Smith', role: 'Founder & CEO', image: 'https://i.pravatar.cc/300?u=ceo' },
+  { id: 2, name: 'Jane Doe', role: 'Operations Manager', image: 'https://i.pravatar.cc/300?u=ops' },
+  { id: 3, name: 'Mike Johnson', role: 'Lead Technician', image: 'https://i.pravatar.cc/300?u=tech' },
+  { id: 4, name: 'Sarah Wilson', role: 'Service Coordinator', image: 'https://i.pravatar.cc/300?u=coord' }
 ];

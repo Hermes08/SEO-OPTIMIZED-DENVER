@@ -27,8 +27,8 @@ const ParticleField = (props: any) => {
             <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
                 <PointMaterial
                     transparent
-                    color="#f97316" // Orange-500
-                    size={0.005}
+                    color="#ea580c" // Orange-600 for better visibility
+                    size={0.02} // Increased size
                     sizeAttenuation={true}
                     depthWrite={false}
                 />
@@ -40,7 +40,7 @@ const ParticleField = (props: any) => {
 // Main Hero Background Component
 export default function ThreeHero() {
     return (
-        <div className="absolute inset-0 z-0 opacity-60">
+        <div className="absolute inset-0 z-0 opacity-100">
             <Canvas camera={{ position: [0, 0, 1] }}>
                 <ParticleField />
             </Canvas>
