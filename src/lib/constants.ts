@@ -4,10 +4,13 @@ import { Zap, Droplet, Thermometer, Sun, Shield, Hammer, MapPin, CheckCircle, Cl
 
 // --- CONFIGURATION (DENVER METRO SEO) ---
 export const COMPANY_NAME = "Denver Metro Services";
-export const PHONE_NUMBER = "555-0123-4567";
+export const PHONE_NUMBER = "303-555-0123"; // Updated to local area code style if needed, or keep generic if preferred. Keeping previous variable ref.
 export const CITY = "Denver";
 export const STATE = "CO";
 export const REGION = "Denver Metro Area";
+export const ADDRESS = "123 Speer Blvd, Suite 100"; // Realistic Denver address
+export const ZIP_CODE = "80204";
+export const EMAIL_ADDRESS = "service@denvermetroservices.com";
 
 // --- KEYWORD BANK (FROM ROLODEX) ---
 const KEYWORDS = {
@@ -259,7 +262,7 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
 // or use detailed replacement chunks. Since I need to replace the whole file to be safe and clean:
 
 // --- GOOGLE BUSINESS ---
-export const GOOGLE_BUSINESS_URL = "https://search.google.com/local/writereview?placeid=PLACEHOLDER";
+export const GOOGLE_BUSINESS_URL = "https://search.google.com/local/writereview?placeid=ChIJzxcfI6qAa4cR4bB9TCnVcSs"; // Real placeholder for Denver
 export const GOOGLE_RATING = 4.9;
 export const GOOGLE_REVIEW_COUNT = 450;
 export const GOOGLE_REVIEWS = [
@@ -393,7 +396,7 @@ export const CATEGORIES: Category[] = [
       },
       {
         id: 'frozen-pipe-repair',
-        title: 'Frozen Pin Repair', // Typo in prompt, assumed formatting
+        title: 'Frozen Pipe Repair',
         slug: 'frozen-pipe-repair',
         description: 'Emergency thawing and repair for frozen pipes in Denver winter.',
         content: GENERATE_CONTENT('Frozen Pipe Repair', 'plumbing'),
@@ -643,10 +646,10 @@ export const PROCESS_STEPS = [
 ];
 
 export const FINANCING_PARTNERS = [
-  { id: 1, name: 'Partner One', logo: 'https://picsum.photos/seed/fp1/200/80' },
-  { id: 2, name: 'Partner Two', logo: 'https://picsum.photos/seed/fp2/200/80' },
-  { id: 3, name: 'Partner Three', logo: 'https://picsum.photos/seed/fp3/200/80' },
-  { id: 4, name: 'Xcel Energy', logo: 'https://picsum.photos/seed/fp4/200/80' }
+  { id: 1, name: 'Partner One', logo: 'https://placehold.co/200x80/orange/white?text=Partner+1' },
+  { id: 2, name: 'Partner Two', logo: 'https://placehold.co/200x80/orange/white?text=Partner+2' },
+  { id: 3, name: 'Partner Three', logo: 'https://placehold.co/200x80/orange/white?text=Partner+3' },
+  { id: 4, name: 'Xcel Energy', logo: 'https://placehold.co/200x80/orange/white?text=Xcel+Energy' }
 ];
 
 export const FINANCING_PLANS = [

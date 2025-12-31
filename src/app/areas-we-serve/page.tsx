@@ -41,7 +41,7 @@ export default function AreasWeServe() {
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
                             title="Service Area Map"
-                            src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY_HERE&q=${CITY},+${STATE}`}
+                            src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Denver+(Denver%20Metro%20Services)&t=&z=11&ie=UTF8&iwloc=B&output=embed"
                         >
                         </iframe>
                         {/* Fallback visual if API key is missing/generic */}

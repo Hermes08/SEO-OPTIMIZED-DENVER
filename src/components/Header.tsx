@@ -69,6 +69,8 @@ export const Header = () => {
                             </div>
                         ))}
 
+                        <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Blog</Link>
+
                         <Link href="/areas-we-serve" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Areas</Link>
                         <Link href="/financing" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Financing</Link>
                         <Link href="/contact" className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors">Contact</Link>
@@ -143,6 +145,7 @@ export const Header = () => {
                             </div>
                         ))}
 
+                        <Link href="/blog" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>Blog</Link>
                         <Link href="/areas-we-serve" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>Areas We Serve</Link>
                         <Link href="/financing" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>Financing</Link>
                         <Link href="/contact" className="block text-lg font-medium hover:text-orange-500" onClick={() => setIsMenuOpen(false)}>Contact</Link>

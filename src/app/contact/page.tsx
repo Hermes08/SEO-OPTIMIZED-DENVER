@@ -3,6 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CallButton } from '@/components/CallButton';
+import { ContactForm } from '@/components/ContactForm';
 import { PHONE_NUMBER, CITY, STATE } from '@/lib/constants';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
@@ -26,10 +27,16 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <div className="container mx-auto px-4 max-w-5xl">
-                    <div className="grid md:grid-cols-2 gap-12">
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <div className="grid lg:grid-cols-2 gap-12">
+                        {/* Contact Form (New) */}
+                        <div className="order-2 lg:order-1">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-6 lg:hidden">Send us a Message</h2>
+                            <ContactForm />
+                        </div>
+
                         {/* Contact Info */}
-                        <div className="space-y-8">
+                        <div className="space-y-8 order-1 lg:order-2">
                             <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
 
@@ -84,6 +91,23 @@ export default function Contact() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+
+                        {/* Map Section */}
+                        <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-lg h-[400px] overflow-hidden relative">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Our Location"
+                                className="w-full h-full rounded-xl"
+                                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Denver+(Denver%20Metro%20Services)&t=&z=13&ie=UTF8&iwloc=B&output=embed"
+                            >
+                            </iframe>
                         </div>
 
                         {/* Simple CTA Box */}

@@ -131,14 +131,20 @@ export default function Home() {
                 <div className="container mx-auto px-4 text-center">
                     <h2 id="local-area-heading" className="text-3xl font-bold text-gray-900 mb-8">Serving {CITY} & Surrounding Areas</h2>
                     <div className="glass-panel p-2 rounded-xl max-w-4xl mx-auto mb-12 shadow-xl">
-                        {/* Mock Map */}
+                        {/* Google Map Embed */}
                         <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
-                            <img src="https://picsum.photos/seed/map-placeholder/1200/400?blur=2" alt="" role="presentation" className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" />
-                            <div className="relative z-10 glass-card p-6 rounded-xl">
-                                <MapPin size={48} className="text-orange-600 mx-auto mb-4" aria-hidden="true" />
-                                <p className="text-gray-900 font-bold text-xl">Interactive Map Placeholder</p>
-                                <p className="text-gray-600 text-sm">Google Maps Embed would go here</p>
-                            </div>
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Service Area Map"
+                                className="absolute inset-0 w-full h-full"
+                                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Denver+(Denver%20Metro%20Services)&t=&z=11&ie=UTF8&iwloc=B&output=embed"
+                            >
+                            </iframe>
                         </div>
                     </div>
                     <Link href="/areas-we-serve" className="text-orange-500 hover:text-white font-bold underline decoration-orange-500 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded px-1">

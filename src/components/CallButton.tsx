@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone } from 'lucide-react';
 import { PHONE_NUMBER } from '@/lib/constants';
+import { trackContact } from '@/lib/analytics';
 
 interface CallButtonProps {
   size?: 'default' | 'large';
@@ -41,9 +42,14 @@ export const CallButton: React.FC<CallButtonProps> = ({
     white: "bg-white hover:bg-gray-100 text-orange-700"
   };
 
+  const handleCall = () => {
+    trackContact('phone', sticky ? 'sticky_bar' : 'hero'); // Defaulting to hero/inline, can be refined
+  };
+
   const StickyButton = () => (
     <a
       href={telLink}
+      onClick={() => trackContact('phone', 'sticky_bar')}
       className="fixed bottom-6 right-6 z-50 bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 font-bold animate-pulse hover:animate-none transition-all"
       aria-label={`Call us now at ${PHONE_NUMBER}`}
     >
@@ -56,6 +62,7 @@ export const CallButton: React.FC<CallButtonProps> = ({
     <>
       <a
         href={telLink}
+        onClick={() => trackContact('phone', size === 'large' ? 'hero' : 'inline')}
         className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`}
         aria-label={`Call us now at ${PHONE_NUMBER}`}
       >
