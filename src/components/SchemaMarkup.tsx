@@ -165,7 +165,7 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
         },
         "datePublished": data.datePublished,
         "dateModified": data.dateModified || data.datePublished,
-        "description": data.description || headline
+        "description": data.description || (data.headline || data.title)
       };
       break;
     default:

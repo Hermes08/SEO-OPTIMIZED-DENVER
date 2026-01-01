@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function About() {
     return (
         <div className="min-h-screen bg-gray-50">
-            <SchemaMarkup type="Organization" data={{}} />
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }] }} />
 
             <div className="container mx-auto px-4 py-8">
                 <Breadcrumbs items={[{ name: 'About Us', url: '/about' }]} />

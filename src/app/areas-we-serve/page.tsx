@@ -15,9 +15,10 @@ export const metadata: Metadata = {
 export default function AreasWeServe() {
     return (
         <div className="min-h-screen bg-gray-900">
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Areas We Serve', url: '/areas-we-serve' }] }} />
             <SchemaMarkup type="Service" data={{
-                serviceType: "Home Services",
-                areas: SERVICE_AREAS.map(a => ({ "@type": "City", name: a.city }))
+                serviceType: "Professional Home Services",
+                description: `Expert services throughout ${REGION} including ${SERVICE_AREAS.slice(0, 3).map(a => a.city).join(', ')}.`
             }} />
 
             <div className="container mx-auto px-4 py-8">

@@ -3,6 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CallButton } from '@/components/CallButton';
+import { SchemaMarkup } from '@/components/SchemaMarkup';
 
 import { PHONE_NUMBER, CITY, STATE } from '@/lib/constants';
 import { Phone, Mail, MapPin } from 'lucide-react';
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Contact() {
     return (
         <div className="min-h-screen bg-gray-50">
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Contact Us', url: '/contact' }] }} />
             <div className="container mx-auto px-4 py-8">
                 <Breadcrumbs items={[{ name: 'Contact Us', url: '/contact' }]} />
             </div>
