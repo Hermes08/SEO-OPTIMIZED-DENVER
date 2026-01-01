@@ -5,7 +5,7 @@ R.c("server/chunks/ssr/f2bbe_next_dist_esm_build_templates_app-page_63a6cbac.js"
 R.c("server/chunks/ssr/[root-of-the-server]__18c2825b._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__f87a3f0c._.js")
 R.c("server/chunks/ssr/f2bbe_next_dist_95a3ad07._.js")
-R.c("server/chunks/ssr/f2bbe_289af142._.js")
+R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_6dd37ff4._.js")
 R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_8f90fbcc._.js")
 R.c("server/chunks/ssr/SEO-OPTIMIZED-DENVER_d02a108d._.js")
 R.c("server/chunks/ssr/f2bbe_next_dist_client_components_ccb6545e._.js")

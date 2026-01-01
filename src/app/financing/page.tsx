@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 export default function Financing() {
     return (
         <div className="min-h-screen bg-gray-50">
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Financing', url: '/financing' }] }} />
             <SchemaMarkup type="FAQPage" data={{ faqs: FINANCING_FAQS }} />
 
             <div className="container mx-auto px-4 py-8">

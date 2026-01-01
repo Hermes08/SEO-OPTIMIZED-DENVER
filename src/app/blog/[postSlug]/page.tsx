@@ -55,6 +55,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ postS
 
     return (
         <div className="min-h-screen bg-gray-50">
+            <SchemaMarkup type="BreadcrumbList" data={{
+                items: [
+                    { name: 'Home', url: '/' },
+                    { name: 'Blog', url: '/blog' },
+                    { name: post.title, url: `/blog/${post.slug}` }
+                ]
+            }} />
             <SchemaMarkup type="Article" data={{
                 headline: post.title,
                 image: post.image,

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <>
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }] }} />
             <SchemaMarkup type="LocalBusiness" data={{ image: 'https://picsum.photos/seed/home-schema/1200/600' }} />
 
             {/* Hero Section */}

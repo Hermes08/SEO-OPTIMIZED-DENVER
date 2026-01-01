@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { BLOG_POSTS } from '@/lib/constants';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CallButton } from '@/components/CallButton';
+import { SchemaMarkup } from '@/components/SchemaMarkup';
 
 export const metadata: Metadata = {
     title: "Tips & Resources | Blog",
@@ -18,6 +19,7 @@ export default function BlogIndex() {
 
     return (
         <div className="min-h-screen bg-gray-50">
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }] }} />
             <div className="container mx-auto px-4 py-8">
                 <Breadcrumbs items={breadcrumbItems} />
             </div>

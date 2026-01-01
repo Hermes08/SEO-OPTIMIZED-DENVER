@@ -48,14 +48,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    // 5. Service Areas (if specific landing pages existed, for now just the main list)
-    // If we had /areas-we-serve/denver, we would add them here.
-    // Currently areas-we-serve is a single page.
+    // 5. Category Blog Pages (e.g., /electrical-services/blog)
+    const categoryBlogRoutes = CATEGORIES.map((category) => ({
+        url: `${BASE_URL}/${category.slug}/blog`,
+        lastModified: currentDate,
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
 
     return [
         ...staticRoutes,
         ...categoryRoutes,
         ...serviceRoutes,
+        ...categoryBlogRoutes,
         ...blogRoutes,
     ];
 }
