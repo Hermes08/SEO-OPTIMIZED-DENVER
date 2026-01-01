@@ -3,7 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CallButton } from '@/components/CallButton';
-import { ContactForm } from '@/components/ContactForm';
+
 import { PHONE_NUMBER, CITY, STATE } from '@/lib/constants';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
@@ -29,10 +29,38 @@ export default function Contact() {
 
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="grid lg:grid-cols-2 gap-12">
-                        {/* Contact Form (New) */}
+                        {/* Contact Form Removed - Phone Only */}
                         <div className="order-2 lg:order-1">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6 lg:hidden">Send us a Message</h2>
-                            <ContactForm />
+                            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Call Us?</h2>
+                                <ul className="space-y-4 text-gray-600 mb-8">
+                                    <li className="flex items-start gap-3">
+                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
+                                            <span className="sr-only">Check</span>
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                        </div>
+                                        <p><strong>Instant Response:</strong> Speak directly to a dispatcher, not a machine.</p>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
+                                            <span className="sr-only">Check</span>
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                        </div>
+                                        <p><strong>Accurate Quotes:</strong> We can better assess your emergency over the phone.</p>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
+                                            <span className="sr-only">Check</span>
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                        </div>
+                                        <p><strong>Local Experts:</strong> Our team knows Denver homes and codes inside out.</p>
+                                    </li>
+                                </ul>
+                                <div className="bg-orange-50 rounded-xl p-6 text-center">
+                                    <p className="text-gray-900 font-medium mb-4">Click below to speak with an expert now</p>
+                                    <CallButton size="large" />
+                                </div>
+                            </div>
                         </div>
 
                         {/* Contact Info */}

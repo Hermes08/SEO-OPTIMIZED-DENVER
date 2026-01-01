@@ -6,7 +6,7 @@ import { COMPANY_NAME, PHONE_NUMBER, CATEGORIES, SERVICE_AREAS } from '@/lib/con
 
 export const Footer = () => {
     return (
-        <footer className="bg-gray-950 pt-16 pb-8 border-t border-gray-800" role="contentinfo">
+        <footer className="bg-slate-900 pt-16 pb-8 border-t border-slate-800" role="contentinfo">
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
                     <div>
