@@ -1,5 +1,6 @@
 {
   "/[categorySlug]/[serviceSlug]/page": "/[categorySlug]/[serviceSlug]",
+  "/[categorySlug]/blog/page": "/[categorySlug]/blog",
   "/[categorySlug]/page": "/[categorySlug]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",

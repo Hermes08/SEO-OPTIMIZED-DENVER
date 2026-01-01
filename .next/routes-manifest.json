@@ -38,6 +38,14 @@
       "namedRegex": "^/(?<nxtPcategorySlug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/[categorySlug]/blog",
+      "regex": "^/([^/]+?)/blog(?:/)?$",
+      "routeKeys": {
+        "nxtPcategorySlug": "nxtPcategorySlug"
+      },
+      "namedRegex": "^/(?<nxtPcategorySlug>[^/]+?)/blog(?:/)?$"
+    },
+    {
       "page": "/[categorySlug]/[serviceSlug]",
       "regex": "^/([^/]+?)/([^/]+?)(?:/)?$",
       "routeKeys": {

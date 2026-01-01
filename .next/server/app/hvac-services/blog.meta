@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/[categorySlug]/layout,_N_T_/[categorySlug]/blog/layout,_N_T_/[categorySlug]/blog/page,_N_T_/hvac-services/blog"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/$d$categorySlug/blog/__PAGE__",
+    "/$d$categorySlug/blog",
+    "/$d$categorySlug",
+    "/_index",
+    "/_head"
+  ]
+}
