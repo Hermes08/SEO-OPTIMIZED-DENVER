@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { COMPANY_NAME, PHONE_NUMBER } from "@/lib/constants";
 import { MapPin, Clock } from "lucide-react";
 import "./globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="antialiased flex flex-col min-h-screen bg-gray-900 text-gray-100">
+                <SchemaMarkup type="Organization" data={{}} />
                 {/* Skip to Main Content Link */}
                 <a
                     href="#main-content"
