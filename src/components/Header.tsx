@@ -66,12 +66,12 @@ export const Header = () => {
                                                         </Link>
                                                     </li>
                                                 ))}
-                                                <li>
+                                                <li className="pt-2 border-t border-gray-50 flex flex-col gap-1">
                                                     <Link
-                                                        href={`/${cat.slug}`}
-                                                        className="text-xs font-bold text-orange-600 hover:text-orange-700 uppercase tracking-wide"
+                                                        href={`/${cat.slug}/blog`}
+                                                        className="text-xs font-bold text-orange-600 hover:text-orange-700 uppercase tracking-wide flex items-center gap-1"
                                                     >
-                                                        View All &rarr;
+                                                        Read {cat.title} Tips &rarr;
                                                     </Link>
                                                 </li>
                                             </ul>

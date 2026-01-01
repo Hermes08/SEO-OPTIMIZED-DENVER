@@ -627,6 +627,42 @@ export const BLOG_POSTS: BlogPost[] = [
     author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: 'https://i.pravatar.cc/150?u=sarahj' },
     image: '/images/hvac-action.png',
     imageAlt: 'AC unit cleaning'
+  },
+  {
+    id: '4',
+    title: 'Top 5 Tips for Solar Maintenance in Denver',
+    slug: 'top-5-tips-solar-maintenance',
+    excerpt: 'Get the most out of your panels with these essential maintenance tips. From snow removal to monitoring output, we cover it all.',
+    content: GENERATE_CONTENT('Solar Panel Maintenance Tips', 'solar'),
+    category: 'Solar Energy Services',
+    publishDate: '2023-12-05',
+    author: { name: 'Alex Sun', role: 'Solar Tech', photo: 'https://i.pravatar.cc/150?u=alex' },
+    image: '/images/solar-action.png',
+    imageAlt: 'Solar panel cleaning'
+  },
+  {
+    id: '5',
+    title: 'How to Spot Hail Damage on Your Roof',
+    slug: 'how-to-spot-hail-damage',
+    excerpt: 'After the storm clears, check for these subtle signs of damage. Hidden bruises on shingles can lead to leaks if ignored.',
+    content: GENERATE_CONTENT('Identifying Hail Damage', 'roofing'),
+    category: 'Roofing Services',
+    publishDate: '2024-01-15',
+    author: { name: 'Mike Roofer', role: 'Roofing Inspector', photo: 'https://i.pravatar.cc/150?u=mike' },
+    image: '/images/roofing-hero.png',
+    imageAlt: 'Inspect roof shingles'
+  },
+  {
+    id: '6',
+    title: 'The Ultimate Kitchen Remodel Checklist',
+    slug: 'kitchen-remodel-checklist',
+    excerpt: 'Planning a renovation? Don\'t start without this checklist. We guide you through budgeting, design, and permitting in Denver.',
+    content: GENERATE_CONTENT('Kitchen Remodel Guide', 'general'),
+    category: 'General Contractor',
+    publishDate: '2024-02-01',
+    author: { name: 'Lisa Design', role: 'Interior Planner', photo: 'https://i.pravatar.cc/150?u=lisa' },
+    image: '/images/general-hero.png',
+    imageAlt: 'Modern kitchen design'
   }
 ];
 
