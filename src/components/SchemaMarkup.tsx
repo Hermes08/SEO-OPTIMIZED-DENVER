@@ -108,16 +108,20 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
       schema = {
         "@context": "https://schema.org",
         "@type": "Service",
-        "serviceType": data.name,
+        "serviceType": data.serviceType || data.name,
         "provider": {
           "@type": "LocalBusiness",
-          "name": COMPANY_NAME
+          "name": COMPANY_NAME,
+          "image": data.image || `${baseUrl}/images/hero-fallback.jpg`,
+          "telephone": PHONE_NUMBER,
+          "priceRange": "$$"
         },
         "areaServed": {
           "@type": "State",
           "name": "Colorado"
         },
         "description": data.description,
+        "image": data.image || `${baseUrl}/images/hero-fallback.jpg`,
         "offers": {
           "@type": "Offer",
           "availability": "https://schema.org/InStock",
@@ -127,15 +131,29 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
         }
       };
       break;
+    case 'FAQPage':
+      schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": data.faqs?.map((faq: any) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        })) || []
+      };
+      break;
     case 'Article':
       schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": data.title,
+        "headline": data.headline || data.title,
         "image": data.image,
         "author": {
           "@type": "Person",
-          "name": data.authorName
+          "name": data.author || data.authorName || "Expert"
         },
         "publisher": {
           "@type": "Organization",
@@ -146,7 +164,8 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
           }
         },
         "datePublished": data.datePublished,
-        "description": data.description
+        "dateModified": data.dateModified || data.datePublished,
+        "description": data.description || headline
       };
       break;
     default:
