@@ -82,14 +82,17 @@ export const TESTIMONIALS: Testimonial[] = [
 
 // --- MASSIVE CONTENT GENERATOR (SEO OPTIMIZED ~2000 words) ---
 
-const buildSection = (title: string, content: string) => `
-  <section class="mb-16">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">${title}</h2>
-    <div class="text-gray-600 leading-relaxed text-lg space-y-6">
-      ${content}
-    </div>
-  </section>
-`;
+const buildSection = (title: string, content: string) => {
+  const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  return `
+    <section class="mb-16" id="${id}">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">${title}</h2>
+      <div class="text-gray-600 leading-relaxed text-lg space-y-6">
+        ${content}
+      </div>
+    </section>
+  `;
+};
 
 export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEYWORDS = 'general') => {
   const kw = KEYWORDS[category] || KEYWORDS.general;

@@ -9,12 +9,14 @@ interface CallButtonProps {
   size?: 'default' | 'large';
   variant?: 'primary' | 'white';
   sticky?: boolean;
+  onlySticky?: boolean;
 }
 
 export const CallButton: React.FC<CallButtonProps> = ({
   size = 'default',
   variant = 'primary',
-  sticky = true
+  sticky = true,
+  onlySticky = false
 }) => {
   const telLink = `tel:${PHONE_NUMBER.replace(/\D/g, '')}`;
   const [isVisible, setIsVisible] = useState(false);
@@ -47,28 +49,32 @@ export const CallButton: React.FC<CallButtonProps> = ({
   };
 
   const StickyButton = () => (
-    <a
-      href={telLink}
-      onClick={() => trackContact('phone', 'sticky_bar')}
-      className="fixed bottom-6 right-6 z-50 bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 font-bold animate-pulse hover:animate-none transition-all"
-      aria-label={`Call us now at ${PHONE_NUMBER}`}
-    >
-      <Phone size={24} aria-hidden="true" />
-      <span className="hidden md:inline">Call Now</span>
-    </a>
+    <div className="fixed bottom-0 left-0 right-0 z-[999] p-4 md:p-0 md:bottom-8 md:right-8 md:left-auto pointer-events-none">
+      <a
+        href={telLink}
+        onClick={() => trackContact('phone', 'sticky_bar')}
+        className="pointer-events-auto w-full md:w-auto bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-8 py-5 md:py-4 rounded-2xl md:rounded-full shadow-[0_20px_50px_rgba(234,88,12,0.4)] flex items-center justify-center gap-3 font-black text-xl md:text-lg transition-all hover:scale-[1.02] active:scale-95 border-2 border-white/30 backdrop-blur-md group"
+        aria-label={`Call us now at ${PHONE_NUMBER}`}
+      >
+        <Phone size={28} className="group-hover:rotate-12 transition-transform animate-pulse" aria-hidden="true" />
+        <span className="tracking-tight uppercase">Call Now: {PHONE_NUMBER}</span>
+      </a>
+    </div>
   );
 
   return (
     <>
-      <a
-        href={telLink}
-        onClick={() => trackContact('phone', size === 'large' ? 'hero' : 'inline')}
-        className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`}
-        aria-label={`Call us now at ${PHONE_NUMBER}`}
-      >
-        <Phone size={size === 'large' ? 24 : 20} aria-hidden="true" />
-        <span>Call Now: {PHONE_NUMBER}</span>
-      </a>
+      {!onlySticky && (
+        <a
+          href={telLink}
+          onClick={() => trackContact('phone', size === 'large' ? 'hero' : 'inline')}
+          className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`}
+          aria-label={`Call us now at ${PHONE_NUMBER}`}
+        >
+          <Phone size={size === 'large' ? 24 : 20} aria-hidden="true" />
+          <span>Call Now: {PHONE_NUMBER}</span>
+        </a>
+      )}
 
       {sticky && isVisible && <StickyButton />}
     </>

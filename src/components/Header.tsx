@@ -37,14 +37,20 @@ export const Header = () => {
                             <button
                                 className="text-sm font-medium text-gray-600 hover:text-orange-600 transition-colors flex items-center gap-1 py-4"
                                 aria-haspopup="true"
-                                aria-expanded="false"
+                                aria-expanded={activeDropdown === 'services-desktop'}
+                                onMouseEnter={() => setActiveDropdown('services-desktop')}
+                                onMouseLeave={() => setActiveDropdown(null)}
                             >
                                 Services
                                 <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-200" />
                             </button>
 
                             {/* Mega Menu Dropdown */}
-                            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[800px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 -mt-2 z-50">
+                            <div
+                                className={`absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[800px] transition-all duration-200 -mt-2 z-50 ${activeDropdown === 'services-desktop' ? 'opacity-100 visible' : 'opacity-0 invisible group-hover:opacity-100 group-hover:visible'}`}
+                                onMouseEnter={() => setActiveDropdown('services-desktop')}
+                                onMouseLeave={() => setActiveDropdown(null)}
+                            >
                                 <div className="bg-white border border-gray-100 rounded-xl shadow-2xl p-6 grid grid-cols-3 gap-8 mt-2">
                                     {CATEGORIES.map((cat) => (
                                         <div key={cat.id} className="space-y-3">
@@ -52,7 +58,7 @@ export const Header = () => {
                                                 href={`/${cat.slug}`}
                                                 className="flex items-center gap-2 font-bold text-gray-900 hover:text-orange-600 transition-colors"
                                             >
-                                                <cat.icon size={20} className="text-orange-500" />
+                                                <cat.icon size={20} className="text-orange-500" aria-hidden="true" />
                                                 {cat.title}
                                             </Link>
                                             <ul className="space-y-2">
@@ -89,14 +95,14 @@ export const Header = () => {
                         <a
                             href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`}
                             className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-transform hover:scale-105 ml-2"
-                            aria-label="Call Now"
+                            aria-label={`Call us now at ${PHONE_NUMBER}`}
                         >
                             <Phone size={16} aria-hidden="true" />
                             <span>Call Now</span>
                         </a>
                     </nav>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile Menu Button - Already has aria-expanded={isMenuOpen} */}
                     <button
                         className="lg:hidden text-gray-900 hover:text-orange-600"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
