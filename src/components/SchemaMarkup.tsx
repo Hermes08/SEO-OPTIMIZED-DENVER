@@ -7,7 +7,7 @@ interface SchemaProps {
 }
 
 export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.denvermetroservices.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.denverevchargers.com';
 
   let schema: any = {};
 
@@ -31,9 +31,9 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
       "availableLanguage": "English"
     },
     "sameAs": [
-      "https://facebook.com/denvermetroservices",
-      "https://instagram.com/denvermetroservices",
-      "https://linkedin.com/company/denvermetroservices"
+      "https://facebook.com/denverevchargers",
+      "https://instagram.com/denverevchargers",
+      "https://linkedin.com/company/denverevchargers"
     ]
   };
 
@@ -44,7 +44,7 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
     case 'LocalBusiness':
       schema = {
         "@context": "https://schema.org",
-        "@type": "HomeAndConstructionBusiness",
+        "@type": "Electrician",
         "@id": `${baseUrl}/#localbusiness`,
         "name": COMPANY_NAME,
         "image": data.image || `${baseUrl}/images/hero-fallback.jpg`,
@@ -110,7 +110,7 @@ export const SchemaMarkup: React.FC<SchemaProps> = ({ type, data }) => {
         "@type": "Service",
         "serviceType": data.serviceType || data.name,
         "provider": {
-          "@type": "LocalBusiness",
+          "@type": "Electrician",
           "name": COMPANY_NAME,
           "image": data.image || `${baseUrl}/images/hero-fallback.jpg`,
           "telephone": PHONE_NUMBER,
