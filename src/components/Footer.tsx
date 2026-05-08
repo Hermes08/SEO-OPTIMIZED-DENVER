@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
@@ -12,17 +11,16 @@ export const Footer = () => {
                     <div>
                         <h3 className="text-xl font-bold text-white mb-4">{COMPANY_NAME}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                            Professional services providing reliable, high-quality solutions for residential and commercial clients. Licensed & Insured.
+                            Denver's premier EV charger installation specialists. Licensed electricians for Tesla Wall Connector, Level 2 chargers, and commercial EV stations. Permits, inspections, and Xcel rebates handled for you.
                         </p>
                         <div className="flex gap-4">
-                            {/* Social Links */}
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Facebook`}>
+                            <a href="https://facebook.com/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Facebook`}>
                                 <Facebook size={18} aria-hidden="true" />
                             </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Instagram`}>
+                            <a href="https://instagram.com/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Instagram`}>
                                 <Instagram size={18} aria-hidden="true" />
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on LinkedIn`}>
+                            <a href="https://linkedin.com/company/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on LinkedIn`}>
                                 <Linkedin size={18} aria-hidden="true" />
                             </a>
                         </div>
@@ -35,12 +33,13 @@ export const Footer = () => {
                             <li><Link href="/about" className="hover:text-orange-500">About Us</Link></li>
                             <li><Link href="/financing" className="hover:text-orange-500">Financing</Link></li>
                             <li><Link href="/areas-we-serve" className="hover:text-orange-500">Service Areas</Link></li>
+                            <li><Link href="/blog" className="hover:text-orange-500">EV Charging Blog</Link></li>
                             <li><Link href="/contact" className="hover:text-orange-500">Contact Us</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="text-white font-bold mb-4">Services</h4>
+                        <h4 className="text-white font-bold mb-4">EV Services</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             {CATEGORIES.map(cat => (
                                 <li key={cat.id}>
@@ -61,11 +60,11 @@ export const Footer = () => {
                             </li>
                             <li className="flex gap-3">
                                 <MapPin size={18} className="text-orange-500 shrink-0" aria-hidden="true" />
-                                <span>Serving {COMPANY_NAME} Region and surrounding areas.</span>
+                                <span>Serving Denver Metro Area & surrounding counties.</span>
                             </li>
                             <li className="flex gap-3">
                                 <Clock size={18} className="text-orange-500 shrink-0" aria-hidden="true" />
-                                <span>Mon-Fri: 7am - 8pm<br />Sat-Sun: Emergency Only</span>
+                                <span>Mon–Sat: 7am – 8pm<br />Emergency: 24/7</span>
                             </li>
                         </ul>
                     </div>
@@ -75,9 +74,9 @@ export const Footer = () => {
                 <div className="border-t border-gray-900 mt-12 pt-12">
                     <div className="grid md:grid-cols-2 gap-8">
 
-                        {/* ALL SERVICES REMINDER */}
+                        {/* ALL SERVICES */}
                         <div>
-                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">All Services Provided</h4>
+                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">All EV Charging Services</h4>
                             <div className="grid grid-cols-2 gap-x-4 gap-y-6 text-xs text-gray-500">
                                 {CATEGORIES.map(cat => (
                                     <div key={cat.id}>
@@ -96,9 +95,9 @@ export const Footer = () => {
                             </div>
                         </div>
 
-                        {/* ALL AREAS REMINDER */}
+                        {/* ALL AREAS */}
                         <div>
-                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">Service Areas & Zip Codes</h4>
+                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">EV Charger Installation Areas</h4>
                             <div className="grid grid-cols-2 gap-4 text-xs text-gray-500">
                                 {SERVICE_AREAS.map(area => (
                                     <div key={area.id}>
