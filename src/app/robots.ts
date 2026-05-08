@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.seo-optimized-denver.com';
+export const dynamic = 'force-static';
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.denverevchargers.com';
 
 export default function robots(): MetadataRoute.Robots {
     return {
