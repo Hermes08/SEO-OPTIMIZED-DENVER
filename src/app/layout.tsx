@@ -9,15 +9,17 @@ import { COMPANY_NAME, PHONE_NUMBER } from "@/lib/constants";
 import { MapPin, Clock } from "lucide-react";
 import "./globals.css";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : new URL('https://www.denverevchargers.com');
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : new URL('https://hermes08.github.io/SEO-OPTIMIZED-DENVER');
 
 export const metadata: Metadata = {
     metadataBase: baseUrl,
     title: {
         template: `%s | ${COMPANY_NAME}`,
-        default: `${COMPANY_NAME} | EV Charger Installation Denver`,
+        default: `${COMPANY_NAME} | Professional Services in Denver, CO`,
     },
-    description: `Top-rated EV charger installation in Denver, Aurora, and Lakewood. Tesla Wall Connector, Level 2 home chargers & commercial stations. Call ${PHONE_NUMBER} — Xcel Energy rebates filed for you.`,
+    description: `Top-rated home services in Denver — electrical, EV charger installation, plumbing, HVAC, solar, roofing, and general contracting. Licensed & insured. Call ${PHONE_NUMBER}.`,
     alternates: {
         canonical: './',
     },

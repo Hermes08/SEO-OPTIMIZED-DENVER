@@ -1,19 +1,24 @@
 import { Category, Testimonial, BlogPost, ServiceArea } from './types';
-import { Zap, Building2, Shield, Sun } from 'lucide-react';
+import { Zap, Droplet, Thermometer, Sun, Shield, Hammer } from 'lucide-react';
 
-// --- CONFIGURATION (DENVER EV CHARGERS) ---
-export const COMPANY_NAME = "Denver EV Chargers";
-export const PHONE_NUMBER = "(303) 555-0199";
+// --- CONFIGURATION ---
+export const COMPANY_NAME = "Denver Metro Services";
+export const PHONE_NUMBER = "303-555-0123";
 export const CITY = "Denver";
 export const STATE = "CO";
 export const REGION = "Denver Metro Area";
-export const ADDRESS = "123 Broadway";
-export const ZIP_CODE = "80203";
-export const EMAIL_ADDRESS = "info@denverevchargers.com";
+export const ADDRESS = "123 Speer Blvd, Suite 100";
+export const ZIP_CODE = "80204";
+export const EMAIL_ADDRESS = "service@denvermetroservices.com";
 
-// --- KEYWORD BANK (EV CHARGER FOCUSED) ---
+// --- KEYWORD BANK ---
 const KEYWORDS = {
-  ev_home: [
+  electrical: [
+    "electrician denver", "emergency electrician denver", "panel upgrade denver",
+    "ev charger installation denver", "electrical repair denver",
+    "circuit breaker repair", "commercial electrician denver", "licensed electrician denver"
+  ],
+  ev_charger: [
     "EV charger installation Denver",
     "Tesla charger installation",
     "electric car charger for home",
@@ -33,35 +38,27 @@ const KEYWORDS = {
     "parking lot EV charger installation",
     "networked EV charging stations"
   ],
-  electrical: [
-    "panel upgrade Denver",
-    "electrical panel upgrade for EV",
-    "240V outlet installation Denver",
-    "NEMA 14-50 installation Denver",
-    "dedicated EV circuit installation",
-    "emergency electrician Denver",
-    "licensed electrician Denver",
-    "200 amp service upgrade Denver"
+  plumbing: [
+    "plumber denver", "drain cleaning denver", "water heater repair denver",
+    "emergency plumber denver", "leak detection denver", "sewer line repair",
+    "frozen pipes denver", "sump pump installation"
   ],
-  ev_incentives: [
-    "Xcel Energy EV rebates",
-    "Colorado EV charger tax credit",
-    "federal EV charger tax credit",
-    "EV charging incentives Colorado 2025",
-    "Xcel Energy rebate EV charger",
-    "solar EV integration Denver",
-    "Powerwall installation Denver",
-    "battery storage EV home Denver"
+  hvac: [
+    "hvac repair denver", "ac repair denver", "furnace repair denver",
+    "hvac installation denver", "air conditioning repair", "heating repair denver",
+    "duct cleaning denver", "indoor air quality"
+  ],
+  solar: [
+    "solar panel installation denver", "solar repair denver", "solar energy denver",
+    "solar tax credit colorado", "xcel energy solar rewards"
+  ],
+  roofing: [
+    "roof repair denver", "roof replacement denver", "hail damage roof repair",
+    "emergency roof repair", "gutter installation denver"
   ],
   general: [
-    "EV charger installer Denver",
-    "electric vehicle charging Denver",
-    "ev charger installation cost Denver",
-    "best EV charger installer Denver",
-    "ev charger installation near me",
-    "Denver electric car charger",
-    "ev charging station installation",
-    "certified EV charger electrician Denver"
+    "general contractor denver", "kitchen remodeling denver", "bathroom remodeling denver",
+    "basement finishing denver", "home renovation denver"
   ]
 };
 
@@ -69,40 +66,40 @@ const KEYWORDS = {
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    name: 'Sarah Jenkins',
-    location: 'Cherry Creek, Denver',
-    text: 'The team at Denver EV Chargers made installing my Tesla Wall Connector seamless. They handled the permit with the city and the finish is perfect. My Model Y charges overnight with no issues.',
+    name: 'Sarah Johnson',
+    location: 'Denver, CO',
+    text: 'Absolutely the best service I have received. The technician arrived on time and fixed the issue in under an hour.',
     rating: 5,
-    date: '2025-01-15',
-    project: 'Tesla Wall Connector — Tesla Model Y',
-    image: 'https://i.pravatar.cc/150?u=sarah_jenkins',
-    imageAlt: 'Sarah Jenkins testimonial photo'
+    date: '2023-10-15',
+    project: 'Heating Repair',
+    image: 'https://i.pravatar.cc/150?u=sarah',
+    imageAlt: 'Sarah Johnson testimonial photo'
   },
   {
     id: '2',
-    name: 'Mike Olson',
-    location: 'LoDo, Denver',
-    text: 'Needed a charger in my tight garage in LoDo. They recommended a hardwired solution that saves space. Best EV charger installation in Denver. My Rivian is fully charged every morning.',
+    name: 'Michael Chen',
+    location: 'Aurora, CO',
+    text: 'Very professional team. They explained everything clearly and the pricing was transparent. Highly recommended.',
     rating: 5,
-    date: '2025-02-03',
-    project: 'Level 2 Hardwired Install — Rivian R1T',
-    image: 'https://i.pravatar.cc/150?u=mike_olson',
-    imageAlt: 'Mike Olson testimonial photo'
+    date: '2023-11-02',
+    project: 'New Installation',
+    image: 'https://i.pravatar.cc/150?u=michael',
+    imageAlt: 'Michael Chen testimonial photo'
   },
   {
     id: '3',
-    name: 'Elena Rodriguez',
-    location: 'Washington Park, Denver',
-    text: 'Professional, on time, and the price was exactly what they quoted. They handled all city permits and helped me apply for the Xcel Energy rebate. Highly recommend.',
+    name: 'Jessica Williams',
+    location: 'Lakewood, CO',
+    text: 'Saved us during a holiday weekend emergency. I cannot thank the team enough for their quick response.',
     rating: 5,
-    date: '2025-02-28',
-    project: 'Level 2 Charger — Ford Mustang Mach-E',
-    image: 'https://i.pravatar.cc/150?u=elena_rodriguez',
-    imageAlt: 'Elena Rodriguez testimonial photo'
+    date: '2023-12-24',
+    project: 'Emergency Service',
+    image: 'https://i.pravatar.cc/150?u=jessica',
+    imageAlt: 'Jessica Williams testimonial photo'
   }
 ];
 
-// --- CONTENT GENERATOR (EV SEO OPTIMIZED) ---
+// --- CONTENT GENERATOR (SEO OPTIMIZED ~2000 words) ---
 const buildSection = (title: string, content: string) => {
   const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   return `
@@ -121,8 +118,158 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
 
   const intro = `
     <p>
+      For homeowners in <strong>${cityState}</strong>, maintaining a safe and functional property is a year-round commitment.
+      Whether you own a historic Victorian in <strong>Capitol Hill</strong> or a modern build in <strong>Stapleton</strong>, your home requires specialized care to withstand Colorado's unique climate.
+      We are the premier provider of <strong>${serviceName}</strong>, offering a level of expertise and dedication that separates us from the competition.
+    </p>
+    <p>
+      Our team excels in <strong>${kw[0]}</strong> and <strong>${kw[1]}</strong> solutions. We understand that in the <strong>${REGION}</strong>, ignoring a small issue can lead to catastrophic damage—especially with our freeze-thaw cycles and expansive clay soils.
+      Trust us to be your partner in home maintenance, delivering the <strong>${kw[7] || 'licensed services'}</strong> you deserve.
+    </p>
+  `;
+
+  const deepDive = `
+    <p>
+      <strong>${serviceName}</strong> is not just about a quick fix; it's about ensuring the longevity and efficiency of your home's critical systems.
+      Our approach involves a comprehensive assessment of your current setup, identifying not just the symptoms but the root cause of any failure.
+    </p>
+    <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Advanced Diagnostics</h3>
+    <p>
+      We utilize state-of-the-art diagnostic tools—from thermal imaging cameras to endoscopic scopes—to see what others miss.
+      This is particularly vital for <strong>${kw[2]}</strong>, where hidden defects can cause thousands of dollars in damage if left undetected.
+      Our technicians are trained to spot the early warning signs of <strong>${kw[6] || 'system failure'}</strong>, saving you money and stress in the long run.
+    </p>
+    <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Customized Solutions</h3>
+    <p>
+      Every home in <strong>${CITY}</strong> is different. We don't believe in cookie-cutter solutions.
+      Whether you need a simple repair or a full system replacement involving <strong>${kw[5] || 'complex installations'}</strong>, we tailor our plan to your specific needs and budget.
+    </p>
+  `;
+
+  const localChallenges = `
+    <p>Operating in the <strong>Denver Metro Area</strong> presents unique challenges that national chains often overlook. Our technicians are locals who understand:</p>
+    <ul class="list-disc pl-6 space-y-4 mt-6">
+      <li>
+        <strong>Altitude Complications:</strong> At 5,280 feet, gas appliances and HVAC systems require specific calibration for proper combustion and efficiency.
+        Improper setup can lead to dangerous carbon monoxide buildup or wasted energy.
+      </li>
+      <li>
+        <strong>The Freeze-Thaw Cycle:</strong> Colorado winters are notorious for rapid temperature drops. This puts immense stress on pipes, roofing materials, and concrete.
+        We specialize in <strong>${kw[4] || 'winterization'}</strong> techniques that protect your home from bursting pipes and ice dams.
+      </li>
+      <li>
+        <strong>Historic Home Wiring/Plumbing:</strong> Many of Denver's beautiful old homes still have knob-and-tube wiring or galvanized pipes.
+        We are experts in bringing these vintage properties up to modern code safely, often handling delicate <strong>${kw[3]}</strong> projects.
+      </li>
+    </ul>
+  `;
+
+  const process = `
+    <p>Transparency is the cornerstone of our business. When you hire us for <strong>${serviceName}</strong>, our process is clear:</p>
+    <div class="space-y-6 mt-6">
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">1</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Schedule & Dispatch</strong>
+           <p>Call or book online. You'll receive a confirmation and a tracking link when your technician is en route.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">2</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Thorough Evaluation</strong>
+           <p>We inspect the issue, explain the problem in plain English, and provide multiple options for repair or replacement.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">3</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Upfront Pricing</strong>
+           <p>The price we quote is the price you pay. No bait-and-switch tactics. We value your trust.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4">
+        <div class="bg-orange-100 text-orange-600 font-bold rounded-full w-8 h-8 flex items-center justify-center shrink-0">4</div>
+        <div>
+           <strong class="text-gray-900 block mb-1">Expert Execution</strong>
+           <p>Our work is backed by our obsession with quality. We use premium materials and follow all manufacturer best practices.</p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const diyRisks = `
+    <p>
+      In an era of endless online tutorials, it's tempting to tackle <strong>${serviceName}</strong> yourself.
+      However, the risks often outweigh the potential savings.
+    </p>
+    <p>
+      <strong>Safety First:</strong> Dealing with electrical currents, gas lines, or pressurized sewage is dangerous.
+      Each year, thousands of homeowners visit the ER due to DIY accidents.
+      Don't become a statistic while trying to fix your <strong>${kw[0]}</strong>.
+    </p>
+    <p>
+      <strong>Permits & Resale Value:</strong> Unpermitted work is a red flag for future buyers and can stall the sale of your home.
+      We handle all necessary permitting with the <strong>City and County of Denver</strong> to ensure your updates add real, transferable value to your property.
+    </p>
+  `;
+
+  const investment = `
+    <p>
+      We understand that investing in <strong>${serviceName}</strong> is a significant decision.
+      Our pricing reflects the quality of licensed labor, insurance coverage, and warranty protection we provide.
+    </p>
+    <p>
+      While you might find a "handyman" willing to do it cheaper, the cost of fixing poor workmanship often exceeds the original price.
+      We offer competitive rates for <strong>${kw[7] || 'top-rated service'}</strong> and flexible financing plans to help you manage your budget without compromising on safety or quality.
+    </p>
+  `;
+
+  const neighborhoods = `
+    <p>We are truly a local company. Our trucks are a common sight in neighborhoods across the Metro area:</p>
+    <ul class="grid md:grid-cols-2 gap-4 mt-6">
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>LoDo & RiNo:</strong> Serving urban lofts and businesses.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Cherry Creek:</strong> Premium service for luxury properties.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Highlands Ranch:</strong> Modern system specialists.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Lakewood & Golden:</strong> Foothills property experts.</li>
+      <li class="border-l-4 border-orange-500 pl-4 bg-gray-50 p-2 rounded"><strong>Aurora:</strong> Comprehensive residential coverage.</li>
+    </ul>
+    <p class="mt-4">No matter where you are in the <strong>${REGION}</strong>, reliable help is just a phone call away.</p>
+  `;
+
+  const conclusion = `
+    <p>
+      Your home is your sanctuary. Ensure it remains comfortable, safe, and efficient with professional <strong>${serviceName}</strong>.
+      With our ironclad satisfaction guarantee and hundreds of 5-star reviews from neighbors in <strong>${CITY}</strong>, you can choose us with confidence.
+    </p>
+    <p class="text-xl font-bold text-gray-900 mt-6">
+      Don't wait for a small problem to become a disaster. Contact us today for the best <strong>${serviceName}</strong> in Denver.
+    </p>
+  `;
+
+  return `
+    <div class="generated-content space-y-12">
+      ${buildSection(`Premier ${serviceName} in ${CITY}, ${STATE}`, intro)}
+      ${buildSection(`The Science of ${serviceName}: Going Deeper`, deepDive)}
+      ${buildSection(`Why ${CITY} Homes Are Different`, localChallenges)}
+      ${buildSection(`Our 4-Step Professional Process`, process)}
+      ${buildSection(`The Hidden Dangers of DIY ${serviceName}`, diyRisks)}
+      ${buildSection(`Investing in Your Home's Value`, investment)}
+      ${buildSection(`Proudly Serving Your Neighborhood`, neighborhoods)}
+      ${buildSection(`Ready to Get Started?`, conclusion)}
+    </div>
+  `;
+};
+
+// Specialized EV Charger content generator
+const GENERATE_EV_CONTENT = (serviceName: string, category: keyof typeof KEYWORDS = 'ev_charger') => {
+  const kw = KEYWORDS[category] || KEYWORDS.ev_charger;
+  const cityState = `${CITY}, ${STATE}`;
+
+  const intro = `
+    <p>
       As electric vehicles become the standard on Denver's roads, having a reliable home or commercial charging solution is a necessity.
-      Denver EV Chargers is the premier provider of <strong>${serviceName}</strong> in <strong>${cityState}</strong>, serving homeowners and businesses
+      ${COMPANY_NAME} provides professional <strong>${serviceName}</strong> in <strong>${cityState}</strong>, serving homeowners and businesses
       across Capitol Hill, Cherry Creek, RiNo, LoDo, Washington Park, and the Highlands.
     </p>
     <p>
@@ -210,9 +357,7 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
   `;
 
   const diyRisks = `
-    <p>
-      EV charger wiring involves serious electrical risks and legal requirements that make DIY dangerous and costly.
-    </p>
+    <p>EV charger wiring involves serious electrical risks and legal requirements that make DIY dangerous and costly.</p>
     <p>
       <strong>Safety Hazards:</strong> Running a 240V, 40-50A circuit without proper training can result in arc flash, house fires, or electrocution.
       EV chargers draw power continuously for hours — any wiring defect can cause an overheating failure overnight.
@@ -255,12 +400,12 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
 
   const conclusion = `
     <p>
-      Denver's transition to electric vehicles is accelerating. With over 500 successful installations across the Metro area,
-      Denver EV Chargers is the most trusted name for <strong>${serviceName}</strong> in Colorado.
+      Denver's transition to electric vehicles is accelerating. ${COMPANY_NAME} is the trusted name for <strong>${serviceName}</strong> across Colorado,
+      with fully licensed electricians who handle permitting, inspections, and Xcel Energy rebate applications on your behalf.
     </p>
-    <p>Don't settle for a general electrician who "thinks" they can install an EV charger. Work with specialists who do this every day.</p>
+    <p>Don't settle for a general handyman who "thinks" they can install an EV charger. Work with specialists who do this every day.</p>
     <p class="text-xl font-bold text-gray-900 mt-6">
-      Call <strong>(303) 555-0199</strong> today for a free estimate — same-week appointments available across Denver.
+      Call <strong>${PHONE_NUMBER}</strong> today for a free estimate — same-week appointments available across Denver.
     </p>
   `;
 
@@ -278,253 +423,323 @@ export const GENERATE_CONTENT = (serviceName: string, category: keyof typeof KEY
   `;
 };
 
-// --- GOOGLE REVIEWS ---
+// --- GOOGLE BUSINESS ---
 export const GOOGLE_BUSINESS_URL = "https://search.google.com/local/writereview?placeid=ChIJzxcfI6qAa4cR4bB9TCnVcSs";
 export const GOOGLE_RATING = 4.9;
-export const GOOGLE_REVIEW_COUNT = 312;
+export const GOOGLE_REVIEW_COUNT = 450;
 export const GOOGLE_REVIEWS = [
-  { id: 'g1', author: 'Thomas Reed', avatar: 'https://i.pravatar.cc/150?u=thomas_reed', rating: 5, text: 'Incredible service. They installed my Tesla Wall Connector in Capitol Hill in under 4 hours, handled all the permits, and configured the WiFi. My Model 3 is fully charged every morning.', date: '1 week ago' },
-  { id: 'g2', author: 'Amanda Flores', avatar: 'https://i.pravatar.cc/150?u=amanda_flores', rating: 5, text: 'They were the only company who knew about the Xcel Energy rebate and helped me apply for it. Saved $500 on my Level 2 charger installation in Cherry Creek. Highly recommend.', date: '3 weeks ago' },
-  { id: 'g3', author: 'Derek Simmons', avatar: 'https://i.pravatar.cc/150?u=derek_simmons', rating: 5, text: 'Had my Rivian R1T charger installed in my RiNo loft. The conduit run through exposed brick looked great. Permit was pulled and city inspection passed first try.', date: '1 month ago' },
-  { id: 'g4', author: 'Priya Nair', avatar: 'https://i.pravatar.cc/150?u=priya_nair', rating: 5, text: 'My old Washington Park home needed a panel upgrade to accommodate the EV charger — they explained everything clearly and finished in one day. Fast, professional, and affordable.', date: '2 months ago' }
+  { id: 'g1', author: 'Robert Fox', avatar: 'https://i.pravatar.cc/150?u=robert', rating: 5, text: 'Technician was incredibly professional and fixed our issue within an hour. The pricing was exactly as quoted. Highly recommend for residential electrical services in Denver!', date: '2 weeks ago' },
+  { id: 'g2', author: 'Kristin Watson', avatar: 'https://i.pravatar.cc/150?u=kristin', rating: 5, text: 'I have used many service companies in Denver but these guys are the best. Fixed my EV charger wiring fast. Clean, courteous, and very knowledgeable.', date: '1 month ago' },
+  { id: 'g3', author: 'Cody Fisher', avatar: 'https://i.pravatar.cc/150?u=cody', rating: 4, text: 'Great experience with our AC repair. Scheduling was easy and they showed up on time. Good communication throughout the process.', date: '2 months ago' },
+  { id: 'g4', author: 'Esther Howard', avatar: 'https://i.pravatar.cc/150?u=esther', rating: 5, text: 'Saved us during a holiday emergency! I cannot thank the team enough for coming out so late to fix our furnace during the snowstorm.', date: '3 months ago' }
 ];
 
 // --- CATEGORIES ---
 export const CATEGORIES: Category[] = [
   {
-    id: 'home-ev-charging',
-    title: 'Home EV Charging',
-    slug: 'home-ev-charging',
-    shortDescription: 'Tesla Wall Connector, Level 2 charger installation, and NEMA 14-50 outlets for Denver homeowners. Licensed, permitted, and guaranteed.',
-    description: 'Professional home EV charger installation across Denver. From Tesla Wall Connectors to universal Level 2 chargers for Rivian, Ford Lightning, and Hyundai Ioniq. All installations are permitted and code-compliant.',
-    heroImage: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-    heroImageAlt: 'Tesla Model 3 plugged into a professionally installed Wall Connector in a Denver residential garage',
-    icon: Zap,
-    benefits: [
-      { title: 'Tesla Certified', description: 'Factory-spec Wall Connector installs.' },
-      { title: 'Permit Included', description: 'We handle all city permitting.' },
-      { title: 'Any EV Brand', description: 'Universal J1772 Level 2 charging.' }
-    ],
-    faqs: [
-      { question: 'How much does a home EV charger installation cost in Denver?', answer: 'Most residential Level 2 installations range from $750 to $2,500 depending on panel location, conduit length, and whether a panel upgrade is needed. We provide free written estimates.' },
-      { question: 'Do I need a permit to install a home EV charger in Denver?', answer: 'Yes. Denver City & County requires an electrical permit for all 240V EV charger circuits. We handle all permitting and city inspections as part of our service.' }
-    ],
-    subServices: [
-      {
-        id: 'tesla-wall-connector',
-        title: 'Tesla Wall Connector',
-        slug: 'tesla-wall-connector',
-        description: 'Factory-spec Tesla Wall Connector installation for Model 3, Y, S, X, and Cybertruck. Up to 44 miles of range per hour. Fully permitted.',
-        content: GENERATE_CONTENT('Tesla Wall Connector Installation', 'ev_home'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'Tesla Wall Connector installed in Denver residential garage'
-      },
-      {
-        id: 'level-2-home-charger',
-        title: 'Level 2 Home Charger',
-        slug: 'level-2-home-charger',
-        description: 'Universal J1772 Level 2 charger installation for Rivian, Ford Lightning, Hyundai Ioniq, Chevrolet Bolt, and all non-Tesla EVs.',
-        content: GENERATE_CONTENT('Level 2 Home Charger Installation', 'ev_home'),
-        image: 'https://i.ibb.co/V0GxZzvr/Seamless-Level-2-charger-integration-in-Washington-Park-We-specialize-in-preserving-Denver-039-s-archit.png',
-        imageAlt: 'Level 2 EV charger installed in Washington Park Denver home'
-      },
-      {
-        id: 'nema-14-50-outlet',
-        title: 'NEMA 14-50 Outlet Install',
-        slug: 'nema-14-50-outlet',
-        description: 'Dedicated NEMA 14-50 outlet installation — compatible with virtually all portable EVSE adapters. Flexible, future-proof charging.',
-        content: GENERATE_CONTENT('NEMA 14-50 Outlet Installation', 'ev_home'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'NEMA 14-50 outlet installed in Denver garage for EV charging'
-      },
-      {
-        id: 'panel-upgrade-ev',
-        title: 'Panel Upgrade for EV',
-        slug: 'panel-upgrade-ev',
-        description: '200A panel upgrades for historic Denver homes that need more capacity to support EV charging alongside existing loads.',
-        content: GENERATE_CONTENT('Electrical Panel Upgrade for EV Charging', 'electrical'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Electrical panel upgrade Denver for EV charger installation'
-      },
-      {
-        id: 'garage-ev-wiring',
-        title: 'Garage EV Wiring',
-        slug: 'garage-ev-wiring',
-        description: 'Complete garage electrical wiring for EV charging — from sub-panel installation to conduit runs for detached garages.',
-        content: GENERATE_CONTENT('Garage EV Wiring Services', 'ev_home'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'Garage EV wiring installation Denver detached garage'
-      }
-    ]
-  },
-  {
-    id: 'commercial-ev-charging',
-    title: 'Commercial EV Charging',
-    slug: 'commercial-ev-charging',
-    shortDescription: 'Scalable EV charging infrastructure for Denver businesses, multi-family buildings, offices, and retail parking. Load-managed and network-ready.',
-    description: 'End-to-end commercial EV charging installation for Denver businesses and property managers. From HOA-approved multi-family systems to networked fleet chargers, we design and install scalable solutions.',
-    heroImage: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-    heroImageAlt: 'Commercial EV charging stations installed in a LoDo Denver parking structure',
-    icon: Building2,
-    benefits: [
-      { title: 'Scalable Design', description: 'Systems that grow with EV demand.' },
-      { title: 'Load Management', description: 'Smart systems prevent overloads.' },
-      { title: 'Networked Options', description: 'Access control and billing ready.' }
-    ],
-    faqs: [
-      { question: 'How much does commercial EV charger installation cost?', answer: 'Commercial pricing varies by number of stations, service capacity, and trenching. We provide detailed site assessments and proposals at no cost.' },
-      { question: 'Can you install EV chargers in a condo or apartment building?', answer: 'Yes. We specialize in multi-family EV charging with load management and individual billing. We also provide full HOA documentation packages.' }
-    ],
-    subServices: [
-      {
-        id: 'multi-family-ev-charging',
-        title: 'Multi-Family EV Charging',
-        slug: 'multi-family-ev-charging',
-        description: 'HOA-approved EV charging systems for condos and apartments in Denver — with individual billing and access control.',
-        content: GENERATE_CONTENT('Multi-Family EV Charging Installation', 'ev_commercial'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Multi-family EV charging stations Denver condo building'
-      },
-      {
-        id: 'workplace-charging-stations',
-        title: 'Workplace EV Charging',
-        slug: 'workplace-charging-stations',
-        description: 'Employee EV charging benefits — Level 2 chargers for office parking lots and corporate campuses across Denver.',
-        content: GENERATE_CONTENT('Workplace EV Charging Installation', 'ev_commercial'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Workplace EV charging stations Denver Tech Center'
-      },
-      {
-        id: 'fleet-charging',
-        title: 'Fleet Charging Solutions',
-        slug: 'fleet-charging',
-        description: 'High-throughput charging depot design for EV delivery fleets, rideshare vehicles, and municipal fleets in Denver.',
-        content: GENERATE_CONTENT('Fleet EV Charging Solutions', 'ev_commercial'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'EV fleet charging depot Denver'
-      },
-      {
-        id: 'retail-parking-ev',
-        title: 'Retail Parking Chargers',
-        slug: 'retail-parking-ev',
-        description: 'EV charging as a customer amenity — attract EV drivers to your retail location with networked Level 2 stations.',
-        content: GENERATE_CONTENT('Retail Parking EV Charger Installation', 'ev_commercial'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Retail parking EV charger Denver shopping center'
-      }
-    ]
-  },
-  {
     id: 'electrical-services',
     title: 'Electrical Services',
     slug: 'electrical-services',
-    shortDescription: 'Panel upgrades, dedicated EV circuits, emergency electricians, and battery backup for Denver homes and businesses.',
-    description: 'Full-service electrical solutions from Denver\'s EV charging specialists. Panel upgrades, dedicated circuits, battery storage, and emergency electrical work — all from licensed electricians.',
+    shortDescription: 'Expert electricians providing EV charger installation, panel upgrades, and emergency repairs in Denver, Aurora, & Lakewood.',
+    description: 'Premier electrical services in Denver. From EV charger installations (Tesla Wall Connector & Level 2) to 200A panel upgrades and 24/7 emergency repairs, our licensed electricians ensure safety and compliance across the Metro area.',
     heroImage: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-    heroImageAlt: 'Licensed electrician performing a panel upgrade in a Denver home',
-    icon: Shield,
+    heroImageAlt: 'Licensed electrician performing an EV charger installation in a Denver home garage',
+    icon: Zap,
     benefits: [
-      { title: 'Licensed Electricians', description: 'Fully certified and insured.' },
-      { title: '24/7 Emergency', description: 'Urgent electrical repairs anytime.' },
-      { title: 'NEC 2025 Compliant', description: 'All work meets current code.' }
+      { title: 'Tesla & EV Certified', description: 'Factory-spec Wall Connector installs.' },
+      { title: 'Permit Included', description: 'We handle all Denver city permitting.' },
+      { title: 'Xcel Rebates Filed', description: 'Up to $500 back from Xcel Energy.' }
     ],
     faqs: [
-      { question: 'Do I need a panel upgrade for an EV charger?', answer: 'Many Denver homes with 100A or older panels need an upgrade to support a 40-50A EV charger circuit. We assess this during our free estimate.' },
-      { question: 'Do you offer emergency electrical service in Denver?', answer: 'Yes, we provide 24/7 emergency electrician service across the Denver Metro area.' }
+      { question: 'How much does EV charger installation cost in Denver?', answer: 'Most residential Level 2 installations range from $750 to $2,500 depending on panel location, conduit length, and whether a panel upgrade is needed. We provide free written estimates.' },
+      { question: 'Do you offer 24/7 emergency electrician services?', answer: 'Yes, available 24/7 for urgent electrical issues anywhere in the Denver Metro area.' },
+      { question: 'Do I need a permit for an EV charger?', answer: 'Yes. Denver City & County requires an electrical permit for all 240V EV charger circuits. We handle all permitting and city inspections as part of our service.' }
     ],
     subServices: [
+      {
+        id: 'ev-charger-installation',
+        title: 'EV Charger Installation',
+        slug: 'ev-charger-installation',
+        description: 'Professional Tesla Wall Connector and Level 2 EV charger installation in Denver. Permit-included, Xcel Energy rebates filed. All makes: Tesla, Rivian, Ford, Chevy, Hyundai.',
+        content: GENERATE_EV_CONTENT('EV Charger Installation', 'ev_charger'),
+        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+        imageAlt: 'Tesla wall connector installed in a Denver residential garage'
+      },
       {
         id: 'electrical-panel-upgrade',
         title: 'Electrical Panel Upgrade',
         slug: 'electrical-panel-upgrade',
-        description: '200A panel upgrades for Denver homes — often required to support EV charging. We also replace unsafe Federal Pacific and Zinsco panels.',
+        description: '200A service upgrades and panel replacements for Denver homes — often needed before EV charger installation. Replace dangerous Federal Pacific panels.',
         content: GENERATE_CONTENT('Electrical Panel Upgrade', 'electrical'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'New 200 amp electrical panel Denver'
+        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
+        imageAlt: 'New 200 amp electrical panel with labeled breakers'
       },
       {
         id: 'emergency-electrician',
         title: 'Emergency Electrician',
         slug: 'emergency-electrician',
-        description: '24/7 emergency electrical repairs in Denver. Fast response for power outages, tripped breakers, and EV charger issues.',
+        description: '24/7 Emergency electrical repairs in Denver. Restoring power safely and quickly for homes and businesses.',
         content: GENERATE_CONTENT('Emergency Electrician Services', 'electrical'),
         image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'Emergency electrician Denver night repair'
+        imageAlt: 'Electrician working at night on a fuse box'
       },
       {
-        id: 'dedicated-ev-circuit',
-        title: 'Dedicated EV Circuit',
-        slug: 'dedicated-ev-circuit',
-        description: 'Install a dedicated 240V, 50A circuit for your EV charger — the backbone of any safe, reliable home charging installation.',
-        content: GENERATE_CONTENT('Dedicated EV Charging Circuit Installation', 'electrical'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'Dedicated 240V EV circuit installation Denver garage'
+        id: 'commercial-ev-chargers',
+        title: 'Commercial EV Chargers',
+        slug: 'commercial-ev-chargers',
+        description: 'Scalable EV charging infrastructure for Denver businesses, multi-family buildings, offices, and retail parking. Load-managed and network-ready.',
+        content: GENERATE_EV_CONTENT('Commercial EV Charger Installation', 'ev_commercial'),
+        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
+        imageAlt: 'Row of commercial EV charging stations in a Denver parking lot'
       },
       {
-        id: 'battery-storage',
+        id: 'battery-storage-systems',
         title: 'Battery Storage Systems',
-        slug: 'battery-storage',
-        description: 'Home battery backup systems (Tesla Powerwall, Enphase IQ) paired with your EV charger for energy independence during outages.',
-        content: GENERATE_CONTENT('Home Battery Storage Systems', 'electrical'),
+        slug: 'battery-storage-systems',
+        description: 'Home battery backup solutions (Tesla Powerwall, Enphase IQ) paired with your EV charger for energy independence and outage protection.',
+        content: GENERATE_CONTENT('Battery Storage Systems', 'electrical'),
         image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
-        imageAlt: 'Tesla Powerwall home battery storage Denver'
+        imageAlt: 'Tesla Powerwall home battery backup system'
       }
     ]
   },
   {
-    id: 'ev-incentives-solar',
-    title: 'EV Incentives & Solar',
-    slug: 'ev-incentives-solar',
-    shortDescription: 'Maximize savings with Xcel Energy rebates, federal tax credits, and solar-powered EV charging integration in Denver.',
-    description: 'Make your EV charging investment work harder. We guide Denver homeowners through every available rebate, tax credit, and solar incentive to minimize out-of-pocket costs.',
-    heroImage: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-    heroImageAlt: 'Solar panels powering EV charging at a Denver home',
-    icon: Sun,
+    id: 'plumbing-services',
+    title: 'Plumbing Services',
+    slug: 'plumbing-services',
+    shortDescription: 'Top-rated plumbers in Denver. Drain cleaning, water heaters, and frozen pipe repair.',
+    description: 'Trusted Denver plumbers for over 20 years. We handle drain cleaning, tankless water heaters, leak detection, and frozen pipe emergencies.',
+    heroImage: '/images/plumbing-hero.png',
+    heroImageAlt: 'Plumber inspecting a sink pipe',
+    icon: Droplet,
     benefits: [
-      { title: 'Xcel Rebates', description: 'Up to $500 from Xcel Energy.' },
-      { title: '30% Federal Credit', description: 'IRS tax credit on hardware + install.' },
-      { title: 'Solar Integration', description: 'Charge your EV with solar power.' }
+      { title: 'Drain Cleaning', description: 'Fast clog removal and hydro-jetting.' },
+      { title: 'Water Heaters', description: 'Tankless and traditional repair.' },
+      { title: 'Emergency Service', description: '24/7 response for frozen pipes.' }
     ],
     faqs: [
-      { question: 'What is the federal tax credit for EV charger installation?', answer: 'The Alternative Fuel Vehicle Refueling Property Credit lets you claim 30% of hardware + installation costs, up to $1,000, through 2032.' },
-      { question: 'Does Xcel Energy offer EV charger rebates in Denver?', answer: 'Yes. Xcel Energy\'s residential wiring rebate provides up to $500 for qualifying EV charger circuit installations. We help you apply as part of our service.' }
+      { question: 'Do you offer emergency plumbing?', answer: 'Yes, 24/7 emergency plumbers serve the entire Metro area.' },
+      { question: 'How do I prevent frozen pipes?', answer: 'Insulate exposed pipes. We offer winterization services.' }
     ],
     subServices: [
       {
-        id: 'xcel-energy-rebates',
-        title: 'Xcel Energy EV Rebates',
-        slug: 'xcel-energy-rebates',
-        description: 'Navigate and apply for Xcel Energy\'s residential and commercial EV charger rebate programs — we handle the paperwork.',
-        content: GENERATE_CONTENT('Xcel Energy EV Charger Rebates', 'ev_incentives'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Xcel Energy EV rebate application Denver'
+        id: 'drain-cleaning-service',
+        title: 'Drain Cleaning Service',
+        slug: 'drain-cleaning-service',
+        description: 'Unclog drains fast. Hydro-jetting and sewer cleaning in Denver & Aurora.',
+        content: GENERATE_CONTENT('Drain Cleaning Services', 'plumbing'),
+        image: '/images/plumbing-action.png',
+        imageAlt: 'Professional drain cleaning equipment'
       },
       {
-        id: 'federal-tax-credits',
-        title: 'Federal Tax Credits',
-        slug: 'federal-tax-credits',
-        description: 'Claim 30% of your EV charger installation cost (up to $1,000) with the Alternative Fuel Vehicle Refueling Property Credit.',
-        content: GENERATE_CONTENT('Federal EV Charger Tax Credits', 'ev_incentives'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Federal tax credit EV charger installation 2025'
+        id: 'water-heater-repair-install',
+        title: 'Water Heater Repair/Install',
+        slug: 'water-heater-repair-install',
+        description: 'Tankless and standard water heater installation. High efficiency models.',
+        content: GENERATE_CONTENT('Water Heater Installation', 'plumbing'),
+        image: '/images/plumbing-hero.png',
+        imageAlt: 'Technician installing tankless water heater'
       },
       {
-        id: 'solar-ev-integration',
-        title: 'Solar + EV Integration',
-        slug: 'solar-ev-integration',
-        description: 'Pair your EV charger with a rooftop solar system — charge your car with free solar energy and eliminate your fuel bill entirely.',
-        content: GENERATE_CONTENT('Solar and EV Charger Integration', 'ev_incentives'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Solar panels and EV charger integration Denver home'
+        id: 'leak-detection-repair',
+        title: 'Leak Detection & Repair',
+        slug: 'leak-detection-repair',
+        description: 'Accurate leak detection for slab leaks and pipe bursts.',
+        content: GENERATE_CONTENT('Leak Detection Services', 'plumbing'),
+        image: '/images/plumbing-action.png',
+        imageAlt: 'Infrared leak detection camera'
       },
       {
-        id: 'colorado-ev-incentives',
-        title: 'Colorado EV Incentives',
-        slug: 'colorado-ev-incentives',
-        description: 'A complete guide to Colorado state incentives for EV charging infrastructure — from CDOT grants to utility programs.',
-        content: GENERATE_CONTENT('Colorado EV Charging Incentives Guide', 'ev_incentives'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-        imageAlt: 'Colorado EV charging incentives 2025 guide'
+        id: 'frozen-pipe-repair',
+        title: 'Frozen Pipe Repair',
+        slug: 'frozen-pipe-repair',
+        description: 'Emergency thawing and repair for frozen pipes in Denver winter.',
+        content: GENERATE_CONTENT('Frozen Pipe Repair', 'plumbing'),
+        image: '/images/plumbing-hero.png',
+        imageAlt: 'Frozen pipe repair'
+      }
+    ]
+  },
+  {
+    id: 'hvac-services',
+    title: 'HVAC Services',
+    slug: 'hvac-services',
+    shortDescription: 'Heating & Air Conditioning repair in Denver. Furnace repair, AC installation.',
+    description: 'Keep your home comfortable year-round. Specialists in AC repair, furnace installation, and indoor air quality.',
+    heroImage: '/images/hvac-hero.png',
+    heroImageAlt: 'HVAC technician working on AC unit',
+    icon: Thermometer,
+    benefits: [
+      { title: 'AC Repair', description: 'Fast reliable ac repair.' },
+      { title: 'Furnace Experts', description: 'High-efficiency heating installation.' },
+      { title: 'Seasonal Tune-ups', description: 'Prevent breakdowns with maintenance.' }
+    ],
+    faqs: [
+      { question: 'How much is AC repair?', answer: 'Competitive pricing and free estimates on replacements.' },
+      { question: 'When to replace furnace?', answer: 'Ideally in the fall before winter.' }
+    ],
+    subServices: [
+      {
+        id: 'air-conditioning-repair',
+        title: 'Air Conditioning Repair',
+        slug: 'air-conditioning-repair',
+        description: '24/7 AC repair in Denver. Fixes for all major brands.',
+        content: GENERATE_CONTENT('Air Conditioning Repair', 'hvac'),
+        image: '/images/hvac-action.png',
+        imageAlt: 'Technician checking refrigerant'
+      },
+      {
+        id: 'furnace-heating-installation',
+        title: 'Furnace Heating Installation',
+        slug: 'furnace-heating-installation',
+        description: 'Energy-saving furnace installation and replacement.',
+        content: GENERATE_CONTENT('Furnace Heating Installation', 'hvac'),
+        image: '/images/hvac-hero.png',
+        imageAlt: 'New high-efficiency furnace'
+      },
+      {
+        id: 'details-indoor-air-quality',
+        title: 'Indoor Air Quality',
+        slug: 'indoor-air-quality',
+        description: 'Whole-home humidifiers and duct cleaning for Denver climate.',
+        content: GENERATE_CONTENT('Indoor Air Quality Services', 'hvac'),
+        image: '/images/hvac-action.png',
+        imageAlt: 'Air duct cleaning service'
+      }
+    ]
+  },
+  {
+    id: 'solar-energy-services',
+    title: 'Solar Energy Services',
+    slug: 'solar-energy-services',
+    shortDescription: 'Denver Solar Panel Installation. Tax Credits & Xcel Rewards.',
+    description: 'Leading solar company in Denver. Maximize savings with custom solar panel installations.',
+    heroImage: '/images/solar-hero.png',
+    heroImageAlt: 'Solar panels on roof',
+    icon: Sun,
+    benefits: [
+      { title: '30% Tax Credit', description: 'Federal Solar Tax Credits.' },
+      { title: 'Xcel Rewards', description: 'Navigate Xcel Energy Solar Rewards.' },
+      { title: 'Energy Independence', description: 'Reduce reliance on the grid.' }
+    ],
+    faqs: [
+      { question: 'Is solar worth it?', answer: 'Yes, Denver gets over 300 days of sunshine.' },
+      { question: 'Cost of solar panels?', answer: 'Incentives cover a significant portion.' }
+    ],
+    subServices: [
+      {
+        id: 'solar-panel-installation',
+        title: 'Solar Panel Installation',
+        slug: 'solar-panel-installation',
+        description: 'Residential solar installation for Denver homes.',
+        content: GENERATE_CONTENT('Solar Panel Installation', 'solar'),
+        image: '/images/solar-hero.png',
+        imageAlt: 'Solar panel installation'
+      },
+      {
+        id: 'solar-repair-maintenance',
+        title: 'Solar Repair & Maintenance',
+        slug: 'solar-repair-maintenance',
+        description: 'Maintenance and repair for existing solar arrays.',
+        content: GENERATE_CONTENT('Solar Repair and Maintenance', 'solar'),
+        image: '/images/solar-action.png',
+        imageAlt: 'Cleaning solar panels'
+      }
+    ]
+  },
+  {
+    id: 'roofing-services',
+    title: 'Roofing Services',
+    slug: 'roofing-services',
+    shortDescription: 'Expert Roof Repair & Replacement. Hail Damage Specialists.',
+    description: 'Protect your home with professional roofing services. Specialized in hail damage repair.',
+    heroImage: '/images/roofing-hero.png',
+    heroImageAlt: 'Roofer inspecting shingles',
+    icon: Shield,
+    benefits: [
+      { title: 'Hail Damage Experts', description: 'Colorado storm damage restoration.' },
+      { title: 'Free Inspections', description: 'Comprehensive roof assessments.' },
+      { title: 'Quality Materials', description: 'Impact-resistant shingles.' }
+    ],
+    faqs: [
+      { question: 'Hail damage signs?', answer: 'Dented gutters, missing granules. Free inspections.' },
+      { question: 'Insurance coverage?', answer: 'We assist with insurance claims.' }
+    ],
+    subServices: [
+      {
+        id: 'roof-repair',
+        title: 'Roof Repair',
+        slug: 'roof-repair',
+        description: 'Emergency roof repair for leaks and storm damage.',
+        content: GENERATE_CONTENT('Roof Repair', 'roofing'),
+        image: '/images/roofing-action.png',
+        imageAlt: 'Roof repair patch'
+      },
+      {
+        id: 'roof-replacement',
+        title: 'Roof Replacement',
+        slug: 'roof-replacement',
+        description: 'Complete roof replacement with impact-resistant shingles.',
+        content: GENERATE_CONTENT('Roof Replacement', 'roofing'),
+        image: '/images/roofing-hero.png',
+        imageAlt: 'New roof installation'
+      },
+      {
+        id: 'hail-damage-repair',
+        title: 'Hail Damage Repair',
+        slug: 'hail-damage-repair',
+        description: 'Specialized repair for Colorado hail storms.',
+        content: GENERATE_CONTENT('Hail Damage Repair', 'roofing'),
+        image: '/images/roofing-action.png',
+        imageAlt: 'Hail damage on shingles'
+      }
+    ]
+  },
+  {
+    id: 'general-contractor',
+    title: 'General Contractor',
+    slug: 'general-contractor',
+    shortDescription: 'Home Remodeling in Denver. Kitchens, Bathrooms, & Basements.',
+    description: 'Transform your home with our general contracting. Kitchen remodels to basement finishing.',
+    heroImage: '/images/general-hero.png',
+    heroImageAlt: 'Modern kitchen remodel',
+    icon: Hammer,
+    benefits: [
+      { title: 'Turnkey Solutions', description: 'Design, permits, and construction.' },
+      { title: 'Kitchen & Bath', description: 'High-ROI renovations.' },
+      { title: 'Basement Finishing', description: 'Add living space.' }
+    ],
+    faqs: [
+      { question: 'Do you handle permits?', answer: 'Yes, we manage all permitting.' },
+      { question: 'Kitchen remodel timeline?', answer: 'Typically 6-10 weeks.' }
+    ],
+    subServices: [
+      {
+        id: 'kitchen-remodeling',
+        title: 'Kitchen Remodeling',
+        slug: 'kitchen-remodeling',
+        description: 'Modern kitchen renovations. Cabinets, countertops.',
+        content: GENERATE_CONTENT('Kitchen Remodeling', 'general'),
+        image: '/images/general-hero.png',
+        imageAlt: 'White kitchen renovation'
+      },
+      {
+        id: 'bathroom-remodeling',
+        title: 'Bathroom Remodeling',
+        slug: 'bathroom-remodeling',
+        description: 'Luxury bathroom updates. Showers, tubs.',
+        content: GENERATE_CONTENT('Bathroom Remodeling', 'general'),
+        image: '/images/general-action.png',
+        imageAlt: 'Luxury bathroom remodel'
+      },
+      {
+        id: 'basement-finishing',
+        title: 'Basement Finishing',
+        slug: 'basement-finishing',
+        description: 'Turn your basement into a gym or office.',
+        content: GENERATE_CONTENT('Basement Finishing', 'general'),
+        image: '/images/general-hero.png',
+        imageAlt: 'Finished basement'
       }
     ]
   }
@@ -534,139 +749,129 @@ export const CATEGORIES: Category[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: '1',
-    title: 'Cost to Install a Tesla Charger in Denver (2025 Guide)',
-    slug: 'cost-to-install-tesla-charger-denver',
-    excerpt: 'Detailed breakdown of permit fees, hardware costs, and labor for installing a Tesla Wall Connector in Denver — including historic home considerations and Xcel Energy rebates.',
-    content: `
-      <p class="mb-6">
-        As electric vehicle adoption surges in Colorado — specifically in neighborhoods like <strong>Capitol Hill</strong> and <strong>Cherry Creek</strong> — reliable home charging is a necessity. At Denver EV Chargers, we get asked every day: "How much does it cost to install a Tesla charger in Denver?"
-      </p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">The Short Answer</h2>
-      <p class="mb-6">Most Tesla Wall Connector installations in Denver range from <strong>$800 to $2,500</strong>. The wide range reflects real differences in your home's electrical situation — not arbitrary pricing.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">Cost Breakdown</h2>
-      <ul class="list-disc pl-6 mb-6 space-y-3">
-        <li><strong>Tesla Wall Connector hardware:</strong> $475 (Gen 3, from Tesla)</li>
-        <li><strong>Electrician labor (3-6 hours):</strong> $250–$600</li>
-        <li><strong>Materials (wire, conduit, breaker):</strong> $100–$300</li>
-        <li><strong>Denver electrical permit:</strong> $75–$150</li>
-        <li><strong>Panel upgrade (if needed):</strong> $1,500–$3,500 additional</li>
-      </ul>
-      <h2 class="text-2xl font-bold mt-8 mb-4">How to Reduce Your Cost</h2>
-      <ul class="list-disc pl-6 mb-6 space-y-3">
-        <li><strong>Federal Tax Credit:</strong> 30% of hardware + installation, up to $1,000.</li>
-        <li><strong>Xcel Energy Wiring Rebate:</strong> Up to $500 for qualifying residential installations.</li>
-        <li><strong>Colorado State Credits:</strong> Additional credits may apply.</li>
-      </ul>
-      <p class="mb-6">With these incentives, a $1,200 installation could net out to under $500. We help every customer identify and apply for every rebate they qualify for.</p>
-    `,
-    category: 'Home EV Charging',
-    publishDate: '2025-05-15',
-    author: { name: 'Jake Martinez', role: 'Lead EV Electrician', photo: 'https://i.pravatar.cc/150?u=jake_ev' },
-    image: 'https://i.ibb.co/tpF60CGL/Generated-Image-December-05-2025-9-45-PM.jpg',
-    imageAlt: 'Cost to install Tesla charger Denver — hardware permit labor breakdown 2025'
+    title: '5 Signs Your Electrical Panel Needs an Upgrade in Denver',
+    slug: '5-signs-electrical-panel-needs-upgrade',
+    excerpt: 'Flickering lights in your Capitol Hill home? Tripped breakers? It might be time to replace your old panel, especially if you have an outdated Federal Pacific box.',
+    content: GENERATE_CONTENT('Electrical Panel Safety', 'electrical'),
+    category: 'Electrical Services',
+    publishDate: '2023-10-01',
+    author: { name: 'David Smith', role: 'Master Electrician', photo: 'https://i.pravatar.cc/150?u=david' },
+    image: '/images/electrical-action.png',
+    imageAlt: 'Old electrical panel'
   },
   {
     id: '2',
-    title: 'Level 1 vs Level 2 Charging: What Denver Drivers Need to Know',
-    slug: 'level-1-vs-level-2-charging-denver',
-    excerpt: 'Why a standard 120V outlet is not enough for most Denver EV drivers — and how a Level 2 charger changes your daily charging routine.',
-    content: `
-      <p class="mb-6">For many new EV owners in Denver, the first question is: "Can't I just plug into a regular outlet?"</p>
-      <p class="mb-6">A standard 120V outlet (Level 1) delivers only about 3-5 miles of range per hour. For a daily commute from The Highlands to the Denver Tech Center, you need 8-12 hours just to recover what you used.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">The Level 2 Advantage</h2>
-      <p class="mb-6">Level 2 chargers operate on 240V circuits and can deliver 25-45 miles of range per hour. You arrive home at 10% and wake up to 100% every morning.</p>
-      <h3 class="text-xl font-bold mt-6 mb-3">Charge Speed Comparison</h3>
-      <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li><strong>Level 1 (120V, 12A):</strong> ~1.4 kW — 3-5 miles per hour</li>
-        <li><strong>Level 2 (240V, 32A):</strong> ~7.7 kW — 20-25 miles per hour</li>
-        <li><strong>Level 2 (240V, 48A):</strong> ~11.5 kW — 30-45 miles per hour (Tesla Wall Connector)</li>
-      </ul>
-      <h2 class="text-2xl font-bold mt-8 mb-4">Denver-Specific Note</h2>
-      <p class="mb-6">Colorado winters reduce EV range by up to 40% due to cold-weather battery preconditioning. A Level 2 charger at 40A ensures you're still fully charged in the morning — a Level 1 charger often can't keep up.</p>
-    `,
-    category: 'Home EV Charging',
-    publishDate: '2025-05-10',
-    author: { name: 'Amanda Cruz', role: 'EV Installation Specialist', photo: 'https://i.pravatar.cc/150?u=amanda_ev' },
-    image: 'https://i.ibb.co/V0GxZzvr/Seamless-Level-2-charger-integration-in-Washington-Park-We-specialize-in-preserving-Denver-039-s-archit.png',
-    imageAlt: 'Level 1 vs Level 2 EV charging comparison Denver drivers guide'
+    title: 'Cost to Install a Tesla Wall Connector in Denver (2025 Guide)',
+    slug: 'cost-to-install-tesla-charger-denver',
+    excerpt: 'Detailed breakdown of permit fees, hardware costs, and labor for installing a Tesla Wall Connector in Denver — including Xcel Energy rebates.',
+    content: GENERATE_EV_CONTENT('Tesla Wall Connector Installation', 'ev_charger'),
+    category: 'Electrical Services',
+    publishDate: '2025-05-15',
+    author: { name: 'Jake Martinez', role: 'EV Installation Specialist', photo: 'https://i.pravatar.cc/150?u=jake_ev' },
+    image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+    imageAlt: 'Cost to install Tesla charger Denver — hardware permit labor breakdown 2025'
   },
   {
     id: '3',
-    title: 'Top 5 EV Charging Installation Incentives in Colorado (2025)',
-    slug: 'colorado-ev-charger-incentives-2025',
-    excerpt: 'Save money on your home EV charger installation with Xcel Energy rebates, federal tax credits, and Colorado state programs available in 2025.',
-    content: `
-      <p class="mb-6">Colorado is one of the most EV-friendly states in the country. Between federal credits, Xcel Energy rebates, and Colorado-specific programs, you could recover a significant portion of your installation cost.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">1. Federal Alternative Fuel Vehicle Refueling Property Credit</h2>
-      <p class="mb-6">Claim <strong>30% of hardware + installation costs</strong>, up to <strong>$1,000</strong>, on your federal tax return. Available through 2032 via IRS Form 8911.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">2. Xcel Energy Residential EV Wiring Rebate</h2>
-      <p class="mb-6">Qualified installations receive <strong>up to $500</strong> from Xcel Energy. We submit the rebate application on your behalf as part of our service.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">3. Xcel Energy EV Accelerate At Home</h2>
-      <p class="mb-6">A lease-style program where Xcel provides a Level 2 charger at a reduced monthly rate with near-zero upfront cost.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">4. Colorado CDOT Clean Fleet Grants</h2>
-      <p class="mb-6">For businesses and fleets, CDOT offers significant funding for commercial EV charging infrastructure.</p>
-      <h2 class="text-2xl font-bold mt-8 mb-4">5. Colorado HOA Rights (HB 21-1167)</h2>
-      <p class="mb-6">Colorado law protects your right to install an EV charger in a condo or HOA-governed property. HOAs cannot outright prohibit EV charger installation.</p>
-    `,
-    category: 'EV Incentives & Solar',
-    publishDate: '2025-05-02',
-    author: { name: 'Maria Santos', role: 'EV Incentive Specialist', photo: 'https://i.pravatar.cc/150?u=maria_ev' },
-    image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
-    imageAlt: 'Colorado EV charging installation incentives 2025 Xcel Energy rebates federal tax credits'
+    title: 'The Truth About Tankless Water Heaters in Colorado',
+    slug: 'truth-about-tankless-water-heaters',
+    excerpt: 'Are they worth the investment for Denver winters? We break down the pros and cons of going tankless in a cold climate.',
+    content: GENERATE_CONTENT('Tankless Water Heaters', 'plumbing'),
+    category: 'Plumbing Services',
+    publishDate: '2023-10-15',
+    author: { name: 'John Doe', role: 'Plumbing Lead', photo: 'https://i.pravatar.cc/150?u=john' },
+    image: '/images/plumbing-action.png',
+    imageAlt: 'Tankless water heater'
+  },
+  {
+    id: '4',
+    title: 'Preparing Your AC for Denver Summers',
+    slug: 'preparing-ac-for-summer',
+    excerpt: 'Simple maintenance tips to ensure your air conditioner runs efficiently when the 90-degree days hit in July.',
+    content: GENERATE_CONTENT('AC Maintenance', 'hvac'),
+    category: 'HVAC Services',
+    publishDate: '2023-11-10',
+    author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: 'https://i.pravatar.cc/150?u=sarahj' },
+    image: '/images/hvac-action.png',
+    imageAlt: 'AC unit cleaning'
+  },
+  {
+    id: '5',
+    title: 'How to Spot Hail Damage on Your Roof',
+    slug: 'how-to-spot-hail-damage',
+    excerpt: 'After the storm clears, check for these subtle signs of damage. Hidden bruises on shingles can lead to leaks if ignored.',
+    content: GENERATE_CONTENT('Identifying Hail Damage', 'roofing'),
+    category: 'Roofing Services',
+    publishDate: '2024-01-15',
+    author: { name: 'Mike Roofer', role: 'Roofing Inspector', photo: 'https://i.pravatar.cc/150?u=mike' },
+    image: '/images/roofing-hero.png',
+    imageAlt: 'Inspect roof shingles'
+  },
+  {
+    id: '6',
+    title: 'The Ultimate Kitchen Remodel Checklist',
+    slug: 'kitchen-remodel-checklist',
+    excerpt: 'Planning a renovation? Don\'t start without this checklist. We guide you through budgeting, design, and permitting in Denver.',
+    content: GENERATE_CONTENT('Kitchen Remodel Guide', 'general'),
+    category: 'General Contractor',
+    publishDate: '2024-02-01',
+    author: { name: 'Lisa Design', role: 'Interior Planner', photo: 'https://i.pravatar.cc/150?u=lisa' },
+    image: '/images/general-hero.png',
+    imageAlt: 'Modern kitchen design'
   }
 ];
 
 export const SERVICE_AREAS: ServiceArea[] = [
-  { id: 'denver', city: 'Denver County', state: 'CO', zipCodes: ['80203', '80205', '80206', '80210', '80211', '80218'], description: 'Capitol Hill, Cherry Creek, RiNo, Highland, Washington Park.' },
-  { id: 'jefferson', city: 'Jefferson County', state: 'CO', zipCodes: ['80215', '80226', '80227', '80401'], description: 'Serving Lakewood, Arvada, Golden.' },
-  { id: 'arapahoe', city: 'Arapahoe County', state: 'CO', zipCodes: ['80010', '80011', '80012', '80014'], description: 'EV charger installation in Aurora, Centennial, Englewood.' },
-  { id: 'douglas', city: 'Douglas County', state: 'CO', zipCodes: ['80124', '80125', '80126', '80134'], description: 'South Metro — Highlands Ranch, Parker, Castle Rock.' },
-  { id: 'adams', city: 'Adams County', state: 'CO', zipCodes: ['80022', '80023', '80640'], description: 'EV charger installation in Westminster, Thornton, Brighton.' }
+  { id: 'denver', city: 'Denver County', state: 'CO', zipCodes: ['80219', '80239', '80249', '80210'], description: 'Serving the heart of the city.' },
+  { id: 'jefferson', city: 'Jefferson County', state: 'CO', zipCodes: ['80215', '80226', '80227'], description: 'Serving Lakewood, Arvada.' },
+  { id: 'arapahoe', city: 'Arapahoe County', state: 'CO', zipCodes: ['80010', '80011', '80012'], description: 'Expert service in Aurora, Centennial.' },
+  { id: 'douglas', city: 'Douglas County', state: 'CO', zipCodes: ['80124', '80125', '80126'], description: 'South Metro coverage.' },
+  { id: 'adams', city: 'Adams County', state: 'CO', zipCodes: ['80022', '80640'], description: 'Coverage for Brighton, Thornton.' }
 ];
 
 export const PROCESS_STEPS = [
-  { title: 'Free Estimate', description: 'On-site assessment and written quote.' },
-  { title: 'Permit Filing', description: 'We handle all city permits and HOA docs.' },
-  { title: 'Installation', description: 'Completed by licensed electricians.' },
-  { title: 'Testing & Rebate', description: 'Full system test + rebate application.' }
+  { title: 'Schedule', description: 'Contact us via phone or online form.' },
+  { title: 'Diagnose', description: 'Certified expert inspects the issue.' },
+  { title: 'Quote', description: 'Clear, upfront price before work.' },
+  { title: 'Resolve', description: 'Job completed efficiently.' }
 ];
 
 export const FINANCING_PARTNERS = [
-  { id: 1, name: 'GreenSky', logo: 'https://placehold.co/200x80/orange/white?text=GreenSky' },
-  { id: 2, name: 'Mosaic', logo: 'https://placehold.co/200x80/orange/white?text=Mosaic' },
-  { id: 3, name: 'Synchrony', logo: 'https://placehold.co/200x80/orange/white?text=Synchrony' },
+  { id: 1, name: 'Partner One', logo: 'https://placehold.co/200x80/orange/white?text=Partner+1' },
+  { id: 2, name: 'Partner Two', logo: 'https://placehold.co/200x80/orange/white?text=Partner+2' },
+  { id: 3, name: 'Partner Three', logo: 'https://placehold.co/200x80/orange/white?text=Partner+3' },
   { id: 4, name: 'Xcel Energy', logo: 'https://placehold.co/200x80/orange/white?text=Xcel+Energy' }
 ];
 
 export const FINANCING_PLANS = [
-  { id: 1, name: 'Standard Plan', apr: 9.99, features: ['Low Monthly Payments', 'No Prepayment Penalty', 'Min. $500 project'] },
-  { id: 2, name: 'Same-as-Cash', apr: 0, features: ['0% Interest for 18 Months', 'Subject to Credit Approval', 'Ideal for full installs'] },
-  { id: 3, name: 'Low Interest', apr: 5.99, features: ['Fixed Rate for 60 Months', 'Budget Friendly', 'Great for panel upgrades'] },
+  { id: 1, name: 'Standard Plan', apr: 9.99, features: ['Low Monthly Payments', 'No Prepayment Penalty'] },
+  { id: 2, name: 'Same-as-Cash', apr: 0, features: ['0% Interest for 12 Months', 'Subject to Credit Approval'] },
+  { id: 3, name: 'Low Interest', apr: 5.99, features: ['Fixed Rate for 60 Months', 'Budget Friendly'] },
 ];
 
 export const FINANCING_ELIGIBILITY = {
   requirements: ['18 years or older', 'Valid government ID', 'Steady income source'],
-  goodNews: ['All credit types considered', 'Soft credit pull for pre-qualification', 'No prepayment penalties']
+  goodNews: ['All credit types considered', 'Bad credit options available', 'No prepayment penalties']
 };
 
 export const FINANCING_FAQS = [
-  { question: 'Does applying affect my credit score?', answer: 'Pre-qualification uses a soft pull that does not affect your score.' },
-  { question: 'What can I finance?', answer: 'Any EV charger installation, panel upgrade, or solar project we perform.' },
-  { question: 'Can I pay off early?', answer: 'Yes, no prepayment penalties on any of our financing plans.' }
+  { question: 'Does applying affect my credit score?', answer: 'Soft pull for pre-qualification.' },
+  { question: 'What documents do I need?', answer: 'Valid ID and proof of income.' },
+  { question: 'Can I pay off early?', answer: 'Yes, no prepayment penalties.' }
 ];
 
-export const HISTORY_TEXT = `Founded in 2018, Denver EV Chargers began with a single mission: make professional EV charger installation accessible to every Denver homeowner. As Colorado's EV adoption accelerated, we grew from a two-person team to a full crew of licensed electricians serving the entire Metro area. Today, with over 500 installations completed, we are Denver's most trusted name in residential and commercial EV charging infrastructure.`;
+export const HISTORY_TEXT = `Founded in 2005, ${COMPANY_NAME} began with a single truck and a commitment to serving the Denver community. We understand the unique needs of Colorado homes—from dealing with hail damage to optimizing HVAC for high altitude. Today we\'re proud to be Denver\'s go-to multi-service team, including Colorado\'s most trusted EV charger installation service.`;
 
 export const VALUES = [
-  { title: 'Safety First', description: 'Every installation meets NEC 2025 and Denver building codes.' },
-  { title: 'Transparency', description: 'Our quotes are detailed and final — no hidden fees.' },
-  { title: 'Local Expertise', description: 'We know Denver homes, Denver permits, and Denver utilities.' },
-  { title: 'Full Service', description: 'From permits to rebate applications — we handle everything.' }
+  { title: 'Integrity', description: 'We do what we say we will do.' },
+  { title: 'Excellence', description: 'Quality is our signature.' },
+  { title: 'Community', description: 'We support our local neighbors.' },
+  { title: 'Innovation', description: 'Staying ahead with latest tech.' }
 ];
 
 export const TEAM_MEMBERS = [
-  { id: 1, name: 'Carlos Reyes', role: 'Master Electrician & Founder', image: 'https://i.pravatar.cc/300?u=carlos_ev' },
-  { id: 2, name: 'Jake Martinez', role: 'Lead EV Installation Specialist', image: 'https://i.pravatar.cc/300?u=jake_ev' },
-  { id: 3, name: 'Amanda Cruz', role: 'Commercial EV Project Manager', image: 'https://i.pravatar.cc/300?u=amanda_ev' },
-  { id: 4, name: 'Maria Santos', role: 'Incentives & Customer Success', image: 'https://i.pravatar.cc/300?u=maria_ev' }
+  { id: 1, name: 'John Smith', role: 'Founder & CEO', image: 'https://i.pravatar.cc/300?u=ceo' },
+  { id: 2, name: 'Jane Doe', role: 'Operations Manager', image: 'https://i.pravatar.cc/300?u=ops' },
+  { id: 3, name: 'Mike Johnson', role: 'Lead Technician', image: 'https://i.pravatar.cc/300?u=tech' },
+  { id: 4, name: 'Sarah Wilson', role: 'Service Coordinator', image: 'https://i.pravatar.cc/300?u=coord' }
 ];
