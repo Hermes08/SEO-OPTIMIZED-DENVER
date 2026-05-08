@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from 'react';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -71,7 +72,9 @@ export default function RootLayout({
 
                 <Footer />
                 <CallButton sticky={true} onlySticky={true} />
-                <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+                <Suspense fallback={null}>
+                    <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+                </Suspense>
             </body>
         </html>
     );
