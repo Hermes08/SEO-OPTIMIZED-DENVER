@@ -1,120 +1,98 @@
 import React from 'react';
 import Link from 'next/link';
-import { Phone, MapPin, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { COMPANY_NAME, PHONE_NUMBER, CATEGORIES, SERVICE_AREAS } from '@/lib/constants';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { COMPANY_NAME, PHONE_NUMBER, CATEGORIES, SERVICE_AREAS, SOCIAL_LINKS } from '@/lib/constants';
+import { BrandLockup } from './Header';
+
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+
+// Prefer real profiles; fall back to platform homepages (real pages, not fabricated profiles).
+const socialFor = (platform: string, fallback: string) =>
+    SOCIAL_LINKS.find((s) => s.platform === platform)?.url || fallback;
 
 export const Footer = () => {
     return (
-        <footer className="bg-slate-900 pt-16 pb-8 border-t border-slate-800" role="contentinfo">
-            <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-4 gap-12 mb-12">
-                    <div>
-                        <h3 className="text-xl font-bold text-white mb-4">{COMPANY_NAME}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                            Denver's premier EV charger installation specialists. Licensed electricians for Tesla Wall Connector, Level 2 chargers, and commercial EV stations. Permits, inspections, and Xcel rebates handled for you.
-                        </p>
-                        <div className="flex gap-4">
-                            <a href="https://facebook.com/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Facebook`}>
-                                <Facebook size={18} aria-hidden="true" />
-                            </a>
-                            <a href="https://instagram.com/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on Instagram`}>
-                                <Instagram size={18} aria-hidden="true" />
-                            </a>
-                            <a href="https://linkedin.com/company/denverevchargers" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-gray-400 group" aria-label={`Follow ${COMPANY_NAME} on LinkedIn`}>
-                                <Linkedin size={18} aria-hidden="true" />
-                            </a>
+        <footer role="contentinfo">
+            <div className="wrap">
+                <div className="foot-grid">
+                    {/* Brand */}
+                    <div className="foot-brand">
+                        <BrandLockup />
+                        <p>Professional services providing reliable, high-quality solutions for residential and commercial clients across the Denver Metro. Licensed &amp; Insured.</p>
+                        <div className="socials">
+                            <a href={socialFor('facebook', 'https://facebook.com')} target="_blank" rel="noopener noreferrer" aria-label={`${COMPANY_NAME} on Facebook`}><Facebook size={18} aria-hidden="true" /></a>
+                            <a href={socialFor('instagram', 'https://instagram.com')} target="_blank" rel="noopener noreferrer" aria-label={`${COMPANY_NAME} on Instagram`}><Instagram size={18} aria-hidden="true" /></a>
+                            <a href={socialFor('linkedin', 'https://linkedin.com')} target="_blank" rel="noopener noreferrer" aria-label={`${COMPANY_NAME} on LinkedIn`}><Linkedin size={18} aria-hidden="true" /></a>
                         </div>
                     </div>
 
+                    {/* Quick links */}
                     <div>
-                        <h4 className="text-white font-bold mb-4">Quick Links</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
-                            <li><Link href="/" className="hover:text-orange-500">Home</Link></li>
-                            <li><Link href="/about" className="hover:text-orange-500">About Us</Link></li>
-                            <li><Link href="/financing" className="hover:text-orange-500">Financing</Link></li>
-                            <li><Link href="/areas-we-serve" className="hover:text-orange-500">Service Areas</Link></li>
-                            <li><Link href="/blog" className="hover:text-orange-500">EV Charging Blog</Link></li>
-                            <li><Link href="/contact" className="hover:text-orange-500">Contact Us</Link></li>
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><Link href="/">Home</Link></li>
+                            <li><Link href="/about">About Us</Link></li>
+                            <li><Link href="/financing">Financing</Link></li>
+                            <li><Link href="/areas-we-serve">Service Areas</Link></li>
+                            <li><Link href="/contact">Contact Us</Link></li>
                         </ul>
                     </div>
 
+                    {/* Services */}
                     <div>
-                        <h4 className="text-white font-bold mb-4">EV Services</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
-                            {CATEGORIES.map(cat => (
-                                <li key={cat.id}>
-                                    <Link href={`/${cat.slug}`} className="hover:text-orange-500">{cat.title}</Link>
-                                </li>
+                        <h4>Services</h4>
+                        <ul>
+                            {CATEGORIES.map((cat) => (
+                                <li key={cat.id}><Link href={`/${cat.slug}`}>{cat.title}</Link></li>
                             ))}
                         </ul>
                     </div>
 
+                    {/* Contact */}
                     <div>
-                        <h4 className="text-white font-bold mb-4">Contact Info</h4>
-                        <ul className="space-y-3 text-sm text-gray-400">
-                            <li className="flex gap-3">
-                                <Phone size={18} className="text-orange-500 shrink-0" aria-hidden="true" />
-                                <a href={`tel:${PHONE_NUMBER.replace(/\D/g, '')}`} className="hover:text-orange-500 transition-colors" aria-label={`Call us at ${PHONE_NUMBER}`}>
-                                    {PHONE_NUMBER}
-                                </a>
-                            </li>
-                            <li className="flex gap-3">
-                                <MapPin size={18} className="text-orange-500 shrink-0" aria-hidden="true" />
-                                <span>Serving Denver Metro Area & surrounding counties.</span>
-                            </li>
-                            <li className="flex gap-3">
-                                <Clock size={18} className="text-orange-500 shrink-0" aria-hidden="true" />
-                                <span>Mon–Sat: 7am – 8pm<br />Emergency: 24/7</span>
-                            </li>
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li><a href={`tel:${PHONE_TEL}`}>{PHONE_NUMBER}</a></li>
+                            <li><span>Serving Denver Metro &amp; surrounding areas</span></li>
+                            <li><span>Mon–Fri: 7am – 8pm</span></li>
+                            <li><span>Sat–Sun: Emergency Only</span></li>
                         </ul>
                     </div>
                 </div>
 
-                {/* COMPREHENSIVE SEO LINKS */}
-                <div className="border-t border-gray-900 mt-12 pt-12">
-                    <div className="grid md:grid-cols-2 gap-8">
-
-                        {/* ALL SERVICES */}
-                        <div>
-                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">All EV Charging Services</h4>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-6 text-xs text-gray-500">
-                                {CATEGORIES.map(cat => (
-                                    <div key={cat.id}>
-                                        <strong className="text-orange-500 block mb-2 uppercase text-xs tracking-wide">{cat.title}</strong>
-                                        <ul className="space-y-1">
-                                            {cat.subServices.map(sub => (
-                                                <li key={sub.id}>
-                                                    <Link href={`/${cat.slug}/${sub.slug}`} className="hover:text-white transition-colors">
-                                                        {sub.title}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
+                {/* Comprehensive SEO link map (all sub-services + service areas) */}
+                <div className="foot-seo">
+                    <div>
+                        <h4>All Services Provided</h4>
+                        <div className="foot-seo-grid">
+                            {CATEGORIES.map((cat) => (
+                                <div key={cat.id}>
+                                    <strong>{cat.title}</strong>
+                                    <ul>
+                                        {cat.subServices.map((sub) => (
+                                            <li key={sub.id}><Link href={`/${cat.slug}/${sub.slug}`}>{sub.title}</Link></li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
-
-                        {/* ALL AREAS */}
-                        <div>
-                            <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-sm">EV Charger Installation Areas</h4>
-                            <div className="grid grid-cols-2 gap-4 text-xs text-gray-500">
-                                {SERVICE_AREAS.map(area => (
-                                    <div key={area.id}>
-                                        <strong className="text-white block mb-1">{area.city}, {area.state}</strong>
-                                        <p className="leading-relaxed">
-                                            {area.zipCodes.join(', ')}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
+                    </div>
+                    <div>
+                        <h4>Service Areas &amp; Zip Codes</h4>
+                        <div className="foot-seo-grid">
+                            {SERVICE_AREAS.map((area) => (
+                                <div key={area.id}>
+                                    <strong>{area.city}, {area.state}</strong>
+                                    <p className="foot-zips">{area.zipCodes.join(' · ')}</p>
+                                </div>
+                            ))}
                         </div>
-
                     </div>
                 </div>
 
-                <div className="border-t border-gray-900 pt-8 mt-12 text-center text-sm text-gray-500">
-                    <p>&copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
+                <div className="foot-bottom">
+                    <span>© {new Date().getFullYear()} {COMPANY_NAME} — All Rights Reserved</span>
+                    <span>Licensed &amp; Insured · Denver, CO</span>
                 </div>
             </div>
         </footer>

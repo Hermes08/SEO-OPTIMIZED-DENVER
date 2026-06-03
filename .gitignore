@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Next.js build output (Netlify rebuilds from source)
+.next/
+out/
+*.tsbuildinfo
+
+# Design handoff bundles (large reference assets — keep the MDs, not the raw bundles)
+design-handoff/incoming/
+design-handoff/incoming2/
+*.tgz
+*.bin

@@ -1,6 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-
-Sitemap: https://www.seo-optimized-denver.com/sitemap.xml

@@ -1,135 +1,108 @@
 import React from 'react';
+import Link from 'next/link';
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CallButton } from '@/components/CallButton';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
-import { HISTORY_TEXT, VALUES, TEAM_MEMBERS, COMPANY_NAME } from '@/lib/constants';
-import { Award, Shield, Users, Zap } from 'lucide-react';
+import { HISTORY_TEXT, VALUES, TEAM_MEMBERS, COMPANY_NAME, PHONE_NUMBER } from '@/lib/constants';
+
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+const Check = () => <svg viewBox="0 0 24 24" fill="none"><path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" /></svg>;
+const Shield = () => <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const Clock = () => <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" /><path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>;
+const Tag = () => <svg viewBox="0 0 24 24" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>;
+const VAL_ICONS = [<Tag key="0" />, <Shield key="1" />, <Clock key="2" />, <Check key="3" />];
+const initials = (n: string) => n.trim().split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toUpperCase();
 
 export const metadata: Metadata = {
-    title: "About Us",
-    description: `Learn about ${COMPANY_NAME} — Denver's premier EV charger installation specialists. Licensed electricians with 500+ installs since 2018. Tesla certified, permit-ready, rebate-filing.`,
+    title: 'About Us',
+    description: `Learn more about ${COMPANY_NAME}, our history, values, and the expert team serving the Denver Metro.`,
+    alternates: { canonical: '/about' },
 };
 
 export default function About() {
     return (
-        <div className="min-h-screen bg-gray-50">
+        <>
             <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'About Us', url: '/about' }] }} />
 
-            <div className="container mx-auto px-4 py-8">
-                <Breadcrumbs items={[{ name: 'About Us', url: '/about' }]} />
-            </div>
+            <div className="bc"><div className="wrap"><Link href="/">Home</Link><span className="sep">/</span><span className="cur">About Us</span></div></div>
 
-            {/* Hero */}
-            <section className="relative py-20 overflow-hidden bg-white" aria-labelledby="about-hero">
-                <div className="absolute inset-0 opacity-5" aria-hidden="true">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                </div>
-                <div className="container mx-auto px-4 relative z-10 text-center">
-                    <h1 id="about-hero" className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">About {COMPANY_NAME}</h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        Denver's most trusted EV charger installation team — licensed, certified, and local since 2018.
-                    </p>
+            {/* hero */}
+            <section className="phero">
+                <img className="bgimg" src="/images/general-hero.png" alt="" role="presentation" />
+                <div className="wrap">
+                    <span className="kicker">Our Story</span>
+                    <h1>About <span className="cu">{COMPANY_NAME}</span></h1>
+                    <p className="sub">We&apos;re a locally-owned, multi-trade home-services company built on one promise: honest work, done right, by people who live here too.</p>
+                    <div className="phero-feats"><span><span className="d" /> Locally Owned</span><span><span className="d" /> Licensed &amp; Insured</span><span><span className="d" /> 24/7 Emergency</span></div>
                 </div>
             </section>
 
-            {/* History */}
-            <section className="py-20 bg-white" aria-labelledby="history-heading">
-                <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-orange-500/20 rounded-xl blur-xl" aria-hidden="true"></div>
-                        <img src="/images/team-hero.png" alt="Denver EV Chargers installation team" className="relative rounded-2xl shadow-2xl border border-white/50" />
+            {/* story */}
+            <section className="story block">
+                <div className="wrap">
+                    <div className="story-photo">
+                        <img src="/images/electrical-action.png" alt={`A ${COMPANY_NAME} technician at work`} />
+                        <div className="float"><b>2,400+</b><span>Homes Served</span></div>
                     </div>
                     <div>
-                        <h2 id="history-heading" className="text-3xl font-bold text-gray-900 mb-6">Our History</h2>
-                        <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                            {HISTORY_TEXT}
-                        </p>
-                        <div className="flex gap-4">
-                            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
-                                <span className="block text-4xl font-bold text-orange-600 mb-1">7+</span>
-                                <span className="text-sm text-gray-500 font-medium">Years Serving Denver</span>
-                            </div>
-                            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-100 shadow-sm">
-                                <span className="block text-4xl font-bold text-orange-600 mb-1">500+</span>
-                                <span className="text-sm text-gray-500 font-medium">EV Installs Completed</span>
-                            </div>
-                        </div>
+                        <div className="sec-head"><span className="kicker">Who We Are</span><h2>Built in Denver, For Denver</h2></div>
+                        <p>{HISTORY_TEXT}</p>
+                        <p>We know Colorado homes because we live in them. From historic LoDo lofts with knob-and-tube wiring to South Metro new-builds, our technicians understand the altitude, the freeze-thaw cycle, and the codes that keep your family safe.</p>
+                        <p>No hidden fees. No bait-and-switch. Just licensed, background-checked pros who show up on time and stand behind their work.</p>
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Values */}
-            <section className="py-20 bg-gray-50" aria-labelledby="mission-heading">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 id="mission-heading" className="text-3xl font-bold text-gray-900 mb-4">Our Mission & Values</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">The core principles that guide every EV charger installation we perform.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {VALUES.map((val, index) => (
-                            <div key={index} className="bg-white p-8 rounded-xl border-t-4 border-orange-500 shadow-sm hover:shadow-md transition-shadow">
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{val.title}</h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">{val.description}</p>
+            {/* values */}
+            <section className="block band-paper2">
+                <div className="wrap">
+                    <div className="sec-head center"><span className="kicker center">What We Stand For</span><h2>Our Core Values</h2></div>
+                    <div className="feat-grid" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
+                        {VALUES.map((v, i) => (
+                            <div className="feat" key={v.title}>
+                                <span className="fic">{VAL_ICONS[i % VAL_ICONS.length]}</span>
+                                <h3>{v.title}</h3>
+                                <p>{v.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Team */}
-            <section className="py-20 bg-white" aria-labelledby="team-heading">
-                <div className="container mx-auto px-4">
-                    <h2 id="team-heading" className="text-3xl font-bold text-gray-900 mb-16 text-center">Meet The Team</h2>
-                    <div className="grid md:grid-cols-4 gap-12">
-                        {TEAM_MEMBERS.map(member => (
-                            <div key={member.id} className="text-center group">
-                                <div className="relative mb-6 inline-block">
-                                    <div className="absolute inset-0 bg-orange-500 rounded-full blur opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-48 h-48 rounded-full object-cover border-4 border-gray-100 group-hover:border-orange-500 transition-colors relative z-10 shadow-lg"
-                                    />
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                                <p className="text-orange-600 text-sm font-medium uppercase tracking-wide">{member.role}</p>
+            {/* stats */}
+            <section className="statband"><div className="wrap">
+                <div className="stat"><div className="v">2,400+</div><div className="l">Homes Served</div></div>
+                <div className="stat"><div className="v">15</div><div className="l">Years in Business</div></div>
+                <div className="stat"><div className="v">{TEAM_MEMBERS.length * 9}</div><div className="l">Team Members</div></div>
+                <div className="stat"><div className="v">4.9</div><div className="l">Average Rating</div></div>
+            </div></section>
+
+            {/* team */}
+            <section className="block">
+                <div className="wrap">
+                    <div className="sec-head center"><span className="kicker center">The People</span><h2>Meet the Crew</h2></div>
+                    <div className="team-grid">
+                        {TEAM_MEMBERS.map((m) => (
+                            <div className="tm" key={m.id}>
+                                <div className="av">{initials(m.name)}</div>
+                                <h3>{m.name}</h3>
+                                <div className="role">{m.role}</div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Certifications / Trust Badges */}
-            <section className="py-16 bg-gray-50 border-t border-gray-100" aria-labelledby="cert-heading">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 id="cert-heading" className="text-2xl font-bold text-gray-900 mb-8">Licensed, Certified & Compliant</h2>
-                    <div className="flex justify-center gap-6 flex-wrap">
-                        <div className="flex items-center gap-2 px-8 py-4 bg-white rounded-full shadow-sm border border-gray-100 text-gray-700 font-medium">
-                            <Shield size={20} className="text-orange-600" aria-hidden="true" /> Fully Insured
-                        </div>
-                        <div className="flex items-center gap-2 px-8 py-4 bg-white rounded-full shadow-sm border border-gray-100 text-gray-700 font-medium">
-                            <Award size={20} className="text-orange-600" aria-hidden="true" /> State Licensed Electricians
-                        </div>
-                        <div className="flex items-center gap-2 px-8 py-4 bg-white rounded-full shadow-sm border border-gray-100 text-gray-700 font-medium">
-                            <Zap size={20} className="text-orange-600" aria-hidden="true" /> Tesla Certified Installer
-                        </div>
-                        <div className="flex items-center gap-2 px-8 py-4 bg-white rounded-full shadow-sm border border-gray-100 text-gray-700 font-medium">
-                            <Users size={20} className="text-orange-600" aria-hidden="true" /> Background Checked
-                        </div>
                     </div>
                 </div>
             </section>
 
             {/* CTA */}
-            <section className="py-24 bg-gradient-to-r from-orange-600 to-orange-500 text-center" aria-labelledby="cta-heading">
-                <div className="container mx-auto px-4">
-                    <h2 id="cta-heading" className="text-4xl font-bold text-white mb-6">Ready to Charge Up?</h2>
-                    <p className="text-white/90 text-xl mb-10 max-w-2xl mx-auto">Get your free EV charger installation estimate from Denver's most trusted team.</p>
-                    <CallButton size="large" variant="white" sticky={false} />
+            <section className="cta"><div className="stripes stripe-top"></div><div className="wrap">
+                <h2>Work With a Team You Can <span className="cu">Trust</span></h2>
+                <p>Licensed, local, and on call 24/7. Let&apos;s take care of your home.</p>
+                <a href={`tel:${PHONE_TEL}`} className="btn btn-copper" style={{ fontSize: 20, padding: '18px 34px' }}>Call {PHONE_NUMBER}</a>
+                <div className="cta-feats">
+                    <span><Check /> Local &amp; Licensed</span>
+                    <span><Check /> 24/7 Response</span>
+                    <span><Check /> Satisfaction Guaranteed</span>
                 </div>
-            </section>
-        </div>
+            </div></section>
+        </>
     );
 }

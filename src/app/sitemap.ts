@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next';
-import { CATEGORIES, BLOG_POSTS } from '@/lib/constants';
+import { CATEGORIES, BLOG_POSTS, BASE_URL } from '@/lib/constants';
 
+// Required for output: 'export' (static export / GitHub Pages)
 export const dynamic = 'force-static';
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.denverevchargers.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const currentDate = new Date();

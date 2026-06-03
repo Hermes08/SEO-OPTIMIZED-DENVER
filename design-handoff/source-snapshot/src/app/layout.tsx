@@ -1,17 +1,13 @@
+
 import type { Metadata } from "next";
-import { Saira_Condensed, Archivo, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { LiveActivity } from "@/components/LiveActivity";
+import { CallButton } from "@/components/CallButton";
 import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { COMPANY_NAME, PHONE_NUMBER, BASE_URL } from "@/lib/constants";
+import { MapPin, Clock } from "lucide-react";
 import "./globals.css";
-
-// Mile High type system
-const saira = Saira_Condensed({ subsets: ["latin"], weight: ["500", "600", "700", "800", "900"], variable: "--font-saira", display: "swap" });
-const archivo = Archivo({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-archivo", display: "swap" });
-const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-mono", display: "swap" });
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const defaultTitle = `${COMPANY_NAME} | Professional Home Services`;
@@ -47,16 +43,39 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${saira.variable} ${archivo.variable} ${mono.variable}`}>
-            <body className="antialiased flex flex-col min-h-screen">
+        <html lang="en">
+            <body className="antialiased flex flex-col min-h-screen bg-gray-900 text-gray-100">
                 <SchemaMarkup type="Organization" data={{}} />
                 {/* Skip to Main Content Link */}
                 <a
                     href="#main-content"
-                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-[var(--copper)] focus:text-white focus:font-bold focus:rounded focus:shadow-xl transition-all"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-orange-500 focus:text-white focus:font-bold focus:rounded-lg focus:shadow-xl transition-all"
                 >
                     Skip to main content
                 </a>
+
+                {/* Top Bar - Injected here as it was part of Layout.tsx */}
+                <div className="bg-gray-950 py-2 text-xs md:text-sm text-gray-400 border-b border-gray-800" role="region" aria-label="Contact Information">
+                    <div className="container mx-auto px-4 flex justify-between items-center">
+                        <div className="flex gap-4">
+                            <span className="flex items-center gap-1">
+                                <MapPin size={12} className="text-orange-500" aria-hidden="true" />
+                                <span>Serving {COMPANY_NAME} Region</span>
+                            </span>
+                            <span className="hidden md:flex items-center gap-1">
+                                <Clock size={12} className="text-orange-500" aria-hidden="true" />
+                                <span>24/7 Emergency Service</span>
+                            </span>
+                        </div>
+                        <a
+                            href={`tel:${PHONE_NUMBER}`}
+                            className="font-bold text-orange-500 hover:text-white transition-colors"
+                            aria-label={`Call us at ${PHONE_NUMBER}`}
+                        >
+                            {PHONE_NUMBER}
+                        </a>
+                    </div>
+                </div>
 
                 <Header />
 
@@ -66,10 +85,7 @@ export default function RootLayout({
                 </main>
 
                 <Footer />
-
-                {/* Sticky call button + live social-proof notifications + scroll/count-up observers */}
-                <LiveActivity />
-
+                <CallButton sticky={true} onlySticky={true} />
                 {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
             </body>
         </html>

@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
+import { BASE_URL } from '@/lib/constants';
 
+// Required for output: 'export' (static export / GitHub Pages)
 export const dynamic = 'force-static';
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.denverevchargers.com';
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -12,5 +12,6 @@ export default function robots(): MetadataRoute.Robots {
             disallow: ['/api/', '/admin/'],
         },
         sitemap: `${BASE_URL}/sitemap.xml`,
+        host: BASE_URL,
     };
 }

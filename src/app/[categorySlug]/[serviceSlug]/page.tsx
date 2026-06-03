@@ -1,40 +1,38 @@
-
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { CATEGORIES, CITY, STATE, SERVICE_AREAS } from '@/lib/constants';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CallButton } from '@/components/CallButton';
+import { CATEGORIES, CITY, STATE, SERVICE_AREAS, PHONE_NUMBER, TESTIMONIALS } from '@/lib/constants';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
-import { GoogleReviews } from '@/components/GoogleReviews';
-import { MapPin } from 'lucide-react';
 
-// Generate Static Params for SSG
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+
+const Star = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1L12 2Z" /></svg>;
+const Check = () => <svg viewBox="0 0 24 24" fill="none"><path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" /><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" /></svg>;
+const Clock = () => <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" /><path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>;
+const Plus = () => <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>;
+const Bolt = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" /></svg>;
+const PhoneSvg = ({ w = 17 }: { w?: number }) => <svg viewBox="0 0 24 24" width={w} height={w} fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" fill="#fff" /></svg>;
+const initials = (n: string) => n.trim().split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toUpperCase();
+
 export async function generateStaticParams() {
-    return CATEGORIES.flatMap((category) =>
-        category.subServices.map((service) => ({
-            categorySlug: category.slug,
-            serviceSlug: service.slug,
-        }))
-    );
+    return CATEGORIES.flatMap((category) => category.subServices.map((service) => ({ categorySlug: category.slug, serviceSlug: service.slug })));
 }
 
-// Generate Metadata for SEO
 export async function generateMetadata({ params }: { params: Promise<{ categorySlug: string; serviceSlug: string }>; }) {
     const resolvedParams = await params;
     const category = CATEGORIES.find((c) => c.slug === resolvedParams.categorySlug);
     const service = category?.subServices.find((s) => s.slug === resolvedParams.serviceSlug);
+    if (!category || !service) return { title: 'Service Not Found' };
 
-    if (!category || !service) {
-        return {
-            title: 'Service Not Found',
-        };
-    }
-
+    const title = `${service.title} in ${CITY}`;
+    const description = `Expert ${service.title} services in ${CITY}, ${STATE}. ${service.description} Licensed & Insured.`;
+    const url = `/${category.slug}/${service.slug}`;
     return {
-        title: `${service.title} in ${CITY}`,
-        description: `Expert ${service.title} services in ${CITY}, ${STATE}. ${service.description} Licensed & Insured.`,
+        title,
+        description,
+        alternates: { canonical: url },
+        openGraph: { type: 'website', title, description, url, images: [{ url: service.image, alt: service.imageAlt || service.title }] },
+        twitter: { card: 'summary_large_image', title, description, images: [service.image] },
     };
 }
 
@@ -42,127 +40,143 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     const resolvedParams = await params;
     const category = CATEGORIES.find((c) => c.slug === resolvedParams.categorySlug);
     const service = category?.subServices.find((s) => s.slug === resolvedParams.serviceSlug);
+    if (!category || !service) notFound();
 
-    if (!category || !service) {
-        notFound();
-    }
+    const others = category.subServices.filter((s) => s.id !== service.id);
+    const reviews = TESTIMONIALS.slice(0, 2);
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <SchemaMarkup type="Service" data={{
-                serviceType: service.title,
-                image: service.image,
-                description: service.description
-            }} />
-
+        <div className="svc-page">
+            <SchemaMarkup type="Service" data={{ serviceType: service.title, image: service.image, description: service.description }} />
             {service.faqs && <SchemaMarkup type="FAQPage" data={{ faqs: service.faqs }} />}
 
-            <div className="container mx-auto px-4 py-8">
-                <Breadcrumbs items={[
-                    { name: category.title, url: `/${category.slug}` },
-                    { name: service.title, url: `/${category.slug}/${service.slug}` }
-                ]} />
-            </div>
+            {/* breadcrumb */}
+            <div className="bc"><div className="wrap">
+                <Link href="/">Home</Link><span className="sep">/</span>
+                <Link href={`/${category.slug}`}>{category.title}</Link><span className="sep">/</span>
+                <span className="cur">{service.title}</span>
+            </div></div>
 
-            <article className="container mx-auto px-4 pb-16">
-                <div className="grid lg:grid-cols-3 gap-12">
-                    {/* Main Content */}
-                    <div className="lg:col-span-2">
-                        <header>
-                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight leading-tight">{service.title} in {CITY}, {STATE}</h1>
-                        </header>
-
-                        {/* Optimized image usage in next step, using img for now */}
-                        <div className="rounded-2xl overflow-hidden shadow-xl mb-12 border border-gray-100">
-                            <img src={service.image} alt={`${service.title} illustration`} className="w-full h-[400px] object-cover" />
+            {/* hero */}
+            <section className="hero">
+                <div className="wrap">
+                    <div>
+                        <span className="kicker">{category.title}</span>
+                        <h1>{service.title} in <span className="cu">{CITY}, {STATE}</span></h1>
+                        <p className="sub">{service.description}</p>
+                        <div className="hero-cta">
+                            <a href={`tel:${PHONE_TEL}`} className="btn btn-copper"><PhoneSvg /> Call {PHONE_NUMBER}</a>
+                            <span className="ph">Mon–Fri 7am–8pm<small>24/7 Emergency</small></span>
                         </div>
-
-                        <div className="prose prose-lg prose-slate max-w-none text-gray-600 prose-headings:text-gray-900 prose-headings:font-bold prose-strong:text-gray-900 prose-a:text-orange-600 prose-img:rounded-xl">
-                            <p className="text-xl leading-relaxed mb-8 border-l-4 border-orange-500 pl-6 italic text-gray-700 bg-orange-50 p-4 rounded-r-lg">
-                                {service.description}
-                            </p>
-
-                            {/* Render Generated Heavy Content */}
-                            <div dangerouslySetInnerHTML={{ __html: service.content || '' }} />
+                        <div className="hero-chips">
+                            <span className="chip"><Check /> Licensed &amp; Insured</span>
+                            <span className="chip"><Clock /> Same-Day Quotes</span>
+                            <span className="chip"><Star /> 4.9 / 5.0 Rated</span>
                         </div>
+                    </div>
+                    <div className="hero-photo">
+                        <img src={service.image} alt={service.imageAlt || `${service.title} in ${CITY}, ${STATE}`} />
+                        <span className="rate"><Star /> 4.9</span>
+                    </div>
+                </div>
+            </section>
 
-                        {/* FAQ Section */}
-                        {service.faqs && (
-                            <section className="mt-16 mb-12" aria-labelledby="faq-service-heading">
-                                <h2 id="faq-service-heading" className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-                                <div className="space-y-4">
-                                    {service.faqs.map((faq, index) => (
-                                        <details key={index} className="bg-white rounded-xl p-6 group border border-gray-200 shadow-sm open:ring-2 open:ring-orange-100 transition-all">
-                                            <summary className="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center focus:outline-none rounded">
-                                                {faq.question}
-                                                <span className="text-orange-500 group-open:rotate-180 transition-transform" aria-hidden="true">▼</span>
-                                            </summary>
-                                            <p className="text-gray-600 mt-4 leading-relaxed">{faq.answer}</p>
+            {/* article */}
+            <article className="article">
+                <div className="wrap">
+                    <div className="ms-grid">
+                        {/* main */}
+                        <div className="main">
+                            <p className="lead">{service.description}</p>
+                            <div className="ms-body generated-content" dangerouslySetInnerHTML={{ __html: service.content || '' }} />
+
+                            {/* per-service reviews */}
+                            <section className="psr">
+                                <div className="stripes stripe"></div>
+                                <div className="inner">
+                                    <div className="top">
+                                        <span className="big">4.9</span>
+                                        <div>
+                                            <div className="stars">{Array.from({ length: 5 }).map((_, i) => <Star key={i} />)}</div>
+                                            <div className="meta" style={{ marginTop: 5 }}><b>{service.title}</b> · verified reviews</div>
+                                        </div>
+                                        <span className="tag">{category.title} · Verified</span>
+                                    </div>
+                                    <div className="grid">
+                                        {reviews.map((r) => (
+                                            <div className="pscard" key={r.id}>
+                                                <div className="stars">{Array.from({ length: r.rating }).map((_, i) => <Star key={i} />)}</div>
+                                                <p>&ldquo;{r.text}&rdquo;</p>
+                                                <div className="who"><span className="av">{initials(r.name)}</span><div><b>{r.name}</b><span>{r.location} · {r.project}</span></div></div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+
+                            {/* FAQ */}
+                            {service.faqs && (
+                                <section className="faq" aria-labelledby="faq-service-heading">
+                                    <h2 id="faq-service-heading">Frequently Asked Questions</h2>
+                                    {service.faqs.map((faq, i) => (
+                                        <details className="qa" key={i} open={i === 0}>
+                                            <summary>{faq.question}<span className="ic"><Plus /></span></summary>
+                                            <p>{faq.answer}</p>
                                         </details>
+                                    ))}
+                                </section>
+                            )}
+
+                            {/* service areas */}
+                            <section className="areas-blk" aria-labelledby="areas-service-heading">
+                                <h4 id="areas-service-heading">We Proudly Serve the Following Areas</h4>
+                                <p>Our technicians are available for {service.title.toLowerCase()} in all the following locations. If you don&apos;t see your city listed, please call us to confirm coverage.</p>
+                                <div className="area-chips">
+                                    {SERVICE_AREAS.map((area) => (
+                                        <Link key={area.id} href="/areas-we-serve">{area.city} ({area.zipCodes[0]})</Link>
                                     ))}
                                 </div>
                             </section>
-                        )}
 
-                        {/* Service Areas Reminder */}
-                        <section className="mt-16 pt-12 border-t border-gray-200" aria-labelledby="areas-service-heading">
-                            <h4 id="areas-service-heading" className="text-xl font-bold text-gray-900 mb-6">We Proudly Serve the Following Areas</h4>
-                            <p className="text-gray-600 mb-6">
-                                Our technicians are available for {service.title.toLowerCase()} in all the following locations.
-                                If you don't see your city listed, please call us to confirm coverage.
-                            </p>
-                            <div className="flex flex-wrap gap-3">
-                                {SERVICE_AREAS.map(area => (
-                                    <Link
-                                        key={area.id}
-                                        href="/areas-we-serve"
-                                        className="bg-white hover:bg-orange-500 hover:text-white px-3 py-2 rounded-lg text-sm text-gray-600 border border-gray-200 hover:border-orange-500 transition-all shadow-sm font-medium"
-                                    >
-                                        {area.city} ({area.zipCodes[0]})
-                                    </Link>
-                                ))}
+                            {/* final CTA */}
+                            <div className="cta">
+                                <div className="stripes stripe"></div>
+                                <div className="inner">
+                                    <h3>Need {service.title} Today?</h3>
+                                    <p>Don&apos;t wait. Schedule your service with our expert team now.</p>
+                                    <a href={`tel:${PHONE_TEL}`} className="btn btn-copper" style={{ fontSize: 19, padding: '16px 30px' }}><PhoneSvg w={18} /> Call {PHONE_NUMBER}</a>
+                                </div>
                             </div>
-                        </section>
-
-                        {/* Google Reviews */}
-                        <div className="mt-16">
-                            <GoogleReviews />
                         </div>
 
-                        {/* Final CTA */}
-                        <div className="bg-white p-8 rounded-2xl border border-gray-100 text-center my-12 shadow-xl relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-400 to-orange-600"></div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">Need {service.title} Today?</h3>
-                            <p className="text-gray-600 mb-8">Don't wait. Schedule your service with our expert team now.</p>
-                            <CallButton size="large" />
-                        </div>
+                        {/* sidebar */}
+                        <aside aria-label="Related services">
+                            <div className="sticky">
+                                <div className="side-card">
+                                    <div className="hd"><Bolt /> Other {category.title}</div>
+                                    <div className="side-list">
+                                        {others.map((s) => (
+                                            <Link href={`/${category.slug}/${s.slug}`} key={s.id}><span>{s.title}</span><span className="ar">→</span></Link>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="side-call">
+                                    <div className="k">Speak with a specialist</div>
+                                    <div className="num">{PHONE_NUMBER}</div>
+                                    <p>Available 24/7 for emergencies</p>
+                                    <a href={`tel:${PHONE_TEL}`} className="btn btn-copper">Call Now</a>
+                                </div>
+
+                                <div className="promo">
+                                    <div className="pk">Financing</div>
+                                    <h4>0% APR Plans Available</h4>
+                                    <p>Spread the cost of your project. Same-as-cash plans, all credit types considered.</p>
+                                    <Link href="/financing">See plans →</Link>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
-
-                    {/* Sidebar */}
-                    <aside className="space-y-8" aria-label="Related Services Side Bar">
-                        <div className="bg-white p-6 rounded-2xl border border-gray-100 sticky top-24 shadow-lg">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4">Other {category.title}</h3>
-                            <ul className="space-y-3">
-                                {category.subServices.filter(s => s.id !== service.id).map(s => (
-                                    <li key={s.id}>
-                                        <Link
-                                            href={`/${category.slug}/${s.slug}`}
-                                            className="text-gray-600 hover:text-orange-600 transition-colors flex items-center justify-between group py-2"
-                                        >
-                                            <span className="group-hover:translate-x-1 transition-transform font-medium">{s.title}</span>
-                                            <span className="text-gray-400 group-hover:text-orange-600" aria-hidden="true">→</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div className="mt-8 pt-6 border-t border-gray-100">
-                                <h4 className="font-bold text-gray-900 mb-2">Have Questions?</h4>
-                                <p className="text-sm text-gray-500 mb-4">Speak with a specialist now.</p>
-                                <CallButton size="default" />
-                            </div>
-                        </div>
-                    </aside>
                 </div>
             </article>
         </div>

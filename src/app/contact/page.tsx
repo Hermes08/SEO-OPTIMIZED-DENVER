@@ -1,163 +1,68 @@
-
 import React from 'react';
+import Link from 'next/link';
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CallButton } from '@/components/CallButton';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
+import { RequestServiceForm } from '@/components/RequestServiceForm';
+import { PHONE_NUMBER, EMAIL_ADDRESS, REGION } from '@/lib/constants';
 
-import { PHONE_NUMBER, CITY, STATE } from '@/lib/constants';
-import { Phone, Mail, MapPin } from 'lucide-react';
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+const PhoneSvg = () => <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" fill="currentColor" /></svg>;
+const Mail = () => <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" /><path d="m3 7 9 6 9-6" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /></svg>;
+const Pin = () => <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><circle cx="12" cy="10" r="2.4" stroke="currentColor" strokeWidth="2" /></svg>;
 
 export const metadata: Metadata = {
-    title: "Contact Us",
-    description: "Get in touch with our team for 24/7 emergency service or a free quote.",
+    title: 'Contact Us',
+    description: 'Get in touch with our team for 24/7 emergency service or a free quote.',
+    alternates: { canonical: '/contact' },
 };
 
 export default function Contact() {
     return (
-        <div className="min-h-screen bg-gray-50">
-            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Contact Us', url: '/contact' }] }} />
-            <div className="container mx-auto px-4 py-8">
-                <Breadcrumbs items={[{ name: 'Contact Us', url: '/contact' }]} />
-            </div>
+        <>
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }] }} />
 
-            <section className="py-12" aria-labelledby="contact-heading">
-                <div className="container mx-auto px-4 text-center mb-16">
-                    <h1 id="contact-heading" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Get in Touch</h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        Have an emergency or need a quote? We are available 24/7 to assist you.
-                    </p>
+            <div className="bc"><div className="wrap"><Link href="/">Home</Link><span className="sep">/</span><span className="cur">Contact</span></div></div>
+
+            {/* hero */}
+            <section className="phero" style={{ padding: '52px 0' }}>
+                <div className="wrap">
+                    <span className="kicker">Get In Touch</span>
+                    <h1>Request <span className="cu">Service</span></h1>
+                    <p className="sub">Need a quote or emergency help? Call us or send a request — a licensed Denver Metro specialist will reach out fast.</p>
                 </div>
+            </section>
 
-                <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid lg:grid-cols-2 gap-12">
-                        {/* Contact Form Removed - Phone Only */}
-                        <div className="order-2 lg:order-1">
-                            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Call Us?</h2>
-                                <ul className="space-y-4 text-gray-600 mb-8">
-                                    <li className="flex items-start gap-3">
-                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
-                                            <span className="sr-only">Check</span>
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                        </div>
-                                        <p><strong>Instant Response:</strong> Speak directly to a dispatcher, not a machine.</p>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
-                                            <span className="sr-only">Check</span>
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                        </div>
-                                        <p><strong>Accurate Quotes:</strong> We can better assess your emergency over the phone.</p>
-                                    </li>
-                                    <li className="flex items-start gap-3">
-                                        <div className="bg-green-100 p-1 rounded-full text-green-600 mt-1">
-                                            <span className="sr-only">Check</span>
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                        </div>
-                                        <p><strong>Local Experts:</strong> Our team knows Denver homes and codes inside out.</p>
-                                    </li>
-                                </ul>
-                                <div className="bg-orange-50 rounded-xl p-6 text-center">
-                                    <p className="text-gray-900 font-medium mb-4">Click below to speak with an expert now</p>
-                                    <CallButton size="large" />
-                                </div>
+            {/* contact grid */}
+            <section className="block">
+                <div className="wrap">
+                    <div className="ct-grid">
+                        {/* info rail */}
+                        <div>
+                            <a className="info-card" href={`tel:${PHONE_TEL}`}>
+                                <span className="ic"><PhoneSvg /></span>
+                                <div><h4>Call Us</h4><p>24/7 emergency line</p><p><a href={`tel:${PHONE_TEL}`}>{PHONE_NUMBER}</a></p></div>
+                            </a>
+                            <a className="info-card" href={`mailto:${EMAIL_ADDRESS}`}>
+                                <span className="ic"><Mail /></span>
+                                <div><h4>Email</h4><p>We reply within one business day</p><p><a href={`mailto:${EMAIL_ADDRESS}`}>{EMAIL_ADDRESS}</a></p></div>
+                            </a>
+                            <div className="info-card">
+                                <span className="ic"><Pin /></span>
+                                <div><h4>Service Area</h4><p>Serving {REGION} &amp; surrounding communities</p></div>
+                            </div>
+                            <div className="hours">
+                                <h4>Business Hours</h4>
+                                <div className="row"><span>Mon – Fri</span><b>7am – 8pm</b></div>
+                                <div className="row"><span>Saturday</span><b>8am – 5pm</b></div>
+                                <div className="row"><span>Sunday</span><b className="em">Emergency Only</b></div>
                             </div>
                         </div>
 
-                        {/* Contact Info */}
-                        <div className="space-y-8 order-1 lg:order-2">
-                            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-
-                                <div className="space-y-6">
-                                    <div className="flex items-start gap-4">
-                                        <div className="bg-orange-50 p-3 rounded-xl text-orange-600">
-                                            <Phone size={24} aria-hidden="true" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm text-gray-500 mb-1 font-medium">Phone</p>
-                                            <a href={`tel:${PHONE_NUMBER}`} className="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors">{PHONE_NUMBER}</a>
-                                            <p className="text-xs text-green-600 mt-1 font-bold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Available 24/7</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-4">
-                                        <div className="bg-orange-50 p-3 rounded-xl text-orange-600">
-                                            <Mail size={24} aria-hidden="true" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm text-gray-500 mb-1 font-medium">Email</p>
-                                            <a href="mailto:service@company.com" className="text-lg text-gray-900 hover:text-orange-600 transition-colors">service@company.com</a>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-4">
-                                        <div className="bg-orange-50 p-3 rounded-xl text-orange-600">
-                                            <MapPin size={24} aria-hidden="true" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm text-gray-500 mb-1 font-medium">Headquarters</p>
-                                            <p className="text-gray-900 text-lg">123 Service Road, Suite 100<br />{CITY}, {STATE} 00000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Business Hours</h3>
-                                <div className="space-y-3 text-gray-600">
-                                    <div className="flex justify-between border-b border-gray-100 pb-2">
-                                        <span className="font-medium">Monday - Friday</span>
-                                        <span>7:00 AM - 8:00 PM</span>
-                                    </div>
-                                    <div className="flex justify-between border-b border-gray-100 pb-2">
-                                        <span className="font-medium">Saturday</span>
-                                        <span>8:00 AM - 5:00 PM</span>
-                                    </div>
-                                    <div className="flex justify-between text-orange-600 font-bold">
-                                        <span>Sunday</span>
-                                        <span>Emergency Only</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        {/* Map Section */}
-                        <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-lg h-[400px] overflow-hidden relative">
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                style={{ border: 0 }}
-                                loading="lazy"
-                                allowFullScreen
-                                referrerPolicy="no-referrer-when-downgrade"
-                                title="Our Location"
-                                className="w-full h-full rounded-xl"
-                                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Denver+(Denver%20Metro%20Services)&t=&z=13&ie=UTF8&iwloc=B&output=embed"
-                            >
-                            </iframe>
-                        </div>
-
-                        {/* Simple CTA Box */}
-                        <div className="bg-gradient-to-br from-orange-600 to-orange-500 p-10 rounded-2xl text-white flex flex-col justify-center text-center shadow-2xl relative overflow-hidden">
-                            <div className="absolute inset-0 bg-black/5 pattern-dots" aria-hidden="true"></div>
-                            <div className="relative z-10">
-                                <h2 className="text-3xl font-bold mb-6">Need Immediate Assistance?</h2>
-                                <p className="text-lg mb-8 text-orange-50">
-                                    For the fastest response, please give us a call. Our dispatchers are ready to send a technician to your location.
-                                </p>
-                                <div className="bg-white/10 p-6 rounded-xl backdrop-blur-md mb-8 border border-white/20">
-                                    <p className="text-sm uppercase tracking-widest mb-2 font-bold text-orange-100">Current Response Time</p>
-                                    <p className="text-4xl font-bold text-white">~ 45 Mins</p>
-                                </div>
-                                <CallButton size="large" variant="white" sticky={false} />
-                            </div>
-                        </div>
+                        {/* form */}
+                        <RequestServiceForm />
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 }

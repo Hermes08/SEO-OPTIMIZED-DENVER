@@ -1,141 +1,107 @@
-
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { BLOG_POSTS, CATEGORIES } from '@/lib/constants';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CallButton } from '@/components/CallButton';
-import { TableOfContents } from '@/components/TableOfContents';
+import { BLOG_POSTS, PHONE_NUMBER } from '@/lib/constants';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 
-// Generate Static Params for SSG
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+const Arrow = () => <svg viewBox="0 0 24 24" width={16} height={16} fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const fmtDate = (d: string) => new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const catCode = (c: string) => c.replace(/ Services?$/, '').toUpperCase();
+const initials = (n: string) => n.trim().split(/\s+/).map((p) => p[0]).slice(0, 2).join('').toUpperCase();
+
 export async function generateStaticParams() {
-    return BLOG_POSTS.map((post) => ({
-        postSlug: post.slug,
-    }));
+    return BLOG_POSTS.map((post) => ({ postSlug: post.slug }));
 }
 
-// Generate Metadata for SEO
 export async function generateMetadata({ params }: { params: Promise<{ postSlug: string }>; }) {
     const resolvedParams = await params;
     const post = BLOG_POSTS.find((p) => p.slug === resolvedParams.postSlug);
-
-    if (!post) {
-        return {
-            title: 'Post Not Found',
-        };
-    }
-
+    if (!post) return { title: 'Post Not Found' };
+    const url = `/blog/${post.slug}`;
     return {
         title: post.title,
         description: post.excerpt,
-        openGraph: {
-            images: [post.image]
-        }
+        alternates: { canonical: url },
+        openGraph: { type: 'article', title: post.title, description: post.excerpt, url, images: [{ url: post.image, alt: post.imageAlt || post.title }] },
+        twitter: { card: 'summary_large_image', title: post.title, description: post.excerpt, images: [post.image] },
     };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ postSlug: string }>; }) {
     const resolvedParams = await params;
     const post = BLOG_POSTS.find((p) => p.slug === resolvedParams.postSlug);
+    if (!post) notFound();
 
-    if (!post) {
-        notFound();
-    }
-
-    const category = CATEGORIES.find(c => c.title === post.category); // Match by title since post.category stores title
-
-    const breadcrumbItems = [
-        { name: 'Blog', url: '/blog' },
-        { name: post.title, url: '#' }
-    ];
-
-    const relatedPosts = BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 2);
+    const related = BLOG_POSTS.filter((p) => p.id !== post.id).slice(0, 3);
+    const tags = [catCode(post.category), 'Denver', 'Tips'];
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <SchemaMarkup type="BreadcrumbList" data={{
-                items: [
-                    { name: 'Home', url: '/' },
-                    { name: 'Blog', url: '/blog' },
-                    { name: post.title, url: `/blog/${post.slug}` }
-                ]
-            }} />
-            <SchemaMarkup type="Article" data={{
-                headline: post.title,
-                image: post.image,
-                author: post.author.name,
-                datePublished: post.publishDate
-            }} />
+        <>
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: post.title, url: `/blog/${post.slug}` }] }} />
+            <SchemaMarkup type="Article" data={{ headline: post.title, image: post.image, author: post.author.name, datePublished: post.publishDate }} />
 
-            <div className="container mx-auto px-4 py-8">
-                <Breadcrumbs items={breadcrumbItems} />
-            </div>
+            <div className="bc"><div className="wrap"><Link href="/">Home</Link><span className="sep">/</span><Link href="/blog">Blog</Link><span className="sep">/</span><span className="cur">{post.title}</span></div></div>
 
-            <article className="py-8">
-                <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid lg:grid-cols-3 gap-12">
-                        {/* Main Content */}
-                        <div className="lg:col-span-2">
-                            {/* Header */}
-                            <header className="mb-12">
-                                <div className="text-orange-600 font-bold text-sm uppercase tracking-wider mb-4 bg-orange-50 inline-block px-3 py-1 rounded-full">{post.category}</div>
-                                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight tacking-tight">{post.title}</h1>
+            {/* post hero */}
+            <section className="post-hero">
+                <div className="img"><img src={post.image} alt={post.imageAlt || post.title} /></div>
+                <div className="wrap">
+                    <span className="cat">{post.category} · Guide</span>
+                    <h1>{post.title}</h1>
+                    <div className="meta">
+                        <span className="av">{initials(post.author.name)}</span>
+                        <span className="who"><b>{post.author.name}</b></span>
+                        <span>·</span><time dateTime={post.publishDate}>{fmtDate(post.publishDate)}</time><span>·</span><span>5 min read</span>
+                    </div>
+                </div>
+            </section>
 
-                                <div className="flex items-center gap-4 text-gray-600 text-sm border-b border-gray-100 pb-8">
-                                    <div className="flex items-center gap-2">
-                                        <img src={post.author.photo} alt={post.author.name} className="w-10 h-10 rounded-full border border-gray-200" />
-                                        <div>
-                                            <span className="block text-gray-900 font-bold">{post.author.name}</span>
-                                            <span className="text-xs text-gray-500">{post.author.role}</span>
-                                        </div>
-                                    </div>
-                                    <span className="mx-2 text-gray-300">•</span>
-                                    <time dateTime={post.publishDate}>{new Date(post.publishDate).toLocaleDateString()}</time>
-                                    <span className="mx-2 text-gray-300">•</span>
-                                    <span>5 min read</span>
-                                </div>
-                            </header>
+            {/* post body */}
+            <article className="post-body">
+                <div className="post-wrap">
+                    <p className="lead">{post.excerpt}</p>
+                    <div dangerouslySetInnerHTML={{ __html: post.content }} />
 
-                            <img src={post.image} alt={post.title} className="w-full h-[450px] object-cover rounded-2xl mb-12 shadow-xl border border-gray-100" />
-
-                            <div
-                                className="prose prose-lg prose-slate max-w-none mb-12 prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-orange-600 prose-img:rounded-xl"
-                                dangerouslySetInnerHTML={{ __html: post.content }}
-                            />
-
-                            {/* Mid-Article CTA */}
-                            <div className="bg-orange-50 p-8 rounded-2xl border border-orange-100 mb-12">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Need Professional Help?</h3>
-                                <p className="text-gray-600 mb-6">Don't risk DIY on complex systems. Our licensed pros are here to help.</p>
-                                <CallButton />
-                            </div>
+                    <div className="author">
+                        <span className="av">{initials(post.author.name)}</span>
+                        <div>
+                            <h4>{post.author.name}</h4>
+                            <div className="role">{post.author.role}</div>
+                            <p>Part of the {post.category.replace(/ Services?$/, '')} team at Denver Metro Services, serving homeowners across the Front Range.</p>
                         </div>
+                    </div>
 
-                        {/* Sidebar */}
-                        <aside className="space-y-8" aria-label="Article Sidebar">
-                            <div className="sticky top-24 space-y-8">
-                                <TableOfContents />
-
-                                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                                    <h3 className="font-bold text-gray-900 mb-6 text-xl pb-4 border-b border-gray-100">Related Articles</h3>
-                                    <div className="space-y-6">
-                                        {relatedPosts.map(rp => (
-                                            <Link href={`/blog/${rp.slug}`} key={rp.id} className="block group">
-                                                <div className="h-32 overflow-hidden rounded-xl mb-3 relative">
-                                                    <img src={rp.image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                                </div>
-                                                <h4 className="font-bold text-gray-900 group-hover:text-orange-600 transition-colors leading-snug">{rp.title}</h4>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </aside>
+                    <div className="post-foot">
+                        <div className="tags">{tags.map((t) => <span key={t}>{t}</span>)}</div>
+                        <div className="share">
+                            <a href={`tel:${PHONE_TEL}`} aria-label="Call us"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" /></svg></a>
+                        </div>
                     </div>
                 </div>
             </article>
-        </div>
+
+            {/* related */}
+            <section className="block band-paper2">
+                <div className="wrap">
+                    <div className="sec-head"><span className="kicker">Keep Reading</span><h2>Related Articles</h2></div>
+                    <div className="svc-grid">
+                        {related.map((rp) => (
+                            <Link href={`/blog/${rp.slug}`} className="svc" key={rp.id}>
+                                <div className="svc-img"><img src={rp.image} alt="" role="presentation" /><span className="svc-num">{catCode(rp.category)}</span></div>
+                                <div className="svc-body"><h3 style={{ fontSize: 21 }}>{rp.title}</h3><p>{rp.excerpt}</p><span className="svc-link">Read More <Arrow /></span></div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="cta"><div className="stripes stripe-top"></div><div className="wrap">
+                <h2>Have a Project? <span className="cu">Get an Estimate.</span></h2>
+                <p>Talk to a licensed local crew today.</p>
+                <a href={`tel:${PHONE_TEL}`} className="btn btn-copper" style={{ fontSize: 20, padding: '18px 34px' }}>Call {PHONE_NUMBER}</a>
+            </div></section>
+        </>
     );
 }
