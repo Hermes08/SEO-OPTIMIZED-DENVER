@@ -3,6 +3,7 @@ import { Saira_Condensed, Archivo, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { GeoBanner } from "@/components/GeoBanner";
 import { LiveActivity } from "@/components/LiveActivity";
 import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { COMPANY_NAME, PHONE_NUMBER, BASE_URL } from "@/lib/constants";
@@ -59,6 +60,9 @@ export default function RootLayout({
                 </a>
 
                 <Header />
+
+                {/* Geolocation greeting (client-side IP detection; honest framing) */}
+                <GeoBanner />
 
                 {/* Main Content */}
                 <main id="main-content" className="flex-grow">

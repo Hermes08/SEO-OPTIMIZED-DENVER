@@ -695,3 +695,12 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:4px;bac
 .partners{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px;align-items:center}
 .partners img{height:46px;width:auto;opacity:.85}
 @media(max-width:880px){.calc-grid{grid-template-columns:1fr}.plan-grid{grid-template-columns:1fr}}
+
+/* ===== Geolocation greeting banner ===== */
+.geobar{display:flex;align-items:center;justify-content:center;gap:14px;background:var(--char-2);border-bottom:1px solid var(--line-dark);color:#cabcae;padding:9px 16px;font-family:var(--font-mono),monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.geobar-in{display:inline-flex;align-items:center;gap:9px;text-align:center}
+.geobar-in svg{width:14px;height:14px;color:var(--copper);flex-shrink:0}
+.geobar-x{background:transparent;border:0;color:var(--muted-2);cursor:pointer;display:grid;place-items:center;width:22px;height:22px;border-radius:4px;flex-shrink:0;transition:.15s}
+.geobar-x:hover{background:var(--char-3);color:#fff}
+.geobar-x svg{width:13px;height:13px}
+@media(max-width:640px){.geobar{font-size:10px;padding:8px 12px}}
