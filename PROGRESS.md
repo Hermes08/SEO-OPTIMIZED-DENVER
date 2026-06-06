@@ -84,3 +84,16 @@ Once provided: fill values in `constants.ts`, flip flags, add `public/logo.png`.
 
 ## Remaining task order
 1.1 (data) → 1.3 (media) → 1.4 finish (flags+logo) → 1.6 (sitemap/metadata/Lighthouse audit) → 1.7 (dates) → Part 2 (install engine, rewrite the 26 pages) → Part 3 (social proof).
+
+---
+## Final autonomous push (parallel agents) — COMPLETE ✅
+Ran 3 parallel agent workflows (75 agents total) to clear all content debt:
+- **45 state intros** + 6 prior = all 51 states have unique, locally-specific intros.
+- **24 Denver service/blog pages** — unique semantic-HTML bodies (Xcel, Federal Pacific, hail, freeze-thaw, permits). Stored in `src/content/overrides.ts`, applied over GENERATE_CONTENT in constants.ts.
+- **6 category overviews** — unique Denver bodies via `CONTENT_OVERRIDES[slug]`.
+- Result: NO rendered page shows the templated skeleton anymore (kept only as code fallback). Duplicate/doorway-content backlog cleared for all sub-service, blog, category, and state pages.
+- Part 3 per-service review filtering + 1.7 dates done. Build clean (~408 routes), deployed to main, Netlify live.
+
+### Remaining (all parallelizable content is done):
+- **BLOCKED ON USER:** real NAP data (phone/address/email/GBP/rating/license/socials) — schema gated off until provided. Only thing I can't close.
+- **Optional later:** deeply enrich the 306 state×service pages (differentiated but templated); formal Lighthouse audit (DataForSEO MCP was offline).
