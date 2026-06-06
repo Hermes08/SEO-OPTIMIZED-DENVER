@@ -19,6 +19,13 @@ Implemented the Claude Design handoff (`design-handoff/incoming/multiservices/`,
 - **QA fixes:** contact page fake address (`123 Service Road … 00000`) → service-area-only via real constants; `service@company.com` → `EMAIL_ADDRESS`. Build clean; no fake address/email/pravatar/placehold/picsum in built output.
 - Full per-page specs to finish the roll-out → `design-handoff/REMAINING.md`.
 
+### Nationwide expansion + Producer engine ✅ (deployed)
+- **Geo banner** (`GeoBanner.tsx`): client-side IP geo (static export can't do server-side); detects visitor's state → links to their state page.
+- **State pages**: `src/lib/states.ts` (51 states), `/locations` index, `/locations/[state]` (51), `/locations/[state]/[service]` (306). Sitemap + nav/footer updated. ~406 static pages total.
+- **Producer engine installed** (Part 2): `.claude/skills/` (context-bootstrapper, discovery, producer, audit, refresh), `.seo/context` (profile tailored multi-trade + nationwide), `.seo/state` (queue seeded). `.seo/output` gitignored.
+- **Enrichment path proven**: `STATE_INTRO` map in states.ts → state page renders unique intro when present. Wrote unique intros for CO/TX/CA/FL/NY/AZ. Run the `producer` skill to enrich the rest.
+- ⚠️ Thin-content risk: 357 location pages are templated; only 6 enriched so far. Enrich top states + add per-state bodies before scaling paid traffic.
+
 ### Inner pages — ALL implemented in Mile High (bundle 2) ✅
 Designer finished every page (used my REMAINING.md). Shared `mile-high.css` ported into `globals.css` (scoped to avoid home/Tailwind conflicts). Build clean, 46 routes.
 - **Category** (`[categorySlug]/page.tsx`) — phero hero, benefits feat-grid, sub-service svc-grid, dark map+counties, dark process, blog preview, FAQ (details.qa), generated body, CTA. Covers all 6 categories.
