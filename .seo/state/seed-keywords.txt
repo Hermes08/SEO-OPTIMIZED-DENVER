@@ -1,0 +1,8 @@
+# One seed per line. Discovery fans out from these (and from services.md).
+denver electrician
+ev charger installation denver
+denver plumber
+hvac repair denver
+solar panel installation denver
+roof repair denver
+general contractor denver

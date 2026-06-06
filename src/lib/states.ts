@@ -6,7 +6,21 @@ export interface StateInfo {
     name: string;
     mainCity: string;
     majorCities: string[];
+    /** Unique, locally-specific intro written by the Producer. Rendered in place of the
+     *  generic templated intro when present — this is how state pages get de-thinned. */
+    intro?: string;
 }
+
+// Unique Producer-written intros, keyed by state code. Add entries to enrich more states.
+export const STATE_INTRO: Record<string, string> = {
+    CO: "Colorado homes face challenges few other states do: 5,280-foot altitude that changes how furnaces combust and ACs perform, a brutal freeze-thaw cycle that cracks pipes and concrete, and some of the worst hail in the country battering Front Range roofs every summer. Our crews were built here — we know the knob-and-tube wiring hiding in Capitol Hill Victorians, the expansive clay soils that shift foundations in Aurora, and exactly how to size a furnace for a Denver winter. From the foothills of Golden to the plains of Brighton, we bring licensed, code-compliant work to every Colorado home.",
+    TX: "Everything's bigger in Texas — including the demands on your home's systems. Triple-digit summers push AC units to their limit from Houston's gulf humidity to the dry heat of El Paso, while sudden cold snaps (remember Winter Storm Uri?) expose underbuilt plumbing and electrical. Our Texas crews handle it all: high-capacity HVAC built for relentless cooling loads, freeze-resilient pipe protection, panel upgrades for sprawling new-builds in Austin and Dallas, and storm-ready roofing across Tornado Alley.",
+    CA: "California's range of climates — coastal fog in San Francisco, desert heat in the Inland Empire, wildfire-prone foothills — means no two homes have the same needs. We deliver Title 24-compliant electrical, high-efficiency HVAC, and one of the strongest solar markets in the nation (stacking federal credits with California incentives), plus seismic-aware plumbing and roofing from Los Angeles to Sacramento.",
+    FL: "Florida living is hard on a home: relentless humidity, salt air along both coasts, and a hurricane season that tests every roof and panel from Jacksonville to Miami. Our Florida crews specialize in moisture-resilient HVAC and indoor air quality, hurricane-rated roofing and repairs, surge-protected electrical, and the kind of fast emergency response you need when a storm rolls through.",
+    NY: "From pre-war walk-ups in New York City to lake-effect snow country in Buffalo, New York homes span a century of building styles and a punishing range of weather. We modernize aging electrical and knob-and-tube wiring, install heating systems that hold up to Northeast winters, and handle plumbing, roofing and remodeling across the Empire State — permits and co-op boards included.",
+    AZ: "Arizona's extreme heat is unforgiving on home systems — AC isn't a luxury here, it's survival, and a failed unit in a Phoenix July is an emergency. Our Arizona crews build for it: high-capacity cooling, sun-hardened roofing, electrical sized for heavy AC and EV loads, and rooftop solar that turns 300+ days of sunshine into real savings from Tucson to Scottsdale.",
+};
+
 
 export const STATES: StateInfo[] = [
     { slug: 'alabama', code: 'AL', name: 'Alabama', mainCity: 'Birmingham', majorCities: ['Birmingham', 'Montgomery', 'Huntsville', 'Mobile', 'Tuscaloosa'] },

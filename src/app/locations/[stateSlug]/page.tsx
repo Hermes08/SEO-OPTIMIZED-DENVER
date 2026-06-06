@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { STATES, STATE_BY_SLUG } from '@/lib/states';
+import { STATES, STATE_BY_SLUG, STATE_INTRO } from '@/lib/states';
 import { CATEGORIES, PROCESS_STEPS, PHONE_NUMBER, COMPANY_NAME, BASE_URL } from '@/lib/constants';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 
@@ -91,7 +91,7 @@ export default async function StatePage({ params }: { params: Promise<{ stateSlu
             <section className="block">
                 <div className="wrap">
                     <p className="text-lg leading-relaxed mb-12 max-w-4xl" style={{ color: 'var(--muted)' }}>
-                        {COMPANY_NAME} brings professional, multi-trade home services to homeowners across {state.name}. From {state.majorCities[0]} to {state.majorCities[state.majorCities.length - 1]}, our licensed technicians handle everything from emergency repairs to complete system installations — with the same upfront pricing and satisfaction guarantee in every city we serve.
+                        {STATE_INTRO[state.code] || `${COMPANY_NAME} brings professional, multi-trade home services to homeowners across ${state.name}. From ${state.majorCities[0]} to ${state.majorCities[state.majorCities.length - 1]}, our licensed technicians handle everything from emergency repairs to complete system installations — with the same upfront pricing and satisfaction guarantee in every city we serve.`}
                     </p>
 
                     <div className="sec-head"><span className="kicker">What We Do</span><h2>Our Services in {state.name}</h2></div>

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "updated": null,
+  "note": "Seeded with the money pages still on the GENERATE_CONTENT skeleton (duplicate-content backlog from IMPLEMENTATION.md Part 1.5). Discovery/Refresh append more. Producer marks items done.",
+  "queue": [
+    { "slug": "plumbing-services/drain-cleaning-service", "title": "Drain Cleaning Service in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "drain cleaning denver", "status": "queued" },
+    { "slug": "plumbing-services/water-heater-repair-install", "title": "Water Heater Repair & Install in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "water heater repair denver", "status": "queued" },
+    { "slug": "plumbing-services/leak-detection-repair", "title": "Leak Detection & Repair in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "leak detection denver", "status": "queued" },
+    { "slug": "plumbing-services/frozen-pipe-repair", "title": "Frozen Pipe Repair in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "frozen pipes denver", "status": "queued" },
+    { "slug": "hvac-services/air-conditioning-repair", "title": "Air Conditioning Repair in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "ac repair denver", "status": "queued" },
+    { "slug": "hvac-services/furnace-heating-installation", "title": "Furnace Heating Installation in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "furnace repair denver", "status": "queued" },
+    { "slug": "hvac-services/indoor-air-quality", "title": "Indoor Air Quality in Denver", "source": "refresh", "priority": 3, "reason": "templated skeleton", "primary_kw": "indoor air quality denver", "status": "queued" },
+    { "slug": "solar-energy-services/solar-panel-installation", "title": "Solar Panel Installation in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "solar panel installation denver", "status": "queued" },
+    { "slug": "solar-energy-services/solar-repair-maintenance", "title": "Solar Repair & Maintenance in Denver", "source": "refresh", "priority": 3, "reason": "templated skeleton", "primary_kw": "solar repair denver", "status": "queued" },
+    { "slug": "roofing-services/roof-repair", "title": "Roof Repair in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "roof repair denver", "status": "queued" },
+    { "slug": "roofing-services/roof-replacement", "title": "Roof Replacement in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "roof replacement denver", "status": "queued" },
+    { "slug": "roofing-services/hail-damage-repair", "title": "Hail Damage Repair in Denver", "source": "refresh", "priority": 1, "reason": "templated skeleton", "primary_kw": "hail damage roof repair denver", "status": "queued" },
+    { "slug": "general-contractor/kitchen-remodeling", "title": "Kitchen Remodeling in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "kitchen remodeling denver", "status": "queued" },
+    { "slug": "general-contractor/bathroom-remodeling", "title": "Bathroom Remodeling in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "bathroom remodeling denver", "status": "queued" },
+    { "slug": "general-contractor/basement-finishing", "title": "Basement Finishing in Denver", "source": "refresh", "priority": 3, "reason": "templated skeleton", "primary_kw": "basement finishing denver", "status": "queued" },
+    { "slug": "electrical-services/electrical-panel-upgrade", "title": "Electrical Panel Upgrade in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "panel upgrade denver", "status": "queued" },
+    { "slug": "electrical-services/emergency-electrician", "title": "Emergency Electrician in Denver", "source": "refresh", "priority": 2, "reason": "templated skeleton", "primary_kw": "emergency electrician denver", "status": "queued" },
+    { "slug": "electrical-services/battery-storage-systems", "title": "Battery Storage Systems in Denver", "source": "refresh", "priority": 3, "reason": "templated skeleton", "primary_kw": "home battery backup denver", "status": "queued" }
+  ]
+}

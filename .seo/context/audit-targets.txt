@@ -1,0 +1,5 @@
+# Homepage + priority money pages for System 3 (one URL per line)
+https://sunny-praline-e0f93b.netlify.app/
+https://sunny-praline-e0f93b.netlify.app/electrical-services/ev-charger-installation/
+https://sunny-praline-e0f93b.netlify.app/plumbing-services/drain-cleaning-service/
+https://sunny-praline-e0f93b.netlify.app/hvac-services/air-conditioning-repair/

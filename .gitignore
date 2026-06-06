@@ -33,3 +33,6 @@ design-handoff/incoming/
 design-handoff/incoming2/
 *.tgz
 *.bin
+
+# SEO engine generated output
+.seo/output/
