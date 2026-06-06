@@ -43,7 +43,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     if (!category || !service) notFound();
 
     const others = category.subServices.filter((s) => s.id !== service.id);
-    const reviews = TESTIMONIALS.slice(0, 2);
+    // Per-service reviews: prefer testimonials tagged for this category, fall back to top-rated.
+    const tagged = TESTIMONIALS.filter((t) => t.serviceTags?.includes(category.slug));
+    const reviews = (tagged.length >= 2 ? tagged : [...tagged, ...TESTIMONIALS.filter((t) => !tagged.includes(t))]).slice(0, 2);
 
     return (
         <div className="svc-page">

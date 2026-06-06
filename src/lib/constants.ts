@@ -90,8 +90,9 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Denver, CO',
     text: 'Absolutely the best service I have received. The technician arrived on time and fixed the issue in under an hour.',
     rating: 5,
-    date: '2023-10-15',
+    date: '2026-02-14',
     project: 'Heating Repair',
+    serviceTags: ['hvac-services'],
     image: initialsAvatar('Sarah Johnson'),
     imageAlt: 'Sarah Johnson testimonial photo'
   },
@@ -101,8 +102,9 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Aurora, CO',
     text: 'Very professional team. They explained everything clearly and the pricing was transparent. Highly recommended.',
     rating: 5,
-    date: '2023-11-02',
+    date: '2026-03-20',
     project: 'New Installation',
+    serviceTags: ['electrical-services','solar-energy-services'],
     image: initialsAvatar('Michael Chen'),
     imageAlt: 'Michael Chen testimonial photo'
   },
@@ -112,8 +114,9 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Lakewood, CO',
     text: 'Saved us during a holiday weekend emergency. I cannot thank the team enough for their quick response.',
     rating: 5,
-    date: '2023-12-24',
+    date: '2026-01-30',
     project: 'Emergency Service',
+    serviceTags: ['plumbing-services','electrical-services'],
     image: initialsAvatar('Jessica Williams'),
     imageAlt: 'Jessica Williams testimonial photo'
   }
@@ -774,7 +777,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Flickering lights in your Capitol Hill home? Tripped breakers? It might be time to replace your old panel, especially if you have an outdated Federal Pacific box.',
     content: GENERATE_CONTENT('Electrical Panel Safety', 'electrical'),
     category: 'Electrical Services',
-    publishDate: '2023-10-01',
+    publishDate: '2026-01-12',
     author: { name: 'David Smith', role: 'Master Electrician', photo: initialsAvatar('David Smith') },
     image: '/images/electrical-action.png',
     imageAlt: 'Old electrical panel'
@@ -798,7 +801,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Are they worth the investment for Denver winters? We break down the pros and cons of going tankless in a cold climate.',
     content: GENERATE_CONTENT('Tankless Water Heaters', 'plumbing'),
     category: 'Plumbing Services',
-    publishDate: '2023-10-15',
+    publishDate: '2025-11-03',
     author: { name: 'John Doe', role: 'Plumbing Lead', photo: initialsAvatar('John Doe') },
     image: '/images/plumbing-action.png',
     imageAlt: 'Tankless water heater'
@@ -810,7 +813,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Simple maintenance tips to ensure your air conditioner runs efficiently when the 90-degree days hit in July.',
     content: GENERATE_CONTENT('AC Maintenance', 'hvac'),
     category: 'HVAC Services',
-    publishDate: '2023-11-10',
+    publishDate: '2026-03-18',
     author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: initialsAvatar('Sarah Jones') },
     image: '/images/hvac-action.png',
     imageAlt: 'AC unit cleaning'
@@ -822,7 +825,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Get the most out of your panels with these essential maintenance tips. From snow removal to monitoring output, we cover it all.',
     content: GENERATE_CONTENT('Solar Panel Maintenance Tips', 'solar'),
     category: 'Solar Energy Services',
-    publishDate: '2023-12-05',
+    publishDate: '2025-09-22',
     author: { name: 'Alex Sun', role: 'Solar Tech', photo: initialsAvatar('Alex Sun') },
     image: '/images/solar-action.png',
     imageAlt: 'Solar panel cleaning'
@@ -834,7 +837,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'After the storm clears, check for these subtle signs of damage. Hidden bruises on shingles can lead to leaks if ignored.',
     content: GENERATE_CONTENT('Identifying Hail Damage', 'roofing'),
     category: 'Roofing Services',
-    publishDate: '2024-01-15',
+    publishDate: '2026-04-08',
     author: { name: 'Mike Roofer', role: 'Roofing Inspector', photo: initialsAvatar('Mike Roofer') },
     image: '/images/roofing-hero.png',
     imageAlt: 'Inspect roof shingles'
@@ -846,7 +849,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Planning a renovation? Don\'t start without this checklist. We guide you through budgeting, design, and permitting in Denver.',
     content: GENERATE_CONTENT('Kitchen Remodel Guide', 'general'),
     category: 'General Contractor',
-    publishDate: '2024-02-01',
+    publishDate: '2025-12-10',
     author: { name: 'Lisa Design', role: 'Interior Planner', photo: initialsAvatar('Lisa Design') },
     image: '/images/general-hero.png',
     imageAlt: 'Modern kitchen design'

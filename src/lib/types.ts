@@ -46,6 +46,7 @@ export interface Testimonial {
   project?: string;
   image?: string;
   imageAlt?: string;
+  serviceTags?: string[]; // category slugs this review applies to (per-service filtering)
 }
 
 export interface BlogPost {
