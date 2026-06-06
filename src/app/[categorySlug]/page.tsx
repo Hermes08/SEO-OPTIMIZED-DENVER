@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CATEGORIES, CITY, STATE, SERVICE_AREAS, PROCESS_STEPS, BLOG_POSTS, GENERATE_CONTENT, PHONE_NUMBER } from '@/lib/constants';
+import { CONTENT_OVERRIDES } from '@/content/overrides';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 import { GoogleReviews } from '@/components/GoogleReviews';
 
@@ -184,7 +185,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             {/* SEO heavy content */}
             <section className="block">
                 <div className="wrap" style={{ maxWidth: 860 }}>
-                    <div className="generated-content prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: GENERATE_CONTENT(category.title) }} />
+                    <div className="generated-content prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: CONTENT_OVERRIDES[category.slug] || GENERATE_CONTENT(category.title) }} />
                 </div>
             </section>
 
