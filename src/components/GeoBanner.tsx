@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { STATE_MAIN_CITY, SERVED_METRO_CITIES } from '@/lib/usStateCities';
+import Link from 'next/link';
+import { STATE_BY_CODE } from '@/lib/states';
 
-const DEFAULT_MSG = 'Proudly serving the Denver, CO metro — your local multi-trade crew.';
+const DEFAULT_MSG = 'Nationwide home services — licensed, insured, 24/7.';
 
 /**
  * Geolocation greeting banner. Static export has no server runtime, so we detect
@@ -14,6 +15,7 @@ const DEFAULT_MSG = 'Proudly serving the Denver, CO metro — your local multi-t
  */
 export const GeoBanner = () => {
     const [msg, setMsg] = useState(DEFAULT_MSG);
+    const [stateLink, setStateLink] = useState<{ slug: string; label: string } | null>(null);
     const [closed, setClosed] = useState(false);
 
     useEffect(() => {
@@ -23,17 +25,11 @@ export const GeoBanner = () => {
         const apply = (state?: string, city?: string, country?: string) => {
             if (country && country !== 'US') return; // keep default for non-US
             if (!state) return;
-            const st = state.toUpperCase();
-            if (st === 'CO') {
-                const local = city && SERVED_METRO_CITIES.includes(city) ? city : 'the Denver Metro';
-                setMsg(`Proudly serving ${local} — your local multi-trade crew.`);
-                return;
-            }
-            const main = STATE_MAIN_CITY[st];
-            if (main) {
-                // Names the visitor's state main city (greeting/personalization) without claiming service.
-                setMsg(`Hello from ${main.city}, ${st}! · Denver Metro Services is Colorado's Front Range home-services crew.`);
-            }
+            const info = STATE_BY_CODE[state.toUpperCase()];
+            if (!info) return;
+            const where = city || info.mainCity;
+            setMsg(`Looks like you're in ${where}, ${info.code} — we serve all of ${info.name}.`);
+            setStateLink({ slug: info.slug, label: `${info.name} services` });
         };
 
         let done = false;
@@ -58,6 +54,7 @@ export const GeoBanner = () => {
             <span className="geobar-in">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><circle cx="12" cy="10" r="2.4" stroke="currentColor" strokeWidth="2" /></svg>
                 <span>{msg}</span>
+                {stateLink && <Link href={`/locations/${stateLink.slug}`} className="geobar-cta">View {stateLink.label} →</Link>}
             </span>
             <button className="geobar-x" aria-label="Dismiss" onClick={() => { setClosed(true); try { sessionStorage.setItem('geobar_closed', '1'); } catch { } }}>
                 <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg>

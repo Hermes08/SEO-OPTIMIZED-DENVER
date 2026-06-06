@@ -33,6 +33,7 @@ export const Footer = () => {
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/about">About Us</Link></li>
                             <li><Link href="/financing">Financing</Link></li>
+                            <li><Link href="/locations">Locations (All 50 States)</Link></li>
                             <li><Link href="/areas-we-serve">Service Areas</Link></li>
                             <li><Link href="/contact">Contact Us</Link></li>
                         </ul>

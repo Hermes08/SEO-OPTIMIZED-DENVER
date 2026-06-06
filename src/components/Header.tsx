@@ -102,7 +102,7 @@ export const Header = () => {
                         </div>
 
                         <Link href="/blog">Blog</Link>
-                        <Link href="/areas-we-serve">Areas</Link>
+                        <Link href="/locations">Locations</Link>
                         <Link href="/financing">Financing</Link>
                         <Link href="/contact">Contact</Link>
                     </nav>
@@ -159,6 +159,7 @@ export const Header = () => {
                                 )}
                             </div>
                             <Link href="/blog" className="hover:text-[var(--copper)]" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+                            <Link href="/locations" className="hover:text-[var(--copper)]" onClick={() => setIsMenuOpen(false)}>Locations</Link>
                             <Link href="/areas-we-serve" className="hover:text-[var(--copper)]" onClick={() => setIsMenuOpen(false)}>Areas We Serve</Link>
                             <Link href="/financing" className="hover:text-[var(--copper)]" onClick={() => setIsMenuOpen(false)}>Financing</Link>
                             <Link href="/contact" className="hover:text-[var(--copper)]" onClick={() => setIsMenuOpen(false)}>Contact</Link>

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { CATEGORIES, BLOG_POSTS, BASE_URL } from '@/lib/constants';
+import { STATES } from '@/lib/states';
 
 // Required for output: 'export' (static export / GitHub Pages)
 export const dynamic = 'force-static';
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/contact',
         '/financing',
         '/areas-we-serve',
+        '/locations',
         '/blog',
     ].map((route) => ({
         url: `${BASE_URL}${route}`,
@@ -51,11 +53,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
+    const stateRoutes = STATES.map((state) => ({
+        url: `${BASE_URL}/locations/${state.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+    }));
+
     return [
         ...staticRoutes,
         ...categoryRoutes,
         ...serviceRoutes,
         ...categoryBlogRoutes,
+        ...stateRoutes,
         ...blogRoutes,
     ];
 }
