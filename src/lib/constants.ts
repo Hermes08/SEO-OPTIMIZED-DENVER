@@ -1,6 +1,7 @@
 import { Category, Testimonial, BlogPost, ServiceArea } from './types';
 import { Zap, Droplet, Thermometer, Sun, Shield, Hammer, MapPin, CheckCircle, Clock, Star, TrendingUp } from 'lucide-react';
 import { initialsAvatar, textLogo } from './avatar';
+import { CONTENT_OVERRIDES } from '../content/overrides';
 
 // --- CONFIGURATION (DENVER METRO SEO) ---
 // TODO(NAP): The identity values below are PLACEHOLDERS and must be replaced with
@@ -911,3 +912,7 @@ export const TEAM_MEMBERS = [
   { id: 3, name: 'Mike Johnson', role: 'Lead Technician', image: initialsAvatar('Mike Johnson', 300) },
   { id: 4, name: 'Sarah Wilson', role: 'Service Coordinator', image: initialsAvatar('Sarah Wilson', 300) }
 ];
+
+// --- Producer enrichment: apply unique bodies over the templated GENERATE_CONTENT fallback ---
+CATEGORIES.forEach((c) => c.subServices.forEach((s) => { if (CONTENT_OVERRIDES[s.slug]) s.content = CONTENT_OVERRIDES[s.slug]; }));
+BLOG_POSTS.forEach((p) => { if (CONTENT_OVERRIDES[p.slug]) p.content = CONTENT_OVERRIDES[p.slug]; });
