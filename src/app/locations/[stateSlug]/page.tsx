@@ -97,7 +97,7 @@ export default async function StatePage({ params }: { params: Promise<{ stateSlu
                     <div className="sec-head"><span className="kicker">What We Do</span><h2>Our Services in {state.name}</h2></div>
                     <div className="svc-grid">
                         {CATEGORIES.map((cat, i) => (
-                            <Link href={`/${cat.slug}`} className="svc" key={cat.id}>
+                            <Link href={`/locations/${state.slug}/${cat.slug}`} className="svc" key={cat.id}>
                                 <div className="svc-img"><img src={cat.heroImage} alt={cat.heroImageAlt || cat.title} /><span className="svc-num">{String(i + 1).padStart(2, '0')} / {SVC_CODES[i]}</span></div>
                                 <div className="svc-body"><h3>{cat.title}</h3><p>{cat.shortDescription}</p><span className="svc-link">Learn More <Arrow /></span></div>
                             </Link>

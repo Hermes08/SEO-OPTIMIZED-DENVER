@@ -60,12 +60,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
 
+    const stateServiceRoutes = STATES.flatMap((state) =>
+        CATEGORIES.map((category) => ({
+            url: `${BASE_URL}/locations/${state.slug}/${category.slug}`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }))
+    );
+
     return [
         ...staticRoutes,
         ...categoryRoutes,
         ...serviceRoutes,
         ...categoryBlogRoutes,
         ...stateRoutes,
+        ...stateServiceRoutes,
         ...blogRoutes,
     ];
 }
