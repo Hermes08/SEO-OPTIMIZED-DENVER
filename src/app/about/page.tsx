@@ -27,7 +27,7 @@ export default function About() {
 
             {/* hero */}
             <section className="phero">
-                <img className="bgimg" src="/images/general-hero.png" alt="" role="presentation" />
+                <img className="bgimg" src="/images/general-hero.jpg" alt="" role="presentation" />
                 <div className="wrap">
                     <span className="kicker">Our Story</span>
                     <h1>About <span className="cu">{COMPANY_NAME}</span></h1>
@@ -40,7 +40,7 @@ export default function About() {
             <section className="story block">
                 <div className="wrap">
                     <div className="story-photo">
-                        <img src="/images/electrical-action.png" alt={`A ${COMPANY_NAME} technician at work`} />
+                        <img src="/images/electrical-action.jpg" alt={`A ${COMPANY_NAME} technician at work`} />
                         <div className="float"><b>2,400+</b><span>Homes Served</span></div>
                     </div>
                     <div>

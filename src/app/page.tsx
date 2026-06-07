@@ -43,7 +43,7 @@ export default function Home() {
     return (
         <>
             <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }] }} />
-            <SchemaMarkup type="LocalBusiness" data={{ image: '/images/general-hero.png' }} />
+            <SchemaMarkup type="LocalBusiness" data={{ image: '/images/general-hero.jpg' }} />
 
             {/* 3 — Hero */}
             <section className="hero">
@@ -63,7 +63,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="hero-visual">
-                        <div className="ph"><img src="/images/electrical-hero.png" alt="Licensed electrician performing a panel upgrade in a Denver home" width={720} height={560} /></div>
+                        <div className="ph"><img src="/images/electrical-hero.jpg" alt="Licensed electrician performing a panel upgrade in a Denver home" width={720} height={560} fetchPriority="high" loading="eager" decoding="async" /></div>
                         <div className="tag-badge">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="m9 12 2 2 4-4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                             Licensed &amp; Insured
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="stripes stripe-top"></div>
                 <div className="wrap">
                     <div className="why-photo">
-                        <img src="/images/electrical-action.png" alt="Technician working on an electrical panel" width={620} height={545} />
+                        <img src="/images/electrical-action.jpg" alt="Technician working on an electrical panel" width={620} height={545} />
                         <div className="float"><b>2,400+</b><span>Homes Served</span></div>
                     </div>
                     <div>
@@ -180,13 +180,13 @@ export default function Home() {
                         <div className="county-grid">
                             {SERVICE_AREAS.map((area, i) => (
                                 <div className={`county reveal d${(i % 2) + 1}`} key={area.id}>
-                                    <h4><Pin /> {area.city}</h4>
+                                    <h3><Pin /> {area.city}</h3>
                                     <div className="zips">{area.zipCodes.join(' · ')}</div>
                                     <div className="desc">{area.description}</div>
                                 </div>
                             ))}
                             <Link href="/areas-we-serve" className="county reveal d2" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', borderColor: 'var(--copper)', background: 'var(--char-3)' }}>
-                                <h4 style={{ color: 'var(--copper)' }}>View all areas <Arrow /></h4>
+                                <h3 style={{ color: "var(--copper)" }}>View all areas <Arrow /></h3>
                                 <div className="desc">Full list of cities &amp; zip codes.</div>
                             </Link>
                         </div>
@@ -203,12 +203,12 @@ export default function Home() {
                 <div className="wrap">
                     <a href={`tel:${PHONE_TEL}`} className="pcard reveal d1">
                         <span className="pic"><Phone /></span>
-                        <div><h4>24/7 Emergency</h4><p>Burst pipe, no heat, dead panel? We answer day or night.</p></div>
+                        <div><h3>24/7 Emergency</h3><p>Burst pipe, no heat, dead panel? We answer day or night.</p></div>
                         <span className="go">Call now <Arrow /></span>
                     </a>
                     <Link href="/financing" className="pcard reveal d2">
                         <span className="pic"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="2" /><path d="M2 10h20" stroke="currentColor" strokeWidth="2" /><path d="M6 15h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg></span>
-                        <div><h4>0% Financing Available</h4><p>Same-as-cash plans — all credit types considered.</p></div>
+                        <div><h3>0% Financing Available</h3><p>Same-as-cash plans — all credit types considered.</p></div>
                         <span className="go">See plans <Arrow /></span>
                     </Link>
                 </div>

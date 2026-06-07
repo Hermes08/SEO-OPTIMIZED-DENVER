@@ -123,7 +123,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                     <div className="county-grid">
                         {SERVICE_AREAS.map((area) => (
                             <div className="county" key={area.id}>
-                                <h4><Pin /> {area.city}</h4>
+                                <h3><Pin /> {area.city}</h3>
                                 <div className="zips">{area.zipCodes.join(' · ')}</div>
                             </div>
                         ))}

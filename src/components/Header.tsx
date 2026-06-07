@@ -19,7 +19,7 @@ const BrandMark = ({ size = 46 }: { size?: number }) => (
 );
 
 export const BrandLockup = () => (
-    <Link href="/" className="lock" aria-label="Denver Metro Services dot com — home">
+    <Link href="/" className="lock" aria-label="Denver Metro Services.com — home">
         <BrandMark />
         <span className="words">
             <span className="l1">Denver Metro</span>
@@ -43,7 +43,7 @@ export const Header = () => {
                         <span>◇ Serving the Denver Metro Area</span>
                         <span className="hidden md:inline-flex">◇ 24/7 Emergency Service</span>
                     </div>
-                    <a href={`tel:${PHONE_TEL}`} aria-label={`Call us at ${PHONE_NUMBER}`}>CALL {PHONE_NUMBER}</a>
+                    <a href={`tel:${PHONE_TEL}`}>CALL {PHONE_NUMBER}</a>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@ export const Header = () => {
                         >
                             <button
                                 className="inline-flex items-center gap-1 py-6 uppercase"
-                                style={{ font: 'inherit', color: 'inherit', background: 'none', border: 0, cursor: 'pointer', letterSpacing: '.03em' }}
+                                style={{ fontFamily: 'var(--font-saira)', fontWeight: 600, fontSize: '17px', color: '#cabcae', background: 'none', border: 0, cursor: 'pointer', letterSpacing: '.03em' }}
                                 aria-haspopup="true"
                                 aria-expanded={activeDropdown === 'services-desktop'}
                             >

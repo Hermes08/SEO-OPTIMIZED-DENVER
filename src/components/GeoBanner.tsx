@@ -32,19 +32,11 @@ export const GeoBanner = () => {
             setStateLink({ slug: info.slug, label: `${info.name} services` });
         };
 
-        let done = false;
-        const fromIpwho = async () => {
-            const r = await fetch('https://ipwho.is/?fields=success,city,region_code,country_code');
-            const d = await r.json();
-            if (d && d.success) { apply(d.region_code, d.city, d.country_code); done = true; }
-        };
-        const fromIpapi = async () => {
-            const r = await fetch('https://ipapi.co/json/');
-            const d = await r.json();
-            if (d && d.region_code) apply(d.region_code, d.city, d.country_code || d.country);
-        };
-
-        fromIpwho().catch(() => { }).then(() => { if (!done) return fromIpapi().catch(() => { }); });
+        // Single reliable provider (ipwho.is) — avoids the console 403 a second provider logged.
+        fetch('https://ipwho.is/?fields=success,city,region_code,country_code')
+            .then((r) => r.json())
+            .then((d) => { if (d && d.success) apply(d.region_code, d.city, d.country_code); })
+            .catch(() => { /* keep default message */ });
     }, []);
 
     if (closed) return null;

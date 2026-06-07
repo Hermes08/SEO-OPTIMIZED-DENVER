@@ -5,7 +5,7 @@ import {
   GOOGLE_RATING, GOOGLE_REVIEW_COUNT, BASE_URL,
 } from '@/lib/constants';
 
-const FALLBACK_IMAGE = '/images/general-hero.png';
+const FALLBACK_IMAGE = '/images/general-hero.jpg';
 
 interface SchemaProps {
   type: 'Organization' | 'LocalBusiness' | 'Service' | 'Article' | 'BreadcrumbList' | 'FAQPage' | 'Review';

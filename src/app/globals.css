@@ -187,7 +187,7 @@
   /* footer */
   footer{background:#0f0c0a;color:#998a7a;padding:64px 0 28px}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:42px;border-bottom:1px solid var(--line-dark)}
-  footer h4{font-family:var(--font-mono),monospace;color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;font-weight:700}
+  footer h3,footer h4{font-family:var(--font-mono),monospace;color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;font-weight:700}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
   footer ul a{font-size:14px;color:#998a7a;transition:.15s}
   footer ul a:hover{color:var(--copper)}
@@ -238,7 +238,7 @@
   .county-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
   .county{background:var(--char-2);border:1px solid var(--line-dark);border-radius:4px;padding:16px 18px;transition:.16s}
   .county:hover{border-color:var(--copper);transform:translateY(-2px)}
-  .county h4{font-family:var(--font-saira),sans-serif;font-weight:800;text-transform:uppercase;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px}
+  .county h3,.county h4{font-family:var(--font-saira),sans-serif;font-weight:800;text-transform:uppercase;font-size:19px;color:#fff;display:flex;align-items:center;gap:9px}
   .county h4 svg{width:16px;height:16px;color:var(--copper)}
   .county .zips{font-family:var(--font-mono),monospace;font-size:11px;letter-spacing:.06em;color:var(--muted-2);margin-top:8px}
   .county .desc{font-size:12.5px;color:#a99a8a;margin-top:6px}
@@ -253,7 +253,7 @@
   .pcard{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:22px 24px}
   .pcard .pic{width:54px;height:54px;flex-shrink:0;background:var(--char);color:var(--copper);display:grid;place-items:center;border-radius:5px}
   .pcard .pic svg{width:27px;height:27px}
-  .pcard h4{font-family:var(--font-saira),sans-serif;font-weight:800;text-transform:uppercase;font-size:23px;color:var(--char);line-height:.95}
+  .pcard h3,.pcard h4{font-family:var(--font-saira),sans-serif;font-weight:800;text-transform:uppercase;font-size:23px;color:var(--char);line-height:.95}
   .pcard p{font-size:13.5px;color:var(--muted);margin-top:3px}
   .pcard .go{margin-left:auto;font-family:var(--font-saira),sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.03em;color:var(--copper);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .pcard:hover .go{gap:11px}
@@ -334,7 +334,7 @@
 
 /* footer comprehensive SEO link map (Mile High) */
 .foot-seo{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--line-dark)}
-.foot-seo h4{font-family:var(--font-mono),monospace;color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:16px;font-weight:700}
+.foot-seo h3,.foot-seo h4{font-family:var(--font-mono),monospace;color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:16px;font-weight:700}
 .foot-seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .foot-seo-grid strong{display:block;font-family:var(--font-saira),sans-serif;text-transform:uppercase;color:var(--copper);font-size:13px;letter-spacing:.04em;margin-bottom:8px}
 .foot-seo-grid ul{list-style:none;display:flex;flex-direction:column;gap:6px}
@@ -487,7 +487,7 @@ details.qa p{font-size:15px;color:var(--muted);margin-top:14px;line-height:1.6}
 .svc-page .faq{margin:52px 0}
 .svc-page .faq h2{font-family:var(--font-saira),sans-serif;font-weight:900;text-transform:uppercase;color:var(--char);font-size:34px;margin-bottom:20px}
 .svc-page .areas-blk{margin:52px 0;padding-top:40px;border-top:1px solid var(--line)}
-.svc-page .areas-blk h4{font-family:var(--font-saira),sans-serif;font-weight:900;text-transform:uppercase;color:var(--char);font-size:24px;margin-bottom:12px}
+.svc-page .areas-blk h3,.svc-page .areas-blk h4{font-family:var(--font-saira),sans-serif;font-weight:900;text-transform:uppercase;color:var(--char);font-size:24px;margin-bottom:12px}
 .svc-page .areas-blk p{font-size:15px;color:var(--muted);margin-bottom:18px;max-width:640px}
 .svc-page .cta{background:var(--char);border-radius:6px;overflow:hidden;margin:24px 0 64px;position:relative;text-align:center}
 .svc-page .cta .stripe{height:6px}

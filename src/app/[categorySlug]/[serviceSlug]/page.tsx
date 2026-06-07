@@ -131,7 +131,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
                             {/* service areas */}
                             <section className="areas-blk" aria-labelledby="areas-service-heading">
-                                <h4 id="areas-service-heading">We Proudly Serve the Following Areas</h4>
+                                <h3 id="areas-service-heading">We Proudly Serve the Following Areas</h3>
                                 <p>Our technicians are available for {service.title.toLowerCase()} in all the following locations. If you don&apos;t see your city listed, please call us to confirm coverage.</p>
                                 <div className="area-chips">
                                     {SERVICE_AREAS.map((area) => (

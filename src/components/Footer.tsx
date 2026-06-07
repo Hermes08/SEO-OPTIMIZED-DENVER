@@ -28,7 +28,7 @@ export const Footer = () => {
 
                     {/* Quick links */}
                     <div>
-                        <h4>Quick Links</h4>
+                        <h3>Quick Links</h3>
                         <ul>
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/about">About Us</Link></li>
@@ -41,7 +41,7 @@ export const Footer = () => {
 
                     {/* Services */}
                     <div>
-                        <h4>Services</h4>
+                        <h3>Services</h3>
                         <ul>
                             {CATEGORIES.map((cat) => (
                                 <li key={cat.id}><Link href={`/${cat.slug}`}>{cat.title}</Link></li>
@@ -51,7 +51,7 @@ export const Footer = () => {
 
                     {/* Contact */}
                     <div>
-                        <h4>Contact Info</h4>
+                        <h3>Contact Info</h3>
                         <ul>
                             <li><a href={`tel:${PHONE_TEL}`}>{PHONE_NUMBER}</a></li>
                             <li><span>Serving Denver Metro &amp; surrounding areas</span></li>
@@ -64,7 +64,7 @@ export const Footer = () => {
                 {/* Comprehensive SEO link map (all sub-services + service areas) */}
                 <div className="foot-seo">
                     <div>
-                        <h4>All Services Provided</h4>
+                        <h3>All Services Provided</h3>
                         <div className="foot-seo-grid">
                             {CATEGORIES.map((cat) => (
                                 <div key={cat.id}>
@@ -79,7 +79,7 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div>
-                        <h4>Service Areas &amp; Zip Codes</h4>
+                        <h3>Service Areas &amp; Zip Codes</h3>
                         <div className="foot-seo-grid">
                             {SERVICE_AREAS.map((area) => (
                                 <div key={area.id}>
