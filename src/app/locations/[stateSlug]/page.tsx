@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { STATES, STATE_BY_SLUG, STATE_INTRO } from '@/lib/states';
+import { STATES, STATE_BY_SLUG, STATE_INTRO, delocalize } from '@/lib/states';
 import { CATEGORIES, PROCESS_STEPS, PHONE_NUMBER, COMPANY_NAME, BASE_URL } from '@/lib/constants';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 
@@ -99,7 +99,7 @@ export default async function StatePage({ params }: { params: Promise<{ stateSlu
                         {CATEGORIES.map((cat, i) => (
                             <Link href={`/locations/${state.slug}/${cat.slug}`} className="svc" key={cat.id}>
                                 <div className="svc-img"><img src={cat.heroImage} alt={cat.heroImageAlt || cat.title} loading="lazy" decoding="async" /><span className="svc-num">{String(i + 1).padStart(2, '0')} / {SVC_CODES[i]}</span></div>
-                                <div className="svc-body"><h3>{cat.title}</h3><p>{cat.shortDescription}</p><span className="svc-link">Learn More <Arrow /></span></div>
+                                <div className="svc-body"><h3>{cat.title}</h3><p>{delocalize(cat.shortDescription, state)}</p><span className="svc-link">Learn More <Arrow /></span></div>
                             </Link>
                         ))}
                     </div>

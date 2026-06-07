@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { STATES, STATE_BY_SLUG } from '@/lib/states';
+import { STATES, STATE_BY_SLUG, delocalize } from '@/lib/states';
 import { CATEGORIES, PROCESS_STEPS, PHONE_NUMBER, COMPANY_NAME, BASE_URL } from '@/lib/constants';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 
@@ -40,7 +40,7 @@ export default async function StateServicePage({ params }: { params: Promise<{ s
 
     const faqs = [
         { question: `How much does ${category.title.toLowerCase()} cost in ${state.name}?`, answer: `Costs vary by scope. We provide transparent, upfront pricing after a brief diagnostic for ${category.title.toLowerCase()} anywhere in ${state.name}, including ${state.majorCities.slice(0, 3).join(', ')}.` },
-        ...category.faqs,
+        ...category.faqs.map((f) => ({ question: delocalize(f.question, state), answer: delocalize(f.answer, state) })),
     ];
     const serviceSchema = {
         '@context': 'https://schema.org', '@type': 'Service', serviceType: category.title,
@@ -64,7 +64,7 @@ export default async function StateServicePage({ params }: { params: Promise<{ s
                 <div className="wrap">
                     <span className="kicker">{state.name} · {category.title}</span>
                     <h1>{category.title} in <span className="cu">{state.name}</span></h1>
-                    <p className="sub">{category.description} Serving {state.mainCity} and communities across {state.name}.</p>
+                    <p className="sub">{delocalize(category.description, state)} Serving {state.mainCity} and communities across {state.name}.</p>
                     <a href={`tel:${PHONE_TEL}`} className="btn btn-copper"><PhoneSvg /> Call {PHONE_NUMBER}</a>
                     <div className="phero-feats"><span><span className="d" /> Licensed &amp; Insured</span><span><span className="d" /> 24/7 Emergency</span><span><span className="d" /> Statewide</span></div>
                 </div>
@@ -81,7 +81,7 @@ export default async function StateServicePage({ params }: { params: Promise<{ s
                         {category.subServices.map((sub, i) => (
                             <Link href={`/${category.slug}/${sub.slug}`} className="svc" key={sub.id}>
                                 <div className="svc-img"><img src={sub.image} alt={sub.imageAlt || sub.title} loading="lazy" decoding="async" /><span className="svc-num">{String(i + 1).padStart(2, '0')}</span></div>
-                                <div className="svc-body"><h3>{sub.title}</h3><p>{sub.description}</p><span className="svc-link">Learn More <Arrow /></span></div>
+                                <div className="svc-body"><h3>{sub.title}</h3><p>{delocalize(sub.description, state)}</p><span className="svc-link">Learn More <Arrow /></span></div>
                             </Link>
                         ))}
                     </div>

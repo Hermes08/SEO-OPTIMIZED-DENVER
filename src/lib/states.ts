@@ -121,5 +121,26 @@ export const STATES: StateInfo[] = [
     { slug: 'wyoming', code: 'WY', name: 'Wyoming', mainCity: 'Cheyenne', majorCities: ['Cheyenne', 'Casper', 'Laramie', 'Gillette', 'Rock Springs'] },
 ];
 
+/**
+ * Rewrite Denver-specific marketing copy for a given state, so the Denver `CATEGORIES`
+ * descriptions/FAQs read correctly on nationwide /locations pages. Only for BODY copy —
+ * never the brand name "Denver Metro Services" (which is correct on every page).
+ */
+export function delocalize(text: string, s: StateInfo): string {
+    if (!text) return text;
+    return text
+        .replace(/\bin Denver, Aurora,?\s*(?:&|and)\s*Lakewood\b/gi, `in ${s.name}`)
+        .replace(/\bDenver, Aurora,?\s*(?:&|and)\s*Lakewood\b/gi, s.name)
+        .replace(/\bDenver\s*(?:&|and)\s*Aurora\b/gi, s.mainCity)
+        .replace(/\bthe Denver Metro Area\b/gi, s.name)
+        .replace(/\bDenver Metro Area\b/gi, s.name)
+        .replace(/\bacross the Metro area\b/gi, `across ${s.name}`)
+        .replace(/\bthe Metro area\b/gi, s.name)
+        .replace(/\bDenver\b/g, s.mainCity)
+        .replace(/\bColorado\b/g, s.name)
+        .replace(/\bXcel Energy\b/g, 'your local utility')
+        .replace(/\bXcel\b/g, 'local utility');
+}
+
 export const STATE_BY_CODE: Record<string, StateInfo> = Object.fromEntries(STATES.map((s) => [s.code, s]));
 export const STATE_BY_SLUG: Record<string, StateInfo> = Object.fromEntries(STATES.map((s) => [s.slug, s]));
