@@ -56,7 +56,7 @@ export default function BlogIndex() {
                     <div className="svc-grid" style={{ marginTop: 22 }}>
                         {rest.map((post) => (
                             <Link href={`/blog/${post.slug}`} className="svc" key={post.id}>
-                                <div className="svc-img"><img src={post.image} alt="" role="presentation" /><span className="svc-num">{cat(post.category)}</span></div>
+                                <div className="svc-img"><img src={post.image} alt="" role="presentation" loading="lazy" decoding="async" /><span className="svc-num">{cat(post.category)}</span></div>
                                 <div className="svc-body">
                                     <div className="post-meta"><span>{fmtDate(post.publishDate)}</span><span>·</span><span>5 min</span></div>
                                     <h3 style={{ fontSize: 21 }}>{post.title}</h3>

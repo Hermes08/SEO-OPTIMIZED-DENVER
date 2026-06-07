@@ -101,7 +101,7 @@ export default function Home() {
                         {CATEGORIES.map((cat, i) => (
                             <Link href={`/${cat.slug}`} className="svc" key={cat.id}>
                                 <div className="svc-img">
-                                    <img src={cat.heroImage} alt={cat.heroImageAlt || cat.title} width={420} height={184} />
+                                    <img src={cat.heroImage} alt={cat.heroImageAlt || cat.title} width={420} height={184} loading="lazy" decoding="async" />
                                     <span className="svc-num">{SVC_META[i].code}</span>
                                     <span className="svc-rate"><Star />{SVC_META[i].rating}</span>
                                 </div>
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="stripes stripe-top"></div>
                 <div className="wrap">
                     <div className="why-photo">
-                        <img src="/images/electrical-action.jpg" alt="Technician working on an electrical panel" width={620} height={545} />
+                        <img src="/images/electrical-action.jpg" alt="Technician working on an electrical panel" width={620} height={545} loading="lazy" decoding="async" />
                         <div className="float"><b>2,400+</b><span>Homes Served</span></div>
                     </div>
                     <div>

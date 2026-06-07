@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ postS
 
             {/* post hero */}
             <section className="post-hero">
-                <div className="img"><img src={post.image} alt={post.imageAlt || post.title} /></div>
+                <div className="img"><img src={post.image} alt={post.imageAlt || post.title} loading="lazy" decoding="async" /></div>
                 <div className="wrap">
                     <span className="cat">{post.category} · Guide</span>
                     <h1>{post.title}</h1>
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ postS
                     <div className="svc-grid">
                         {related.map((rp) => (
                             <Link href={`/blog/${rp.slug}`} className="svc" key={rp.id}>
-                                <div className="svc-img"><img src={rp.image} alt="" role="presentation" /><span className="svc-num">{catCode(rp.category)}</span></div>
+                                <div className="svc-img"><img src={rp.image} alt="" role="presentation" loading="lazy" decoding="async" /><span className="svc-num">{catCode(rp.category)}</span></div>
                                 <div className="svc-body"><h3 style={{ fontSize: 21 }}>{rp.title}</h3><p>{rp.excerpt}</p><span className="svc-link">Read More <Arrow /></span></div>
                             </Link>
                         ))}

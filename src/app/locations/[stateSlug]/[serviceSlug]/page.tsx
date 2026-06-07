@@ -80,7 +80,7 @@ export default async function StateServicePage({ params }: { params: Promise<{ s
                     <div className="svc-grid">
                         {category.subServices.map((sub, i) => (
                             <Link href={`/${category.slug}/${sub.slug}`} className="svc" key={sub.id}>
-                                <div className="svc-img"><img src={sub.image} alt={sub.imageAlt || sub.title} /><span className="svc-num">{String(i + 1).padStart(2, '0')}</span></div>
+                                <div className="svc-img"><img src={sub.image} alt={sub.imageAlt || sub.title} loading="lazy" decoding="async" /><span className="svc-num">{String(i + 1).padStart(2, '0')}</span></div>
                                 <div className="svc-body"><h3>{sub.title}</h3><p>{sub.description}</p><span className="svc-link">Learn More <Arrow /></span></div>
                             </Link>
                         ))}

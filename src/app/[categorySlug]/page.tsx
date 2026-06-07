@@ -98,7 +98,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         {category.subServices.map((service, i) => (
                             <Link href={`/${category.slug}/${service.slug}`} className="svc" key={service.id}>
                                 <div className="svc-img">
-                                    <img src={service.image} alt={service.imageAlt || `${service.title} in ${CITY}`} />
+                                    <img src={service.image} alt={service.imageAlt || `${service.title} in ${CITY}`} loading="lazy" decoding="async" />
                                     <span className="svc-num">{String(i + 1).padStart(2, '0')} / {code}</span>
                                 </div>
                                 <div className="svc-body">
@@ -160,7 +160,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                     <div className="svc-grid">
                         {BLOG_POSTS.slice(0, 3).map((post) => (
                             <Link href={`/blog/${post.slug}`} className="svc" key={post.id}>
-                                <div className="svc-img"><img src={post.image} alt="" role="presentation" /><span className="svc-num">{post.category.replace(/ Services?$/, '').toUpperCase()}</span></div>
+                                <div className="svc-img"><img src={post.image} alt="" role="presentation" loading="lazy" decoding="async" /><span className="svc-num">{post.category.replace(/ Services?$/, '').toUpperCase()}</span></div>
                                 <div className="svc-body"><h3 style={{ fontSize: 21 }}>{post.title}</h3><p>{post.excerpt}</p><span className="svc-link">Read More <Arrow /></span></div>
                             </Link>
                         ))}
