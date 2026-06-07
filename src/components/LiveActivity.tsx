@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { PHONE_NUMBER } from '@/lib/constants';
 
 const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
@@ -15,6 +16,10 @@ const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
 export const LiveActivity = () => {
     const stackRef = useRef<HTMLDivElement>(null);
     const stickyRef = useRef<HTMLAnchorElement>(null);
+    const pathname = usePathname();
+    // The contact page's own form is the primary CTA — hide the sticky call there so it
+    // can't overlap the "Request My Service" submit button.
+    const showSticky = pathname !== '/contact' && pathname !== '/contact/';
 
     useEffect(() => {
         const cleanups: Array<() => void> = [];
@@ -172,10 +177,12 @@ export const LiveActivity = () => {
     return (
         <>
             <div className="lp-stack" id="lpStack" ref={stackRef} aria-live="polite" aria-label="Recent service activity" />
-            <a href={`tel:${PHONE_TEL}`} className="stickycall" id="stickycall" ref={stickyRef} aria-label={`Call ${PHONE_NUMBER}`}>
-                <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" fill="#fff" /></svg>
-                Call {PHONE_NUMBER}
-            </a>
+            {showSticky && (
+                <a href={`tel:${PHONE_TEL}`} className="stickycall" id="stickycall" ref={stickyRef} aria-label={`Call ${PHONE_NUMBER}`}>
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" fill="#fff" /></svg>
+                    Call {PHONE_NUMBER}
+                </a>
+            )}
         </>
     );
 };

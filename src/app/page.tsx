@@ -161,10 +161,10 @@ export default function Home() {
             {/* 9 — Stat band */}
             <section className="statband">
                 <div className="wrap">
-                    <div className="stat"><div className="v" data-count="2400" data-suffix="+">0</div><div className="l">Homes Served</div></div>
-                    <div className="stat"><div className="v" data-count="15" data-suffix=" YRS">0</div><div className="l">In Business</div></div>
-                    <div className="stat"><div className="v" data-count="24" data-suffix="/7">0</div><div className="l">Emergency Service</div></div>
-                    <div className="stat"><div className="v" data-count="4.9" data-decimals="1">0</div><div className="l">Average Rating</div></div>
+                    <div className="stat"><div className="v" data-count="2400" data-suffix="+">2,400+</div><div className="l">Homes Served</div></div>
+                    <div className="stat"><div className="v" data-count="15" data-suffix=" YRS">15 YRS</div><div className="l">In Business</div></div>
+                    <div className="stat"><div className="v" data-count="24" data-suffix="/7">24/7</div><div className="l">Emergency Service</div></div>
+                    <div className="stat"><div className="v" data-count="4.9" data-decimals="1">4.9</div><div className="l">Average Rating</div></div>
                 </div>
             </section>
 

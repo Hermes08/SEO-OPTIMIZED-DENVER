@@ -2,31 +2,27 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CATEGORIES, BLOG_POSTS } from '@/lib/constants';
-import { ChevronRight, Calendar, User } from 'lucide-react';
+import { CATEGORIES, BLOG_POSTS, PHONE_NUMBER } from '@/lib/constants';
+import { SchemaMarkup } from '@/components/SchemaMarkup';
 
-interface Props {
-    params: Promise<{
-        categorySlug: string;
-    }>;
-}
+const PHONE_TEL = PHONE_NUMBER.replace(/\D/g, '');
+const Arrow = () => <svg viewBox="0 0 24 24" width={16} height={16} fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+const fmtDate = (d: string) => new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const catCode = (c: string) => c.replace(/ Services?$/, '').toUpperCase();
+
+interface Props { params: Promise<{ categorySlug: string }>; }
 
 export async function generateStaticParams() {
-    return CATEGORIES.map((cat) => ({
-        categorySlug: cat.slug,
-    }));
+    return CATEGORIES.map((cat) => ({ categorySlug: cat.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { categorySlug } = await params;
     const category = CATEGORIES.find((c) => c.slug === categorySlug);
-
-    if (!category) {
-        return { title: 'Category Not Found' };
-    }
-
+    if (!category) return { title: 'Category Not Found' };
+    // NOTE: layout template appends " | Denver Metro Services" — do NOT hardcode it here.
     return {
-        title: `${category.title} Blog & Tips | Denver Metro Services`,
+        title: `${category.title} Blog & Tips`,
         description: `Expert advice, tips, and guides about ${category.title.toLowerCase()} for Denver homeowners.`,
         alternates: { canonical: `/${category.slug}/blog` },
     };
@@ -35,103 +31,61 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CategoryBlogPage({ params }: Props) {
     const { categorySlug } = await params;
     const category = CATEGORIES.find((c) => c.slug === categorySlug);
-
-    if (!category) {
-        notFound();
-    }
+    if (!category) notFound();
 
     const filteredPosts = BLOG_POSTS.filter((post) => post.category === category.title);
 
     return (
-        <main className="min-h-screen bg-slate-50">
-            {/* Hero Section */}
-            <section className="bg-slate-900 text-white py-20">
-                <div className="container mx-auto px-4 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">{category.title} Tips & Guides</h1>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        Expert advice and local insights for your {category.title.toLowerCase()} needs in Denver.
-                    </p>
+        <>
+            <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }, { name: category.title, url: `/${category.slug}` }, { name: 'Blog', url: `/${category.slug}/blog` }] }} />
+
+            <div className="bc"><div className="wrap">
+                <Link href="/">Home</Link><span className="sep">/</span>
+                <Link href={`/${category.slug}`}>{category.title}</Link><span className="sep">/</span>
+                <span className="cur">Blog</span>
+            </div></div>
+
+            {/* hero */}
+            <section className="phero" style={{ padding: '52px 0' }}>
+                <div className="wrap">
+                    <span className="kicker">Tips &amp; Resources</span>
+                    <h1>{category.title} <span className="cu">Tips &amp; Guides</span></h1>
+                    <p className="sub">Expert advice and local insights for your {category.title.toLowerCase()} needs across the Denver Metro.</p>
                 </div>
             </section>
 
-            {/* Breadcrumbs */}
-            <div className="bg-white border-b border-gray-200">
-                <div className="container mx-auto px-4 py-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <Link href="/" className="hover:text-orange-600 transition-colors">Home</Link>
-                        <ChevronRight size={16} />
-                        <Link href={`/${category.slug}`} className="hover:text-orange-600 transition-colors">{category.title}</Link>
-                        <ChevronRight size={16} />
-                        <span className="text-gray-900 font-medium">Blog</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Blog Grid */}
-            <section className="py-20">
-                <div className="container mx-auto px-4">
+            {/* posts */}
+            <section className="block">
+                <div className="wrap">
                     {filteredPosts.length > 0 ? (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="svc-grid">
                             {filteredPosts.map((post) => (
-                                <article key={post.id} className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full group">
-                                    <div className="h-56 bg-gray-200 relative overflow-hidden">
-                                        <img
-                                            src={post.image}
-                                            alt={post.imageAlt}
-                                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                        />
-                                        <div className="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                                            {post.category}
-                                        </div>
+                                <Link href={`/blog/${post.slug}`} className="svc" key={post.id}>
+                                    <div className="svc-img"><img src={post.image} alt={post.imageAlt || ''} loading="lazy" decoding="async" /><span className="svc-num">{catCode(post.category)}</span></div>
+                                    <div className="svc-body">
+                                        <div className="post-meta"><span>{fmtDate(post.publishDate)}</span><span>·</span><span>{post.author.name}</span></div>
+                                        <h2 style={{ fontFamily: 'var(--font-saira)', fontWeight: 800, textTransform: 'uppercase', fontSize: 21, color: 'var(--char)', lineHeight: 0.96, marginBottom: 9 }}>{post.title}</h2>
+                                        <p>{post.excerpt}</p>
+                                        <span className="svc-link">Read Article <Arrow /></span>
                                     </div>
-                                    <div className="p-8 flex flex-col flex-grow">
-                                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                                            <span className="flex items-center gap-1">
-                                                <Calendar size={14} />
-                                                {new Date(post.publishDate).toLocaleDateString()}
-                                            </span>
-                                            <span className="flex items-center gap-1">
-                                                <User size={14} />
-                                                {post.author.name}
-                                            </span>
-                                        </div>
-                                        <h2 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors line-clamp-2">
-                                            <Link href={`/blog/${post.slug}`}>
-                                                {post.title}
-                                            </Link>
-                                        </h2>
-                                        <p className="text-gray-600 mb-6 line-clamp-3 flex-grow">
-                                            {post.excerpt}
-                                        </p>
-                                        <Link
-                                            href={`/blog/${post.slug}`}
-                                            className="inline-flex items-center gap-2 text-orange-600 font-bold hover:gap-3 transition-all"
-                                        >
-                                            Read Article <ChevronRight size={16} />
-                                        </Link>
-                                    </div>
-                                </article>
+                                </Link>
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-20 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                            <div className="bg-gray-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <span className="text-4xl">📝</span>
-                            </div>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">No Articles Yet</h3>
-                            <p className="text-gray-600 max-w-md mx-auto mb-8">
-                                We haven't published any articles for {category.title} yet. Check back soon for expert tips and guides!
-                            </p>
-                            <Link
-                                href="/blog"
-                                className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors"
-                            >
-                                View All Articles
-                            </Link>
+                        <div style={{ textAlign: 'center', padding: '60px 0' }}>
+                            <div className="sec-head center"><span className="kicker center">Coming Soon</span><h2>More {category.title} Guides on the Way</h2><p>We&apos;re publishing new {category.title.toLowerCase()} articles regularly. In the meantime, browse all our resources.</p></div>
+                            <Link href="/blog" className="btn btn-copper" style={{ marginTop: 24 }}>View All Articles <Arrow /></Link>
                         </div>
                     )}
                 </div>
             </section>
-        </main>
+
+            {/* CTA */}
+            <section className="cta"><div className="stripes stripe-top"></div><div className="wrap">
+                <h2>Need {category.title} <span className="cu">Today?</span></h2>
+                <p>Skip the research — talk to a licensed Denver pro now.</p>
+                <a href={`tel:${PHONE_TEL}`} className="btn btn-copper" style={{ fontSize: 20, padding: '18px 34px' }}>Call {PHONE_NUMBER}</a>
+            </div></section>
+        </>
     );
 }
