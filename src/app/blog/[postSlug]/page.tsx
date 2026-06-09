@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ postS
 
             {/* post hero */}
             <section className="post-hero">
-                <div className="img"><img src={post.image} alt={post.imageAlt || post.title} loading="lazy" decoding="async" /></div>
+                <div className="img"><img src={post.image} alt={post.imageAlt || post.title} fetchPriority="high" decoding="async" /></div>
                 <div className="wrap">
                     <span className="cat">{post.category} · Guide</span>
                     <h1>{post.title}</h1>

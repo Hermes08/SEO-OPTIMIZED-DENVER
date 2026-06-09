@@ -466,7 +466,7 @@ export const CATEGORIES: Category[] = [
     slug: 'electrical-services',
     shortDescription: 'Expert electricians providing EV charger installation, panel upgrades, and emergency repairs in Denver, Aurora, & Lakewood.',
     description: 'Premier electrical services in Denver. From EV charger installations (Tesla Wall Connector & Level 2) to 200A panel upgrades and 24/7 emergency repairs, our licensed electricians ensure safety and compliance across the Metro area.',
-    heroImage: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+    heroImage: '/images/ev-charger-hero.webp',
     heroImageAlt: 'Licensed electrician performing an EV charger installation in a Denver home garage',
     icon: Zap,
     benefits: [
@@ -486,7 +486,7 @@ export const CATEGORIES: Category[] = [
         slug: 'ev-charger-installation',
         description: 'Professional Tesla Wall Connector and Level 2 EV charger installation in Denver. Permit-included, Xcel Energy rebates filed. All makes: Tesla, Rivian, Ford, Chevy, Hyundai.',
         content: GENERATE_EV_CONTENT('EV Charger Installation', 'ev_charger'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+        image: '/images/ev-charger-hero.webp',
         imageAlt: 'Tesla wall connector installed in a Denver residential garage'
       },
       {
@@ -495,7 +495,7 @@ export const CATEGORIES: Category[] = [
         slug: 'electrical-panel-upgrade',
         description: '200A service upgrades and panel replacements for Denver homes — often needed before EV charger installation. Replace dangerous Federal Pacific panels.',
         content: GENERATE_CONTENT('Electrical Panel Upgrade', 'electrical'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
+        image: '/images/commercial-ev.webp',
         imageAlt: 'New 200 amp electrical panel with labeled breakers'
       },
       {
@@ -504,7 +504,7 @@ export const CATEGORIES: Category[] = [
         slug: 'emergency-electrician',
         description: '24/7 Emergency electrical repairs in Denver. Restoring power safely and quickly for homes and businesses.',
         content: GENERATE_CONTENT('Emergency Electrician Services', 'electrical'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+        image: '/images/ev-charger-hero.webp',
         imageAlt: 'Electrician working at night on a fuse box'
       },
       {
@@ -513,7 +513,7 @@ export const CATEGORIES: Category[] = [
         slug: 'commercial-ev-chargers',
         description: 'Scalable EV charging infrastructure for Denver businesses, multi-family buildings, offices, and retail parking. Load-managed and network-ready.',
         content: GENERATE_EV_CONTENT('Commercial EV Charger Installation', 'ev_commercial'),
-        image: 'https://i.ibb.co/B5GyyySv/Scalable-commercial-EV-charging-infrastructure-in-Lo-Do-for-multi-unit-buildings.png',
+        image: '/images/commercial-ev.webp',
         imageAlt: 'Row of commercial EV charging stations in a Denver parking lot'
       },
       {
@@ -522,7 +522,7 @@ export const CATEGORIES: Category[] = [
         slug: 'battery-storage-systems',
         description: 'Home battery backup solutions (Tesla Powerwall, Enphase IQ) paired with your EV charger for energy independence and outage protection.',
         content: GENERATE_CONTENT('Battery Storage Systems', 'electrical'),
-        image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+        image: '/images/ev-charger-hero.webp',
         imageAlt: 'Tesla Powerwall home battery backup system'
       }
     ]
@@ -533,7 +533,7 @@ export const CATEGORIES: Category[] = [
     slug: 'plumbing-services',
     shortDescription: 'Top-rated plumbers in Denver. Drain cleaning, water heaters, and frozen pipe repair.',
     description: 'Trusted Denver plumbers for over 20 years. We handle drain cleaning, tankless water heaters, leak detection, and frozen pipe emergencies.',
-    heroImage: '/images/plumbing-hero.jpg',
+    heroImage: '/images/plumbing-hero.webp',
     heroImageAlt: 'Plumber inspecting a sink pipe',
     icon: Droplet,
     benefits: [
@@ -552,7 +552,7 @@ export const CATEGORIES: Category[] = [
         slug: 'drain-cleaning-service',
         description: 'Unclog drains fast. Hydro-jetting and sewer cleaning in Denver & Aurora.',
         content: GENERATE_CONTENT('Drain Cleaning Services', 'plumbing'),
-        image: '/images/plumbing-action.jpg',
+        image: '/images/plumbing-action.webp',
         imageAlt: 'Professional drain cleaning equipment'
       },
       {
@@ -561,7 +561,7 @@ export const CATEGORIES: Category[] = [
         slug: 'water-heater-repair-install',
         description: 'Tankless and standard water heater installation. High efficiency models.',
         content: GENERATE_CONTENT('Water Heater Installation', 'plumbing'),
-        image: '/images/plumbing-hero.jpg',
+        image: '/images/plumbing-hero.webp',
         imageAlt: 'Technician installing tankless water heater'
       },
       {
@@ -570,7 +570,7 @@ export const CATEGORIES: Category[] = [
         slug: 'leak-detection-repair',
         description: 'Accurate leak detection for slab leaks and pipe bursts.',
         content: GENERATE_CONTENT('Leak Detection Services', 'plumbing'),
-        image: '/images/plumbing-action.jpg',
+        image: '/images/plumbing-action.webp',
         imageAlt: 'Infrared leak detection camera'
       },
       {
@@ -579,7 +579,7 @@ export const CATEGORIES: Category[] = [
         slug: 'frozen-pipe-repair',
         description: 'Emergency thawing and repair for frozen pipes in Denver winter.',
         content: GENERATE_CONTENT('Frozen Pipe Repair', 'plumbing'),
-        image: '/images/plumbing-hero.jpg',
+        image: '/images/plumbing-hero.webp',
         imageAlt: 'Frozen pipe repair'
       }
     ]
@@ -590,7 +590,7 @@ export const CATEGORIES: Category[] = [
     slug: 'hvac-services',
     shortDescription: 'Heating & Air Conditioning repair in Denver. Furnace repair, AC installation.',
     description: 'Keep your home comfortable year-round. Specialists in AC repair, furnace installation, and indoor air quality.',
-    heroImage: '/images/hvac-hero.jpg',
+    heroImage: '/images/hvac-hero.webp',
     heroImageAlt: 'HVAC technician working on AC unit',
     icon: Thermometer,
     benefits: [
@@ -609,7 +609,7 @@ export const CATEGORIES: Category[] = [
         slug: 'air-conditioning-repair',
         description: '24/7 AC repair in Denver. Fixes for all major brands.',
         content: GENERATE_CONTENT('Air Conditioning Repair', 'hvac'),
-        image: '/images/hvac-action.jpg',
+        image: '/images/hvac-action.webp',
         imageAlt: 'Technician checking refrigerant'
       },
       {
@@ -618,7 +618,7 @@ export const CATEGORIES: Category[] = [
         slug: 'furnace-heating-installation',
         description: 'Energy-saving furnace installation and replacement.',
         content: GENERATE_CONTENT('Furnace Heating Installation', 'hvac'),
-        image: '/images/hvac-hero.jpg',
+        image: '/images/hvac-hero.webp',
         imageAlt: 'New high-efficiency furnace'
       },
       {
@@ -627,7 +627,7 @@ export const CATEGORIES: Category[] = [
         slug: 'indoor-air-quality',
         description: 'Whole-home humidifiers and duct cleaning for Denver climate.',
         content: GENERATE_CONTENT('Indoor Air Quality Services', 'hvac'),
-        image: '/images/hvac-action.jpg',
+        image: '/images/hvac-action.webp',
         imageAlt: 'Air duct cleaning service'
       }
     ]
@@ -638,7 +638,7 @@ export const CATEGORIES: Category[] = [
     slug: 'solar-energy-services',
     shortDescription: 'Denver Solar Panel Installation. Tax Credits & Xcel Rewards.',
     description: 'Leading solar company in Denver. Maximize savings with custom solar panel installations.',
-    heroImage: '/images/solar-hero.jpg',
+    heroImage: '/images/solar-hero.webp',
     heroImageAlt: 'Solar panels on roof',
     icon: Sun,
     benefits: [
@@ -657,7 +657,7 @@ export const CATEGORIES: Category[] = [
         slug: 'solar-panel-installation',
         description: 'Residential solar installation for Denver homes.',
         content: GENERATE_CONTENT('Solar Panel Installation', 'solar'),
-        image: '/images/solar-hero.jpg',
+        image: '/images/solar-hero.webp',
         imageAlt: 'Solar panel installation'
       },
       {
@@ -666,7 +666,7 @@ export const CATEGORIES: Category[] = [
         slug: 'solar-repair-maintenance',
         description: 'Maintenance and repair for existing solar arrays.',
         content: GENERATE_CONTENT('Solar Repair and Maintenance', 'solar'),
-        image: '/images/solar-action.jpg',
+        image: '/images/solar-action.webp',
         imageAlt: 'Cleaning solar panels'
       }
     ]
@@ -677,7 +677,7 @@ export const CATEGORIES: Category[] = [
     slug: 'roofing-services',
     shortDescription: 'Expert Roof Repair & Replacement. Hail Damage Specialists.',
     description: 'Protect your home with professional roofing services. Specialized in hail damage repair.',
-    heroImage: '/images/roofing-hero.jpg',
+    heroImage: '/images/roofing-hero.webp',
     heroImageAlt: 'Roofer inspecting shingles',
     icon: Shield,
     benefits: [
@@ -696,7 +696,7 @@ export const CATEGORIES: Category[] = [
         slug: 'roof-repair',
         description: 'Emergency roof repair for leaks and storm damage.',
         content: GENERATE_CONTENT('Roof Repair', 'roofing'),
-        image: '/images/roofing-action.jpg',
+        image: '/images/roofing-action.webp',
         imageAlt: 'Roof repair patch'
       },
       {
@@ -705,7 +705,7 @@ export const CATEGORIES: Category[] = [
         slug: 'roof-replacement',
         description: 'Complete roof replacement with impact-resistant shingles.',
         content: GENERATE_CONTENT('Roof Replacement', 'roofing'),
-        image: '/images/roofing-hero.jpg',
+        image: '/images/roofing-hero.webp',
         imageAlt: 'New roof installation'
       },
       {
@@ -714,7 +714,7 @@ export const CATEGORIES: Category[] = [
         slug: 'hail-damage-repair',
         description: 'Specialized repair for Colorado hail storms.',
         content: GENERATE_CONTENT('Hail Damage Repair', 'roofing'),
-        image: '/images/roofing-action.jpg',
+        image: '/images/roofing-action.webp',
         imageAlt: 'Hail damage on shingles'
       }
     ]
@@ -725,7 +725,7 @@ export const CATEGORIES: Category[] = [
     slug: 'general-contractor',
     shortDescription: 'Home Remodeling in Denver. Kitchens, Bathrooms, & Basements.',
     description: 'Transform your home with our general contracting. Kitchen remodels to basement finishing.',
-    heroImage: '/images/general-hero.jpg',
+    heroImage: '/images/general-hero.webp',
     heroImageAlt: 'Modern kitchen remodel',
     icon: Hammer,
     benefits: [
@@ -744,7 +744,7 @@ export const CATEGORIES: Category[] = [
         slug: 'kitchen-remodeling',
         description: 'Modern kitchen renovations. Cabinets, countertops.',
         content: GENERATE_CONTENT('Kitchen Remodeling', 'general'),
-        image: '/images/general-hero.jpg',
+        image: '/images/general-hero.webp',
         imageAlt: 'White kitchen renovation'
       },
       {
@@ -753,7 +753,7 @@ export const CATEGORIES: Category[] = [
         slug: 'bathroom-remodeling',
         description: 'Luxury bathroom updates. Showers, tubs.',
         content: GENERATE_CONTENT('Bathroom Remodeling', 'general'),
-        image: '/images/general-action.jpg',
+        image: '/images/general-action.webp',
         imageAlt: 'Luxury bathroom remodel'
       },
       {
@@ -762,7 +762,7 @@ export const CATEGORIES: Category[] = [
         slug: 'basement-finishing',
         description: 'Turn your basement into a gym or office.',
         content: GENERATE_CONTENT('Basement Finishing', 'general'),
-        image: '/images/general-hero.jpg',
+        image: '/images/general-hero.webp',
         imageAlt: 'Finished basement'
       }
     ]
@@ -780,7 +780,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Electrical Services',
     publishDate: '2026-01-12',
     author: { name: 'David Smith', role: 'Master Electrician', photo: initialsAvatar('David Smith') },
-    image: '/images/electrical-action.jpg',
+    image: '/images/electrical-action.webp',
     imageAlt: 'Old electrical panel'
   },
   {
@@ -792,7 +792,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Electrical Services',
     publishDate: '2025-05-15',
     author: { name: 'Jake Martinez', role: 'EV Installation Specialist', photo: 'https://i.pravatar.cc/150?u=jake_ev' },
-    image: 'https://i.ibb.co/jZfBH7YK/Hero-Section.jpg',
+    image: '/images/ev-charger-hero.webp',
     imageAlt: 'Cost to install Tesla charger Denver — hardware permit labor breakdown 2025'
   },
   {
@@ -804,7 +804,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Plumbing Services',
     publishDate: '2025-11-03',
     author: { name: 'John Doe', role: 'Plumbing Lead', photo: initialsAvatar('John Doe') },
-    image: '/images/plumbing-action.jpg',
+    image: '/images/plumbing-action.webp',
     imageAlt: 'Tankless water heater'
   },
   {
@@ -816,7 +816,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'HVAC Services',
     publishDate: '2026-03-18',
     author: { name: 'Sarah Jones', role: 'HVAC Specialist', photo: initialsAvatar('Sarah Jones') },
-    image: '/images/hvac-action.jpg',
+    image: '/images/hvac-action.webp',
     imageAlt: 'AC unit cleaning'
   },
   {
@@ -828,7 +828,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Solar Energy Services',
     publishDate: '2025-09-22',
     author: { name: 'Alex Sun', role: 'Solar Tech', photo: initialsAvatar('Alex Sun') },
-    image: '/images/solar-action.jpg',
+    image: '/images/solar-action.webp',
     imageAlt: 'Solar panel cleaning'
   },
   {
@@ -840,7 +840,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'Roofing Services',
     publishDate: '2026-04-08',
     author: { name: 'Mike Roofer', role: 'Roofing Inspector', photo: initialsAvatar('Mike Roofer') },
-    image: '/images/roofing-hero.jpg',
+    image: '/images/roofing-hero.webp',
     imageAlt: 'Inspect roof shingles'
   },
   {
@@ -852,7 +852,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: 'General Contractor',
     publishDate: '2025-12-10',
     author: { name: 'Lisa Design', role: 'Interior Planner', photo: initialsAvatar('Lisa Design') },
-    image: '/images/general-hero.jpg',
+    image: '/images/general-hero.webp',
     imageAlt: 'Modern kitchen design'
   }
 ];

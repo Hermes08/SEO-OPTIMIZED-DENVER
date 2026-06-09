@@ -31,13 +31,13 @@ export const metadata: Metadata = {
         title: defaultTitle,
         description: defaultDescription,
         url: BASE_URL,
-        images: [{ url: '/images/general-hero.jpg', width: 1200, height: 630, alt: COMPANY_NAME }],
+        images: [{ url: '/images/general-hero.webp', width: 1200, height: 630, alt: COMPANY_NAME }],
     },
     twitter: {
         card: 'summary_large_image',
         title: defaultTitle,
         description: defaultDescription,
-        images: ['/images/general-hero.jpg'],
+        images: ['/images/general-hero.webp'],
     },
     robots: { index: true, follow: true },
 };

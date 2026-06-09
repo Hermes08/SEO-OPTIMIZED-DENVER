@@ -43,7 +43,7 @@ export default function Home() {
     return (
         <>
             <SchemaMarkup type="BreadcrumbList" data={{ items: [{ name: 'Home', url: '/' }] }} />
-            <SchemaMarkup type="LocalBusiness" data={{ image: '/images/general-hero.jpg' }} />
+            <SchemaMarkup type="LocalBusiness" data={{ image: '/images/general-hero.webp' }} />
 
             {/* 3 — Hero */}
             <section className="hero">
@@ -63,7 +63,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="hero-visual">
-                        <div className="ph"><img src="/images/electrical-hero.jpg" alt="Licensed electrician performing a panel upgrade in a Denver home" width={720} height={560} fetchPriority="high" loading="eager" decoding="async" /></div>
+                        <div className="ph"><img src="/images/electrical-hero.webp" alt="Licensed electrician performing a panel upgrade in a Denver home" width={720} height={560} fetchPriority="high" loading="eager" decoding="async" /></div>
                         <div className="tag-badge">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" /><path d="m9 12 2 2 4-4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
                             Licensed &amp; Insured
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="stripes stripe-top"></div>
                 <div className="wrap">
                     <div className="why-photo">
-                        <img src="/images/electrical-action.jpg" alt="Technician working on an electrical panel" width={620} height={545} loading="lazy" decoding="async" />
+                        <img src="/images/electrical-action.webp" alt="Technician working on an electrical panel" width={620} height={545} loading="lazy" decoding="async" />
                         <div className="float"><b>2,400+</b><span>Homes Served</span></div>
                     </div>
                     <div>

@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ stateSlug
         title,
         description,
         alternates: { canonical: url },
-        openGraph: { type: 'website', title, description, url, images: [{ url: '/images/general-hero.jpg', alt: title }] },
-        twitter: { card: 'summary_large_image', title, description, images: ['/images/general-hero.jpg'] },
+        openGraph: { type: 'website', title, description, url, images: [{ url: '/images/general-hero.webp', alt: title }] },
+        twitter: { card: 'summary_large_image', title, description, images: ['/images/general-hero.webp'] },
     };
 }
 
@@ -58,7 +58,7 @@ export default async function StatePage({ params }: { params: Promise<{ stateSlu
         provider: { '@type': 'LocalBusiness', name: COMPANY_NAME, telephone: PHONE_NUMBER, priceRange: '$$' },
         areaServed: { '@type': 'State', name: state.name },
         description: `Electrical, plumbing, HVAC, solar, roofing and remodeling across ${state.name}.`,
-        image: `${BASE_URL}/images/general-hero.jpg`,
+        image: `${BASE_URL}/images/general-hero.webp`,
         url: `${BASE_URL}/locations/${state.slug}`,
     };
 
@@ -73,7 +73,7 @@ export default async function StatePage({ params }: { params: Promise<{ stateSlu
 
             {/* hero */}
             <section className="phero">
-                <img className="bgimg" src="/images/general-hero.jpg" alt="" role="presentation" />
+                <img className="bgimg" src="/images/general-hero.webp" alt="" role="presentation" />
                 <div className="wrap">
                     <span className="kicker">Serving {state.name}</span>
                     <h1>Home Services in <span className="cu">{state.name}</span></h1>

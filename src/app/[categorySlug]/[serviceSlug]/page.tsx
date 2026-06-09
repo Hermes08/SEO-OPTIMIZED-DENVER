@@ -77,7 +77,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                         </div>
                     </div>
                     <div className="hero-photo">
-                        <img src={service.image} alt={service.imageAlt || `${service.title} in ${CITY}, ${STATE}`} loading="lazy" decoding="async" />
+                        <img src={service.image} alt={service.imageAlt || `${service.title} in ${CITY}, ${STATE}`} fetchPriority="high" decoding="async" />
                         <span className="rate"><Star /> 4.9</span>
                     </div>
                 </div>
